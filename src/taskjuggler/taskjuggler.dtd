@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DTD for TaskJuggler 2.0 XML Files -->
+<!-- Valid TaskJuggler files have the extension ".tjx" and are
+compressed according to RFC1951 and RFC1952 (zlib). -->
+<!-- (c) 2003, 2004, 2005, 2006, 2007, 2008 Chris Schlaeger <cs@kde.org> -->
+<!-- This file is licensed under the GNU GPL Version 2.0 -->
+<!-- $Id: TaskJuggler-2.0.dtd 75 2005-02-20 15:55:38Z cs $ -->
+
+<!-- The DTD has been stable for quite a while now, so it's probably
+save to use. As TaskJuggler evolves, there will certainly be new
+elments added, but the existing ones will not change anymore. -->
+
+<!-- For a documentation of these elements, please see the TaskJuggler
+manual at http://www.taskjuggler.org/docs.php -->
+
+<!DOCTYPE taskjuggler [
+<!ELEMENT taskjuggler (project, vacationList?, shiftList?,
+                       resourceList?, accountList?, taskList, bookingList?)>
+
+<!ELEMENT project (start, end, extend*, now?, currencyFormat,
+                   workingHours, scenario?)>
+<!ATTLIST project 
+  id CDATA #REQUIRED
+  name CDATA #REQUIRED
+  version CDATA #REQUIRED
+  timezone CDATA #IMPLIED
+  timingResolution CDATA "3600"
+  dailyWorkingHours CDATA "8"
+  yearlyWorkingDays CDATA "260.714"
+  weekStartMonday (0|1) "1"
+  timeFormat CDATA "%Y-%m-%d %H:%M"
+  shortTimeFormat CDATA "%H:%M"
+>
+
+<!ELEMENT start (#PCDATA)>
+<!ATTLIST start
+  humanReadable CDATA #IMPLIED>
+
+<!ELEMENT end (#PCDATA)>
+<!ATTLIST end
+  humanReadable CDATA #IMPLIED>
+
+<!ELEMENT now (#PCDATA)>
+<!ATTLIST now
+  humanReadable CDATA #IMPLIED>
+
+<!ELEMENT extend (extendAttributeDefinition*)>
+<!ATTLIST extend
+  property CDATA #REQUIRED>
+
+<!ELEMENT extendAttributeDefinition EMPTY>
+<!ATTLIST extendAttributeDefinition
+  id CDATA #REQUIRED
+  name CDATA #REQUIRED
+  type (text|reference) #REQUIRED
+  inherit (0|1) "0"
+>
+
+<!ELEMENT currencyFormat EMPTY>
+<!ATTLIST currencyFormat
+  signPrefix CDATA #REQUIRED
+  signSuffix CDATA #REQUIRED
+  thousandSep CDATA #REQUIRED
+  fractionSep CDATA #REQUIRED
+  fracDigits CDATA #REQUIRED
+>
+
+<!ELEMENT workingHours (weekdayWorkingHours*)>
+
+<!-- 0 means Sunday, 1 Monday, ... -->
+<!ELEMENT weekdayWorkingHours (timeInterval+)>
+<!ATTLIST weekdayWorkingHours
+  weekday (0|1|2|3|4|5|6) #REQUIRED
+>
+
+<!ELEMENT timeInterval (start, end)>
+
+<!ELEMENT scenario (scenario*)>
+<!ATTLIST scenario
+  id CDATA #REQUIRED
+  name CDATA #REQUIRED
+  disabled (0|1) "0"
+  projectionMode (0|1) "0"
+>
+
+<!ELEMENT flag (#PCDATA)>
+
+<!ELEMENT vacationList (vacation+)>
+ 
+<!ELEMENT vacation (start, end)>
+<!ATTLIST vacation
+  name CDATA #IMPLIED
+>
+
+<!ELEMENT shiftList (shift*)>
+
+<!ELEMENT shift (workingHours, shift*)>
+<!ATTLIST shift
+  id CDATA #REQUIRED
+  name CDATA #REQUIRED
+>
+
+<!ELEMENT shiftSelection (start, end)>
+<!ATTLIST shiftSelection
+  shiftId CDATA #REQUIRED
+>
+
+<!ELEMENT resourceList (resource*)>
+
+<!ELEMENT resource (flag*, vacationList?, workingHours, shiftSelection*,
+                    resource*)>
+<!ATTLIST resource
+  id CDATA #REQUIRED
+  name CDATA #REQUIRED
+>
+
+<!ELEMENT accountList (account*)>
+
+<!ELEMENT account (customAttribute*, account*)>
+<!ATTLIST account
+  id CDATA #REQUIRED
+  name CDATA #REQUIRED
+  type (cost|revenue) #IMPLIED
+>
+
+<!ELEMENT taskList (task+)>
+
+<!ELEMENT task (depends*, precedes*, customAttribute*, flag*, task*,
+                taskScenario*, note?, reference?, 
+                shiftSelection*, allocate*)>
+<!ATTLIST task
+  id CDATA #REQUIRED
+  name CDATA #REQUIRED
+  projectId CDATA #REQUIRED
+  milestone (0|1) #REQUIRED
+  asapScheduling (0|1) #REQUIRED
+  priority CDATA #REQUIRED
+  responsible CDATA #IMPLIED
+  account CDATA #IMPLIED
+>
+
+<!ELEMENT depends (dependencyGapScenario*)>
+
+<!ATTLIST depends
+  task CDATA #REQUIRED
+>
+  
+<!ELEMENT precedes (dependencyGapScenario)*>
+
+<!ATTLIST precedes
+  task CDATA #REQUIRED
+>
+
+<!ELEMENT dependencyGapScenario EMPTY>
+
+<!ATTLIST dependencyGapScenario
+  scenarioId CDATA #REQUIRED
+  gapduration CDATA #IMPLIED
+  gaplength CDATA #IMPLIED
+>
+
+<!ELEMENT note (#PCDATA)>
+
+<!ELEMENT statusNote (#PCDATA)>
+
+<!ELEMENT reference (#PCDATA)>
+<!ATTLIST reference
+  url CDATA #REQUIRED
+>
+
+<!ELEMENT allocate (candidate+)>
+
+<!ELEMENT candidate EMPTY>
+<!ATTLIST candidate
+  resourceId CDATA #REQUIRED
+>
+
+<!ELEMENT taskScenario (start?, end?, maxEnd?, maxStart?, minEnd?,
+                        minStart?, startCredit*, endCredit*)>
+<!-- Possible 'complete' status values:
+     1 Not started
+     2 In progress but late
+     3 In progress (only for enclosing tasks)
+     4 On time
+     5 In progress but ahead of schedule
+     6 Finished -->
+<!ATTLIST taskScenario
+  scenarioId CDATA #REQUIRED
+  effort CDATA #IMPLIED
+  duration CDATA #IMPLIED
+  length CDATA #IMPLIED
+  criticalpath (0|1) "0"
+  scheduled (0|1) "0"
+  complete CDATA #IMPLIED
+  status CDATA #IMPLIED
+  statusNote CDATA #IMPLIED
+>
+
+<!ELEMENT minStart (#PCDATA)>
+<!ATTLIST minStart
+  humanReadable CDATA #IMPLIED
+>
+
+<!ELEMENT maxStart (#PCDATA)>
+<!ATTLIST maxStart
+  humanReadable CDATA #IMPLIED
+>
+
+<!ELEMENT minEnd (#PCDATA)>
+<!ATTLIST minEnd
+  humanReadable CDATA #IMPLIED
+>
+
+<!ELEMENT maxEnd (#PCDATA)>
+<!ATTLIST maxEnd
+  humanReadable CDATA #IMPLIED
+>
+
+<!ELEMENT startCredit (#PCDATA)>
+
+<!ELEMENT endCredit (#PCDATA)>
+  
+<!ELEMENT customAttribute (textAttribute|referenceAttribute)>
+<!ATTLIST customAttribute
+  id CDATA #REQUIRED
+>
+
+<!ELEMENT textAttribute EMPTY>
+<!ATTLIST textAttribute
+  text CDATA #REQUIRED
+>
+
+<!ELEMENT referenceAttribute EMPTY>
+<!ATTLIST referenceAttribute
+  url CDATA #REQUIRED
+  label CDATA #REQUIRED
+>
+
+<!ELEMENT bookingList (resourceBooking*)>
+
+<!ELEMENT resourceBooking (booking*)>
+<!ATTLIST resourceBooking
+  resourceId CDATA #REQUIRED
+  scenarioId CDATA #REQUIRED
+>
+
+<!ELEMENT booking (start, end)>
+<!ATTLIST booking
+  taskId CDATA #REQUIRED
+>
+]>
+<taskjuggler></taskjuggler>

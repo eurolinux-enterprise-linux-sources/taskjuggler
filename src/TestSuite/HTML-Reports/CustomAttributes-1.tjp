@@ -1,0 +1,61 @@
+project ca "Custom Attributes" "$Id$" 2003-05-28 - 2003-06-28 {
+	extend task {
+		reference MyTLink "My TLink"
+		text MyTText "My TText"
+		text MyText "My Text" { inherit }
+	}
+
+	extend resource {
+		reference MyRLink "My RLink"
+		text MyRText "My RText"
+		text MyText "My Text"
+	}
+
+	extend account {
+		reference MyALink "My ALink"
+		text MyAText "My AText"
+		text MyText "My Text"
+	}
+}
+
+account a1 "Account 1" cost {
+	MyALink "http://www.taskjuggler.org/index.php"
+	MyAText "Money makes the world go round"
+	MyText "Money alone does not make you happy"
+}
+
+resource r1 "Resource 1" {
+	MyRLink "http://www.taskjuggler.org/download.php"
+	MyRText "It's all right!"
+	MyText "Just around the corner"
+}
+
+task t1 "Task 1" {
+	start 2003-05-28
+	MyTLink "http://www.taskjuggler.org" { label "TJ Web" }
+	MyTText "TJ is great!"
+	MyText "No man's land!"
+
+	task t3 "Task 3" {
+		effort 1d
+		account a1
+		allocate r1	
+	}
+}
+
+task t2 "Task 2" {
+	MyText "Hello, world!"
+
+	task t4 "Task 4" {
+		milestone
+		depends !!t1
+	}
+}
+
+htmltaskreport "." {
+	columns no { celltext "Hallo" hidecelltext ~isLeaf() }, 
+	        name { celltext "[$${MyText}] $${0}" }, 
+					MyText, MyTLink, MyTText, MyRLink
+	hideresource 0
+}
+

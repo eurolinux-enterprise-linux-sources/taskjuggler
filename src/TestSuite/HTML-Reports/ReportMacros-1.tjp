@@ -1,0 +1,62 @@
+project repmac "ReportMacros" "$Id$" 2003-06-18 - 2003-09-18 {
+	now 2003-06-19
+}
+
+resource r1 "Resource 1"
+resource r2 "Resource 2"
+
+task t1 "Task 1" {
+  start 2003-06-18
+	effort 10d
+	allocate r1
+}
+
+task t2 "Task t2" {
+	task t3 "Task 3" {
+	  start 2003-06-18
+	  effort 10d
+	  allocate r2
+	}
+}
+
+htmltaskreport "." {
+	columns hierarchno { 
+		        title "hierarchno"
+						titleurl "http://$${0}" 
+					},
+	        name {
+							celltext "$${id}"
+					},
+					daily {
+						titleurl
+					 	"http://$${day}-$${month}-$${quarter}-$${week}-$${year}"
+						subtitleurl
+					 	"http://$${day}-$${month}-$${quarter}-$${week}-$${year}"
+					},
+					weekly {
+						titleurl
+					 	"http://$${day}-$${month}-$${quarter}-$${week}-$${year}"
+						subtitleurl
+					 	"http://$${day}-$${month}-$${quarter}-$${week}-$${year}"
+					},
+					monthly {
+						titleurl
+					 	"http://$${day}-$${month}-$${quarter}-$${week}-$${year}"
+						subtitleurl
+					 	"http://$${day}-$${month}-$${quarter}-$${week}-$${year}"
+					},
+					quarterly {
+						titleurl
+					 	"http://$${day}-$${month}-$${quarter}-$${week}-$${year}"
+						subtitleurl
+					 	"http://$${day}-$${month}-$${quarter}-$${week}-$${year}"
+					},
+					yearly {
+						titleurl
+					 	"http://$${day}-$${month}-$${quarter}-$${week}-$${year}"
+						subtitleurl
+					 	"http://$${day}-$${month}-$${quarter}-$${week}-$${year}"
+					}
+	hideresource 0
+}
+	

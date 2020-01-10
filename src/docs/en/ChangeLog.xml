@@ -1,0 +1,1369 @@
+<sect1 id="change_log"><title>Change Log</title>
+<sect2 id="version_1_0_0"><title>Version 1.0.0 (2002-03-14)</title>
+
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>Initial stable public release.</para></listitem>
+
+</itemizedlist>
+</para>
+
+</sect2>
+<sect2 id="version_1_0_1"><title>Version 1.0.1 (2002-03-15)</title>
+
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>Fixed completely broken global vacation
+handling.</para></listitem>
+
+<listitem><para>Added test case for vacation handling to test
+suite.</para></listitem>
+
+</itemizedlist>
+</para>
+
+</sect2>
+<sect2 id="version_1_1"><title>Version 1.1 (2002-05-27)</title>
+
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para> Added some reports to the example file, so users
+actually get a result of the TaskJuggler run.</para></listitem>
+
+<listitem><para> Support for later completion of task and resources
+added. By writing 'supplement task &lt;ID&gt; { ... }' an already
+defined task can be extended. So it's easier now to create a file
+which contains the vacations for all resources separate from the
+resource definition itself. </para></listitem>
+
+<listitem><para>Extended expression parser to work on string type
+values as well.</para></listitem>
+
+<listitem><para><link linkend="TYPE_LOGICALEXPRESSION"> logicalexpression
+</link> for hidetask, rolluptask etc. can now contain functions as
+well. Currently there is support for 'istask', 'isresource',
+'isaccount', 'issubtaskof', 'contains', 'ismilestone'.</para></listitem>
+
+<listitem><para>Moved the docs directory from TaskJuggler subdir to
+topdir.</para></listitem>
+
+<listitem><para>Added feature list and change-log to the
+documentation.</para></listitem>
+
+<listitem><para><link
+linkend="PROPERTY_reference">property_reference</link> is now sorted in
+alphabetical order.</para></listitem>
+
+<listitem><para>Added lots of missing attributes to <link
+linkend="PROPERTY_htmlaccountreport"> htmlaccountreport </link>.</para></listitem>
+
+<listitem><para>Added missing <link linkend="PROPERTY_export"> export </link>
+report to documentation. Export reports can now contain the scheduled
+tasks as well as the resource allocations.</para></listitem>
+
+<listitem><para>New keywords
+<computeroutput>planbooking</computeroutput> and
+<computeroutput>actualbooking</computeroutput> to enter fixed bookings
+of <link linkend="PROPERTY_resource">resources</link> in the resource
+declaration.</para></listitem>
+
+<listitem><para>Added new example project to illustrate the use of
+export in big projects that are split into sub projects.</para></listitem>
+
+<listitem><para>HTML comments in HTML report files are now using correct
+syntax.</para></listitem>
+
+<listitem><para>Partial fix for correct time zone handling.</para></listitem>
+
+<listitem><para>Support for STDIN reading and STDOUT writing added. This can be
+used when calling TaskJuggler from CGI scripts.</para></listitem>
+
+</itemizedlist>
+</para>
+
+</sect2>
+<sect2 id="version_1_2"><title>Version 1.2 (2002-06-17)</title>
+
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>Fixed sorting by ID for all HTML reports.</para></listitem>
+
+<listitem><para>Fixed bug in vacation handling. Vacations that started before
+the project were silently ignored.</para></listitem>
+
+<listitem><para>Added support for <link
+linkend="PROPERTY_taskattributes"> taskattributes </link> to <link
+linkend="PROPERTY_export">export</link> report.</para></listitem>
+
+<listitem><para>XML Output changes: Basically the XML output is more
+simple to parse, some values were added and corrected.</para></listitem>
+
+<listitem><para>Added a first simple TaskJuggler XML-output viewer for
+KDE.  See ktjview/README for installation. Configure with KDE support
+enabled.</para></listitem>
+
+<listitem><para>Disabled ical support by introducing the HAVE_ICAL
+switch in the code.  The switch is not yet configure supported, but
+building with --with-kde-support should work now without failing on
+missing libical.</para></listitem>
+
+<listitem><para>Support for URLs in HTML reports added.</para></listitem>
+
+<listitem><para>Legacy HTML elements have been removed from HTML reports.
+TaskJuggler now creates pure HTML 4.0 code.</para></listitem>
+
+<listitem><para>Added support for insertion of raw HTML code into
+reports. This can be achieved with <link
+linkend="PROPERTY_rawhead"> rawhead </link> and <link
+linkend="PROPERTY_rawtail"> rawtail </link>.</para></listitem>
+
+<listitem><para>Added support for user defined style sheets in HTML
+reports by using the <link linkend="PROPERTY_rawstylesheet">
+rawstylesheet </link> attribute.</para></listitem>
+
+<listitem><para>Strings can now be enclosed in either single or double
+quotes. A single quoted string may contain double quotes and vice
+versa.</para></listitem>
+
+<listitem><para>Working hours can now be declared on project level.
+This also determines if a day is considered a working day or
+not.</para></listitem>
+
+<listitem><para>With <link linkend="PROPERTY_startbuffer"> startbuffer
+</link> and <link linkend="PROPERTY_endbuffer"> endbuffer </link> you can
+now specify that there might be some air left in a certain
+task.</para></listitem>
+
+<listitem><para>Remo's Gantt chart generators have been included in the
+<filename>Contrib</filename> directory.</para></listitem>
+
+</itemizedlist>
+</para>
+
+</sect2>
+<sect2 id="version_1_3"><title>Version 1.3 (2002-07-30)</title>
+
+<para> <itemizedlist mark='opencircle'>
+
+<listitem><para>This release features some bigger cleanup changes.
+Some of them do break compatibility with older version of TaskJuggler.
+While we try very hard to avoid such situations, we do prefer to have
+a consistent and logical language. Since the TaskJuggler user base is
+still comparatively small, we decided to break compatibility now
+rather than later. The changes are fairly minor, so they won't affect
+many users.  Please see further down for more details.</para></listitem>
+
+<listitem><para>Added Perl/Tk tool to view Gantt charts and other
+project information.</para></listitem>
+
+<listitem><para>Added PERT-chart generator from Philippe
+Midol-Monnet.</para></listitem>
+
+<listitem><para>Added support for shifts in <link
+linkend="PROPERTY_shift_selection"> shift </link>
+and task allocate shift.</para></listitem>
+
+<listitem><para>Fixed vim syntax highlighting. Some keywords were missing.</para></listitem>
+
+<listitem><para>Export report had syntax bug when milestones were present.
+Fixed.</para></listitem>
+
+<listitem><para>Fixed handling of week, month and year duration specifications.</para></listitem>
+
+<listitem><para><link linkend="PROPERTY_now">now</link> and <link
+linkend="PROPERTY_timingresolution">timingresolution</link> are no
+longer properties. They are now optional attributes of <link
+linkend="PROPERTY_project">project</link>. They currently still work as
+properties as well but a warning is issued and they will be removed in
+the next major release.</para></listitem>
+
+<listitem><para><link
+linkend="PROPERTY_dailyworkinghours">dailyworkinghours</link>
+and <link linkend="PROPERTY_yearlyworkingdays"> yearlyworkingdays
+</link> have
+been implemented to allow the user for better control over the
+conversion from working days to working hours.</para></listitem>
+
+<listitem><para>Added support for a <link
+linkend="PROPERTY_select">select</link>
+function for alternative resource allocations.</para></listitem>
+
+<listitem><para>All load values in HTML reports can now be scaled by
+specifying a <link
+linkend="PROPERTY_loadunit">loadunit</link>.</para></listitem>
+
+<listitem><para>Improved readability of scheduler error messages.</para></listitem>
+
+<listitem><para>Added new example project to the Examples directory to
+illustrate how to create shift schedules with TaskJuggler.</para></listitem>
+
+<listitem><para>Fixed scheduler for working hours around midnight.
+This bug affected shifts as well as general working hours.</para></listitem>
+
+<listitem><para>Extended timezone support. TaskJuggler will now
+operate properly when TZ environment variable is set.</para></listitem>
+
+</itemizedlist>
+</para>
+
+</sect2>
+<sect2 id="version_1_4"><title>Version 1.4 (2002-12-18)</title>
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>Only export references to tasks which are exported in
+the same report.</para></listitem>
+
+<listitem><para>Allow supplements of tasks within task definitions.</para></listitem>
+
+<listitem><para>Converted documentation to DocBook. We now have a much
+nicer and more structured manual. A printable version is available as
+well now.</para></listitem>
+
+<listitem><para>Fixed HTML code for bookedlight cells. Those were
+rendered without background on some browsers.</para></listitem>
+
+<listitem><para>Added support for multi-level sorting in reports.
+<link linkend="PROPERTY_sorttasks">sorttasks</link> and <link
+linkend="PROPERTY_sortresources">sortresources</link> now
+take multiple criteria.</para></listitem>
+
+<listitem><para>Several bugs in the sorting direction code have been
+fixed. <computeroutput>startup</computeroutput>,
+	<computeroutput>startdown</computeroutput>,
+	<computeroutput>endup</computeroutput> and
+	<computeroutput>enddown</computeroutput> have been replaced by 
+	<computeroutput>planstartup</computeroutput>,
+	<computeroutput>planstartdown</computeroutput>,
+	<computeroutput>planendup</computeroutput> and
+	<computeroutput>planenddown</computeroutput>.
+</para></listitem>
+
+<listitem><para>The optional attribute <link
+linkend="PROPERTY_taskprefix">taskprefix</link> has been added to <link
+linkend="PROPERTY_include">include</link>. This allows other projects to be
+added at arbitrary points in the task tree as sub
+projects.</para></listitem>
+
+<listitem><para>Include statements within tasks are no longer
+supported. They lead to ambiguous interpretation of
+certain attributes.</para></listitem>
+
+<listitem><para>The optional attribute <link
+linkend="PROPERTY_taskroot">taskroot</link> has been added to <link
+linkend="PROPERTY_export">export</link>. This allows to export sub tasks of a
+tasks to be exported as root-level tasks.</para></listitem>
+
+<listitem><para>The project file reader has been made fully Unicode
+aware. It is now possible to use non-ASCII characters in text strings
+and comments.</para></listitem>
+
+<listitem><para>Two new functions have been added for use in <link
+linkend="TYPE_LOGICALEXPRESSION">logical expressions</link>.
+<computeroutput>isplanallocated</computeroutput> and
+<computeroutput>isactualallocated</computeroutput> can be used to show
+only resources that have been allocated to a certain project in a
+given time frame.</para></listitem>
+
+<listitem><para>Made week of year calculation ISO 8601:1988 and DIN
+1355 compliant. This also affects the month and year correlation in
+weekly reports. You can use the optional project attributes <link
+linkend="PROPERTY_weekstartssunday"> weekstartssunday </link> and <link
+linkend="PROPERTY_weekstartsmonday"> weekstartsmonday </link> to
+specify whether you like to start you week on Sunday or
+Monday.</para></listitem>
+
+<listitem><para>Support for a <computeroutput>flags</computeroutput>
+columns added to HTML reports.</para></listitem>
+
+<listitem><para>Sub tasks do now inherit the dependencies of their
+container tasks. Specifying dependencies after sub tasks is now
+illegal since they would be only used for checking, but not for
+scheduling.</para></listitem>
+
+<listitem><para>The logic checker for task attributes has been
+completely rewritten. Since it probably catches some more errors, you
+might have to fix your project now. Such cases would have resulted in
+wrong results anyhow. Lots of test cases have been added to the test
+suite to validate the checker.</para></listitem>
+
+<listitem><para>The error reporting has been drastically improved. The
+messages should be more precise now and errors that are triggered by
+other errors should be not so prominent anymore.</para></listitem>
+
+<listitem><para>A new report type has been added. <link
+linkend="PROPERTY_htmlweeklycalendar"> htmlweeklycalendar</link> can be used to
+generate weekly calendars.</para></listitem>
+
+<listitem><para>The format of time specifications in HTML reports is
+now configurable via <link linkend="PROPERTY_timeformat"> timeformat 
+</link> and <link
+linkend="PROPERTY_shorttimeformat">shorttimeformat</link></para></listitem>
+
+<listitem><para>The keyword <computeroutput> xmltaskreport
+</computeroutput> is now deprecated. It has been replaced by <link
+linkend="PROPERTY_xmlreport"> xmlreport </link>. The rest of the syntax
+remains identical. </para></listitem>
+
+<listitem><para>The tool <computeroutput> xml2gantt.pl </computeroutput>
+has been renamed to <computeroutput> tjx2gantt </computeroutput> and
+moved from the Contrib directory to the main directory. The tool
+<computeroutput> xml2png </computeroutput> has been
+removed.</para></listitem>
+
+<listitem><para>Included new version 0.2.2 of TJ-Pert from
+Philippe.</para></listitem>
+
+<listitem><para>The load numbers on the bars of the HTML task and
+resource reports can now be turned on and off using the <link
+linkend="PROPERTY_barlabels"> barlabels </link>
+attribute.</para></listitem>
+
+<listitem><para>The HTML reports feature now 3 kind of index numbers.
+The sequence number reflects the order of declaration in the project
+files. The index is a logical order based on the hierarchy and other
+attributes. The number is the index in the generated list. What used
+to be the <computeroutput>no</computeroutput> <link
+linkend="PROPERTY_columns">column</link> is now the
+<computeroutput>index</computeroutput> column.</para></listitem>
+
+<listitem><para>The sequence of properties in the project file can now
+be used as sorting criteria as well. </para></listitem>
+
+</itemizedlist> </para>
+
+</sect2>
+<sect2 id="version_1_4_1"><title>Version 1.4.1 (2003-02-24)</title>
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>Another redo of the loop detector. Now checking tasks
+not only forward, but also backwards. Insufficiently specified task
+boundaries are no longer detected, since they are flagged with missing
+start/end messages after the scheduler run.</para></listitem>
+
+<listitem><para>The dependency loop detector can now be skipped with
+the --nodepcheck command line option.</para></listitem>
+
+<listitem><para>The dependency loop detector runs now significantly
+faster for larger projects.</para></listitem>
+
+<listitem><para>Broken HTML table when
+<computeroutput>schedule</computeroutput> was used with
+<computeroutput>showactual</computeroutput> fixed.</para></listitem>
+
+<listitem><para>HTML reports can now show a <link
+linkend="PROPERTY_columns">column</link> with the completion
+degree and the completion status. The rows can also be sorted by these
+new columns.</para></listitem>
+
+<listitem><para>The HTML and XML reports are now UTF8 encoded. This should
+eliminate problems with languages that require non-latin1 character
+sets.</para></listitem>
+
+<listitem><para>Currency values in HTML reports are now always right
+aligned.</para></listitem>
+
+<listitem><para>A bug in the handling of nested Resources and Shifts
+has been found and fixed. The bug lead to wrong load values for all
+nested resources. The bug was introduced between versions 1.2 and 1.3.
+</para></listitem>
+
+<listitem><para>If some container tasks could not be scheduled due to
+problems with a sub task no error message was generated. This has been
+fixed now.</para></listitem>
+
+<listitem><para>Fixed scheduling of container tasks, so that container
+tasks with only milestones get properly scheduled.
+</para></listitem>
+
+<listitem><para>Only export min/max start/end times when they were
+explicitly specified and do no longer inherit project start/end times
+for this purpose.</para></listitem>
+
+<listitem><para><link
+linkend="PROPERTY_columns">htmlaccountreport</link> now supports
+quarterly and yearly calendar columns.</para></listitem>
+
+<listitem><para>Fixed XML reports so that milestone end dates are
+same as start dates.</para></listitem>
+
+</itemizedlist></para>
+
+</sect2>
+<sect2 id="version_1_4_2"><title>Version 1.4.2 (2003-03-10)</title>
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>Indentation for tree structure in HTML reports is now
+done with cell margins. This should no longer look bad if the label
+gets wrapped by the browser.</para></listitem>
+
+<listitem><para>HTML tables now use explicit head and body sections.
+This should repeat the table header when printing HTML reports from
+some browsers.</para></listitem>
+
+<listitem><para>Fixed segfault in XML report generation. Only plan
+values are now exported in XML report.</para></listitem>
+
+<listitem><para>Task scheduling is also set when a fixed <link
+linkend="PROPERTY_start">start</link> or <link
+linkend="PROPERTY_end">end</link> date is specified.</para></listitem>
+
+<listitem><para>Better error reporting for syntax errors in macros.
+The call stack with full arguments is included in the error message
+now.</para></listitem>
+
+<listitem><para>The cost column in HTML <link
+linkend="PROPERTY_columns">task</link> or resource reports now
+only contains cost. Support for a revenue and profit column has been
+added.</para></listitem>
+
+<listitem><para>Abbreviated month name are now encoded properly in
+non-Latin1 languages as well.</para></listitem>
+
+<listitem><para>Milestones in HTML calendars are now visible in text
+browsers and printouts as well.</para></listitem>
+
+<listitem><para>New attribute <link
+linkend="PROPERTY_reference">reference</link> added to
+task.</para></listitem>
+
+</itemizedlist></para>
+</sect2>
+<sect2 id="version_1_9_0_unstable"><title>Version 1.9.0-unstable (2003-06-25)</title>
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>A new HTML report type for status report has been
+added. See <link linkend="PROPERTY_htmlstatusreport">htmlstatusreport</link>
+for details.</para></listitem>
+
+<listitem><para>HTML reports are now a lot more flexible. New CSS
+elements have being used and the table elements are customizable now.
+See <link linkend="PROPERTY_columns">optional column
+attributes</link> for details.</para></listitem>
+
+<listitem><para>Support for <link
+linkend="PROPERTY_extend">user-defined attributes</link> has been
+added.</para></listitem>
+
+<listitem><para>Resource allocations can now be made <link
+linkend="PROPERTY_mandatory">mandatory</link>.</para></listitem>
+
+<listitem><para>The format of numbers and currency values can now be
+specified with <link
+linkend="PROPERTY_numberformat">numberformat</link> and <link
+linkend="PROPERTY_currencyformat">currencyformat</link>. The old
+keyword currencydigits has been deprecated.</para></listitem>
+
+<listitem><para>All reports have now support for daily, weekly,
+monthly, quarterly and yearly calendars. Task lines now contain
+Gantt-chart like bars.</para></listitem>
+
+<listitem><para>HTML reports got the additional columns
+<computeroutput>hierarchno</computeroutput> and
+<computeroutput>hierarchindex</computeroutput>.</para></listitem>
+
+<listitem><para>Several new query functions and operators for <link
+linkend="TYPE_LOGICALEXPRESSION">logical expressions</link> have been
+added.</para></listitem>
+
+<listitem><para>Scenario specific task attributes can now be prefixed
+with the scenario ID followed by a colon. The attributes starting with
+'plan' or 'actual' have been deprecated.</para></listitem>
+
+<listitem><para>Fixed the URLs for task and resource names in HTML reports.
+</para></listitem>
+
+<listitem><para>Cost, revenue and profit values as well as effort
+values are now indented in tree sorting mode for all HTML reports.
+</para></listitem>
+
+<listitem><para>Length and duration tasks with resource
+allocations are no longer trimmed to the first and last resource
+allocation.</para></listitem>
+
+<listitem><para>Fixed rounding error in effort calculation that led to
+the allocation of an extra time slot in some cases.</para></listitem>
+
+<listitem><para>Fixed wrong scheduling of tasks that had a length or
+duration specified as hours or minutes.</para></listitem>
+
+<listitem><para>'length' based task now use the global working hours
+and global vacation settings as a criteria of what is a working day.
+The tasks now always end during working hours and not at
+midnight.</para></listitem>
+
+<listitem><para>isplanallocated and isactualallocated had broken time
+interval handling. This is fixed now.</para></listitem>
+
+<listitem><para><link
+linkend="PROPERTY_workinghours">workinghours</link> and <link
+linkend="PROPERTY_currency">currency</link> are no longer global
+properties. They are now optional attributes of the project
+property.</para></listitem>
+
+<listitem><para>The scenario name is no longer displayed by default if
+more than one scenario is included in a report. A column
+<computeroutput>scenario</computeroutput> must be explicitly added if
+the scenario name should be reported for each line. The attributes
+'showactual' and 'hideplan' have been deprecated. The <link
+linkend="PROPERTY_scenarios">scenarios</link> attribute now
+controls which scenarios should be shown.</para></listitem>
+
+<listitem><para>Container tasks in export reports no longer have fixed
+start and end date if they have their sub tasks exported as
+well.</para></listitem>
+
+<listitem><para><link linkend="PROPERTY_allocate">Resource
+allocations</link> are now inherited from parent
+tasks.</para></listitem>
+
+</itemizedlist></para>
+
+</sect2>
+<sect2 id="version_1_9_1_unstable"><title>Version 1.9.1-unstable (2003-07-29)</title>
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>A new class of reports has been added. CSV reports
+(Comma separated values) are useful to import TaskJuggler reports
+into other productivity applications such as
+spreadsheets. The new reports are called <link
+linkend="PROPERTY_csvtaskreport">csvtaskreport</link>, <link
+linkend="PROPERTY_csvresourcereport">csvresourcereport</link> and <link
+linkend="PROPERTY_csvaccountreport">csvaccountreport</link>.</para></listitem>
+
+<listitem><para>HTML Calendars have now a navigation aid. Moving a
+mouse over a cell will show the date and task/resource id in the
+browser status bar.</para></listitem>
+
+<listitem><para>Background cells in HTML calendars are now merged.
+This makes TaskJuggler report generation faster and reduces the size
+of HTML report files.</para></listitem>
+
+<listitem><para>The <link linkend="PROPERTY_export">export report</link>
+can now be a main project file as well.</para></listitem>
+
+<listitem><para>A new keyword for taskattributes of export reports has
+been introduced. The keyword <computeroutput>all</computeroutput>
+causes all supported task attributes to be exported.</para></listitem>
+
+<listitem><para>Various speed improvements.</para></listitem>
+
+<listitem><para>The broken milestone symbol in HTML calendars has been
+fixed.</para></listitem>
+
+<listitem><para>HTML reports now have a black grid to separate the
+cells. This enhances readability both on the screen and on printouts.
+</para></listitem>
+
+<listitem><para>The functions for <link
+linkend="TYPE_LOGICALEXPRESSION">Logical Expressions</link> are now using
+capital letters to improve their readability. The all lowercase
+versions are still supported, but the recommended versions are now the
+ones with intermixed uppercase letters.
+<computeroutput>isTaskOfProject</computeroutput> was added as new
+query function.</para></listitem>
+
+<listitem><para>The maximum allocation of a resource for a task is no
+longer limited by default. <link
+linkend="PROPERTY_maxeffort">maxeffort</link> now defaults to 0
+(unlimited) instead of 1.0 (8 hours per day). To have the same
+behaviour as in TaskJuggler 1.x version you need to specify
+<computeroutput>maxeffort 1.0</computeroutput> before any resource
+definition. This change was made since many users were confused when
+after increasing the daily working hours resources were still only
+allocated 8 hours per day.</para></listitem>
+
+</itemizedlist></para>
+
+</sect2>
+<sect2 id="version_1_9_2_unstable"><title>Version 1.9.2-unstable (2003-09-05)</title>
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>Support for new XML format has been added. The old
+format is still supported. TJ can read both old and new format XML
+files but will use the new XML format for output.</para></listitem>
+
+<listitem><para>The property <link
+linkend="PROPERTY_projectids">projectids</link> has been added. It is used in
+export reports to declare all the project IDs that are used in the
+report.</para></listitem>
+
+<listitem><para>Resource booking periods can now overlap with off-duty
+hours, vacation or other task assignments. This is controlled by the
+<link linkend="PROPERTY_sloppy">sloppy</link> attribute.
+</para></listitem>
+
+<listitem><para>Effort based tasks now correctly recognize if the
+effort was partially specified with booking attributes. The effort is
+no longer allocated on top of the bookings.</para></listitem>
+
+<listitem><para>You can now reference environment variables by
+writing <literal>$(VAR)</literal> as a means to pass runtime
+values to TaskJuggler.</para></listitem>
+
+<listitem><para>Several inconsistencies and off-by-one errors with
+respect to task end times have been fixed.</para></listitem>
+
+<listitem><para>TaskJuggler can now create 'make' compatible
+dependency information.</para></listitem>
+
+<listitem><para>The number of errors after which TaskJuggler stops
+processing is now configurable via a command line
+option.</para></listitem>
+
+</itemizedlist></para>
+
+</sect2>
+<sect2 id="version_2_0_0"><title>Version 2.0.0 (2003-11-24)</title>
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>Fixed completion coloring in HTML
+reports.</para></listitem>
+
+<listitem><para>Fixed segfault in certain cases of inherited resource
+allocations.</para></listitem>
+
+<listitem><para><link linkend="PROPERTY_macro">Macro names</link> in macro
+calls can now be prefixed by a question mark to suppress warnings if
+the macro is undefined.</para></listitem>
+
+<listitem><para>Microsoft and MacOS text files are now read in
+correctly.</para></listitem>
+
+<listitem><para>Report cells can be left empty and URLs can be
+omitted controlled by a logical expression. This is controlled by
+<link linkend="PROPERTY_hidecelltext">hidecelltext</link>
+and <link
+linkend="PROPERTY_hidecellurl">hidecellurl</link>.</para></listitem>
+
+<listitem><para>New functions isATask, isAResource and isAnAccount can
+now be used in logical expressions.</para></listitem>
+
+<listitem><para>XML version 2 files are now compressed with
+zlib.</para></listitem>
+
+</itemizedlist></para>
+
+</sect2>
+<sect2 id="version_2_0_1"><title>Version 2.0.1 (2004-03-08)</title>
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>Fixed handling of resource allocations with multiple
+shift intervals.</para></listitem>
+
+<listitem><para>Fixed double-quoting of HTML special characters such
+as umlauts.</para></listitem>
+
+<listitem><para>Added query function isDutyOf() to select tasks where
+a certain resource has been assigned to.</para></listitem>
+
+<listitem><para>The contents of XML reports can now be limited with
+the usual filter mechanisms. Support for <link
+linkend="PROPERTY_hideresource">hideresource</link>, <link
+linkend="PROPERTY_hidetask">hidetask</link>, <link
+linkend="PROPERTY_rollupresource">rollupresource</link> and <link
+linkend="PROPERTY_rolluptask">rolluptask</link> has been added. Also
+<link linkend="PROPERTY_scenarios">scenario filtering</link> was
+implemented for XML reports.</para></listitem>
+
+<listitem><para>Weekly, monthly, quarterly and yearly HTML reports now
+have resource vacations as well. If the vacation fills the complete
+report cell term, the cell has a yellow background.</para></listitem>
+
+<listitem><para>Fixes for building TaskJuggler on FreeBSD
+added.</para></listitem>
+
+<listitem><para><link linkend="PROPERTY_maxeffort">maxeffort</link>
+and <link linkend="PROPERTY_load">load</link> have been replaced by
+the far more flexible concept of <link
+linkend="PROPERTY_limits">limits</link>.</para></listitem>
+
+</itemizedlist></para>
+
+</sect2>
+<sect2 id="Changelog_2_1_0"><title>Version 2.1.0 (2005-03-07)</title>
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>TaskJuggler now has a nice face. Beside the
+commandline application <computeroutput>taskjuggler</computeroutput>,
+you can now use <computeroutput>TaskJuggler</computeroutput> or
+<computeroutput>ktjview2</computeroutput> as a graphical user
+interface to enter and schedule your projects.</para></listitem>
+
+<listitem><para>New optimizer that achieves much better resource
+selection resulting in shorter overall project times.</para></listitem>
+
+<listitem><para>Passive resources like meeting rooms, machines and the
+like, that do not contribute to the effort of a task can now be
+modelled by setting their efficiency to 0.0.</para></listitem>
+
+<listitem><para>Added critical path analyser. Each task is rated and
+the rating can be listed in the HTML and CSV report.</para></listitem>
+
+<listitem><para>New task state added. When a task is not finished by
+the planned end date, it now marked as
+<computeroutput>late</computeroutput>.</para></listitem>
+
+<listitem><para>Task dependency specifications (<link
+linkend="PROPERTY_depends">depends</link> or <link
+linkend="PROPERTY_precedes">precedes</link> can now have optional gap
+specification. It is possible to specify the gap in calendar time
+(<link linkend="PROPERTY_gapduration">gapduration</link>) or working
+time (<link
+linkend="PROPERTY_gaplength">gaplength</link>).</para></listitem>
+
+<listitem><para>The speed of report generation has been significantly
+improved. This is especially true for reports that make use of filter
+functions.</para></listitem>
+
+<listitem><para>Added <computeroutput>status</computeroutput> and
+<computeroutput>statusNote</computeroutput> to XML
+reports.</para></listitem>
+
+<listitem><para>Added some missing properties to the documentation.
+Mainly the sorting criterias were missing.</para></listitem>
+
+<listitem><para>Fixed a memory leak during XML report
+generation.</para></listitem>
+
+<listitem><para>Fixed scheduling of nested task that had an external
+dependency and an inherited start/end date.</para></listitem>
+
+<listitem><para>Limits of resource allocations with multiple
+alternatives are now correctly handled. The limits were applied to
+each individual resource instead of to the whole
+allocation.</para></listitem>
+
+<listitem><para>The task priority is now always properly respected.
+Due to a bug in the scheduling algorithm a heavy mixture of ALAP and
+ASAP tasks with various levels of priorities, ALAP tasks were treated
+more favorable then they should have been treated. This fix can
+drastically reduce the scheduling speed when you have a heavy mixture
+of ALAP and ASAP tasks with varying priorities.</para></listitem>
+
+<listitem><para>The error checking and reporting of logical
+expressions has been drastically improved.</para></listitem>
+
+<listitem><para>The reports are now generated relative to their
+definition file and no longer relative to the current working
+directory where you started the program.</para></listitem>
+
+</itemizedlist></para>
+
+</sect2>
+<sect2 id="Changelog_2_1_1"><title>Version 2.1.1 (2005-08-04)</title>
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>The code for the generation of iCal reports has been
+revived again. iCal is a standard format to exchange data with
+calendar applications such as KOrganizer.</para></listitem>
+
+<listitem><para>The contents of export reports can now be customized
+with the <link linkend="PROPERTY_properties">properties</link>
+attribute. The report interval is customizable as well
+now.</para></listitem>
+
+<listitem><para>Add new chapter to manual that describes how to use
+TaskJuggler as a project tracking tool.</para></listitem>
+
+<listitem><para>The HTML version of the manual has now a new look and
+many more syntax examples have been added to the property
+reference.</para></listitem>
+
+<listitem><para>The TaskJuggler editor now supports printing of
+project files.</para></listitem>
+
+<listitem><para>Fixed build with GCC 4.</para></listitem>
+
+<listitem><para>Fixed build problems in the doc directory on Debian
+Unstable and FC3.</para></listitem>
+
+<listitem><para>We are now using docbook-utils instead of docbook-toys
+to generate the documentation.</para></listitem>
+
+<listitem><para>Filtering resources and tasks in the TaskJuggler GUI
+reports now always works properly.</para></listitem>
+
+<listitem><para>Fixed generation of reports with absolute file
+names.</para></listitem>
+
+<listitem><para>Make sure that all dates specified in project files
+lie within the Unix time space. For technical reasons we need to limit
+this to 1971-01-01 - 2035-01-01.</para></listitem>
+
+<listitem><para>Fixed some crashes related to out of project time
+specifications.</para></listitem>
+
+<listitem><para>Warnings about pre 2.0 deprecated syntax elements have
+been converted to errors.</para></listitem>
+
+<listitem><para>Fixed sorting of task reports when not using the
+default scenario as first scenario.</para></listitem>
+
+<listitem><para>Fixed projection scheduling mode. Tasks with bookings
+equal or larger than the effort lead to scheduling
+errors.</para></listitem>
+
+</itemizedlist></para>
+
+</sect2>
+<sect2 id="Changelog_2_2_0"><title>Version 2.2.0 (2005-12-05)</title>
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>The two graphical front-ends that have been present in earlier
+TaskJuggler releases have been merged into one new front-end. It's
+called TaskJugglerUI. The <computeroutput>ktjview2</computeroutput>
+and <computeroutput>TaskJuggler</computeroutput> executables are no
+longer included. This was done also to avoid name clashes on
+Windows/Cygwin.</para></listitem>
+
+<listitem><para>The TaskJuggler user interface now supports printing
+of high-quality task and resource reports.</para></listitem>
+
+<listitem><para>Major usability improvements for the GUI. It's now
+fully navigable by keyboard. The scaling/zooming of the Gantt chart
+has been improved.</para></listitem>
+
+<listitem><para>HTML reports are now rendered with an embedded
+browser instead of launching an external browser.</para></listitem>
+
+<listitem><para>Export reports are now loaded into the editor when
+selected in the report browser.</para></listitem>
+
+<listitem><para>The GUI supports now multiple project
+templates. The templates can be customized on loading to reflect the
+current date.</para></listitem>
+
+<listitem><para>Added date picker to GUI editor. By pressing CTRL+D
+the user can insert or change a date using the comfortable date picker
+widget.</para></listitem>
+
+<listitem><para>The GUI editor now supports search and replace over
+all files.</para></listitem>
+
+<listitem><para>The computation of completion degrees of container
+task has been improved to produce more meaningful values for all
+milestone or all effort tasks.</para></listitem>
+
+<listitem><para>To get Gantt and resource reports in the GUI the
+column 'chart' must be specified. They are no longer displayed
+automatically. This was done to have more consistency between the
+printed version of the GUI reports and the other
+reports.</para></listitem>
+
+<listitem><para>The default separator for CSV files is now a semicolon
+since this is what OpenOffice.org uses by default. But this can be
+changed if needed.</para></listitem>
+
+<listitem><para>The projection scheduling mode has been fixed and
+extended. In strict mode bookings will be scheduled only after the
+current date. In sloppy mode, bookings will also be scheduled prior to
+the current date for tasks that have no bookings at
+all. The modes can be set in the scenario definition.</para></listitem>
+
+<listitem><para>Fixed reporting of value 1,000 in US currency
+format.</para></listitem>
+
+<listitem><para>Fixed reported task duration value in all report
+types. Value was only correct when unit 'days' was
+used.</para></listitem>
+
+<listitem><para>Fixed account reports which had summary lines that
+were all 0. In HTML reports the summary columns were rendered all
+black.</para></listitem>
+
+<listitem><para>Fixed detection of cyclic brother tasks. This caused
+taskjuggler to go into a memory hogging endless loop.</para></listitem>
+
+<listitem><para>Fixed bug in priority handling. Under certain
+circumstances resources were allocated to lower priority tasks even
+though they should have been assigned to higher priority
+tasks.</para></listitem>
+
+<listitem><para>Fixed critical bug that turned 'precedes' of parent
+tasks into 'depends' of child tasks.</para></listitem>
+
+<listitem><para>Fixed cost accounting for non-working resources. They
+were always accounted to 0.</para></listitem>
+
+</itemizedlist></para>
+
+</sect2>
+<sect2 id="Changelog_2_3_0"><title>Version 2.3.0 (2006-09-05)</title>
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>Added improved error checking for 'timezone'
+attribute. Only values as determined by tools like tzselect are
+allowed, e. g. "Europe/Berlin".</para></listitem>
+
+<listitem><para>The GUI GANTT chart now can highlight critical
+pathes. See <link linkend="PROPERTY_minslackrate">minslackrate</link>
+for details how to use the feature.</para></listitem>
+
+<listitem><para>The htmlweeklycalendar has been reworked. It now only
+list tasks if they are being worked on that day. A new attribute <link
+linkend="PROPERTY_weekdays">weekdays</link> can be used to only show
+some days of the week. This can be used to hide e. g.
+weekdays.</para></listitem>
+
+<listitem><para>ICal reports now include events. The completion value
+is now shown correctly and assigned resources are
+included.</para></listitem>
+
+<listitem><para>Fixed handling of tasks that have 'precedes' and
+'depends' attributes.</para></listitem>
+
+<listitem><para>Single and double quoted strings may now contain
+single or double quotes when escaped by a preceding
+backslash.</para></listitem>
+
+<listitem><para>Fixed 'gaplength' and 'gapduration' handling for other
+scenarios than the default one.</para></listitem>
+
+<listitem><para>Fixed 'duration' column in all reports. Values equal
+or smaller than 24 hours were reported too high.</para></listitem>
+
+<listitem><para>No longer show dependency arrows in Gantt chart for
+inherited dependencies.</para></listitem>
+
+<listitem><para>Generate proper warning when bookings are assigned to
+container tasks or milestones.</para></listitem>
+
+<listitem><para>It is now possible to book off-hour and vacation time
+slots with 'booking' when the <link
+linkend="PROPERTY_overtime">overtime</link> attribute is
+used.</para></listitem>
+
+<listitem><para>Added support for a more compact way to specify
+bookings. It's now possible to list multiple comma seperated time
+intervals in a single booking statement.</para></listitem>
+
+<listitem><para>Fix build system so that kde-config is no longer
+mandatory. This simplifies compiling on Windows/Cygwin and Qt-only
+installs.</para></listitem>
+
+<listitem><para>Speed improvements for the loop detector. Large
+projects with many top-level tasks should be scheduled significantly
+faster now.</para></listitem>
+
+<listitem><para>'start' and 'end' attributes specified for derived 
+scenarios no longer cause accidental changes of the scheduling
+direction. This guarantees that a task has always the same scheduling
+direction in all scenarios.</para></listitem>
+
+<listitem><para>Added support for more compact workinghour
+specifications. <computeroutput>workinghours mon - fri 8:00 -
+15:00</computeroutput> as well as <computeroutput>workinghours mon,
+sat, sun off</computeroutput> are now possible.</para></listitem>
+
+<listitem><para>Added man pages for taskjuggler and
+TaskJugglerUI.</para></listitem>
+
+<listitem><para>Fixed infinite loop bug in critical path detectors.
+With certain task dependencies TaskJuggler could get stuck forever
+when processing the project.</para></listitem>
+
+<listitem><para>Fixed TaskJugglerUI crash when processing a project
+with many runaway tasks.</para></listitem>
+
+<listitem><para>Better fit of report interval for printed Gantt
+charts.</para></listitem>
+
+<listitem><para>Fixed header of weekly and monthly CSV
+reports.</para></listitem>
+
+<listitem><para>XML reports now use the gzip compressed version 2 XML
+format by default.</para></listitem>
+
+<listitem><para>Add check to forbid assigning account groups to
+tasks.</para></listitem>
+
+<listitem><para>Added Turkish translations for
+TaskJugglerUI.</para></listitem>
+
+</itemizedlist></para>
+
+</sect2>
+<sect2 id="Changelog_2_3_1"><title>Version 2.3.1 (2007-01-30)</title>
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>Added support for automatic macros like
+<computeroutput>now</computeroutput>,
+<computeroutput>projectstart</computeroutput> and
+<computeroutput>projectend</computeroutput>.</para></listitem>
+
+<listitem><para>Added monthly calendar HTML report.</para></listitem>
+
+<listitem><para>Added <computeroutput>period</computeroutput> property
+as a shortcut for the combined use of
+<computeroutput>start</computeroutput> and
+<computeroutput>end</computeroutput>.</para></listitem>
+
+<listitem><para>Added more details to the pop-up info for tasks and
+resources in the UI.</para></listitem>
+
+<listitem><para>Added support for warnings and turned some
+non-critical errors into warnings.</para></listitem>
+
+<listitem><para>Improved scheduling performance for projects with
+long dependency chains.</para></listitem>
+
+<listitem><para>Added new attribute
+<computeroutput>purge</computeroutput> to clear inherited allocations 
+and flags from a task or resource.</para></listitem>
+
+<listitem><para>Fixed complexity explosion in loop detector and
+critical path analyzer. Larger projects that made heavy use of
+inherited dependencies had an exponentially growing run time of these
+components.</para></listitem>
+
+<listitem><para>The threshold for the critical path detection now
+defaults to 10%. All pathes that have less than 10% slack time will be
+marked as critical.</para></listitem>
+
+<listitem><para>Fixed problem where editor tools were doubled when
+"Open Recent" was used while editor was open. This also triggered a
+crash on program exit.</para></listitem>
+
+<listitem><para>Fixed double headline problem in most HTML
+reports.</para></listitem>
+
+<listitem><para>Fixed a bug in the coloring of tasks in HTML reports
+that had a 'complete' specification.</para></listitem>
+
+<listitem><para>Fixed documenation for usage of sorting modes for
+scenario specific columns in reports and make them work
+properly.</para></listitem>
+
+<listitem><para>Force <computeroutput>now</computeroutput> date to be
+aligned to the timing resolution.</para></listitem>
+
+<listitem><para>Fixed a major bug in the handling of multiple
+scenarios. Values were inherited from peer scenarios instead of their
+parents.</para></listitem>
+
+<listitem><para>More meaningful error messages for some impossible
+combinations of fixed start/end times and
+dependencies.</para></listitem>
+
+<listitem><para>For technical reasons we had to limit the
+timingresolution between 5 minutes and 1 hour. Larger resolutions
+caused too many hazards in corner case situations.</para></listitem>
+
+<listitem><para>Fixed <computeroutput>gaplength</computeroutput> for
+time units other than days.</para></listitem>
+
+<listitem><para>Really hide all inherited dependency arrows in Gantt
+chart.</para></listitem>
+
+<listitem><para>Fix several crashes when the user is viewing reports
+in the UI after an unsuccessfull scheduling run.</para></listitem>
+
+<listitem><para>Fix sorting of tasks in interactive resource reports
+and sorting of resources in interactive task
+reports.</para></listitem>
+
+<listitem><para>The resource reporting in htmlweeklycalendar reports
+has been fixed. The report can now be used in task or resource
+reporting mode. The default is the task reporting mode which is
+closest to the previous behaviour.</para></listitem>
+
+<listitem><para>Fixed values of the revenue and profit column in
+resource reports. Resources can never generate a revenue so the value
+must always be 0.</para></listitem>
+
+<listitem><para>Fixed crash when printing resource reports from the UI
+that had a <computeroutput>hierarchyindex</computeroutput>
+column.</para></listitem>
+
+<listitem><para>The completion degree of container tasks that have sub
+tasks with and without resource allocations was reported as 0. This
+has been replaced with "in progress" as the completion degree cannot be
+calculated.</para></listitem>
+
+</itemizedlist></para>
+
+</sect2>
+<sect2 id="Changelog_2_4_0"><title>Version 2.4.0 (2007-07-03)</title>
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>For consistency and readability the notation of
+intervals without a dash between start and end date is slowly being
+deprecated. It was silently accepted in the project header and booking
+statements. This is not flagged with a warning. The project will still
+schedule fine.</para></listitem>
+
+<listitem><para>The critical path detector has been rewritten to
+reduce the complexity explosion that is triggered by lots of inherited
+dependencies in combination with long dependency chains. The number of
+searched paths is now limited to 10 million to avoid very long
+scheduling runs by default. This limit can be changed with the
+<computeroutput>maxpaths</computeroutput> attribute. A value of 0
+means no limit.</para></listitem>
+
+<listitem><para>The default minimum slack rate has been changed to
+5%.</para></listitem>
+
+<listitem><para>Added support for C++ style single line comments.
+Comment lines can now start with // or #.</para></listitem>
+
+<listitem><para>Added a warning when the working hours do not align
+with the timing resolution.</para></listitem>
+
+<listitem><para>The booking statements in export reports now include a
+<computeroutput>overtime 2</computeroutput> attribute. This avoids the
+error messages when the scheduling was based on overtime bookings and
+the export file is read-in again.</para></listitem>
+
+<listitem><para>Added a <computeroutput>Generate all
+Reports</computeroutput> option to the menu of the
+GUI.</para></listitem>
+
+<listitem><para>The sloppiness 3 for booking statements is no longer
+supported. The booking statements are processed in no particular
+order, so it's undefined which booking will actually get the resource
+in a conflict.</para></listitem>
+
+<listitem><para>Removed support for KoTrus database.</para></listitem>
+
+<listitem><para>Fix HTML generation for HTMLWeeklyCalendar when cells
+are empty.</para></listitem>
+
+<listitem><para>Properly report durations in printed
+reports.</para></listitem>
+
+<listitem><para>Many editorial fixes were applied to the
+manual.</para></listitem>
+
+<listitem><para>Properly handle Pacific/Auckland
+DST.</para></listitem>
+
+<listitem><para>Fixed a number of memory leaks.</para></listitem>
+
+<listitem><para>Removed namespace collision for resource and account
+custom attributes and added support for user defined account
+attributes in the code.</para></listitem>
+
+<listitem><para>Make sure that files that have been modified on disk
+while edited by the TaskJugglerUI are detected properly. Probably with
+KDE 3.5.4 the behavior of the Kate library changed so that the test no
+longer worked properly and modified files were not
+detected.</para></listitem>
+
+<listitem><para>Fixed crash when non existant file was
+included.</para></listitem>
+
+<listitem><para>Detect usage of undefined macros again. Undefined
+macros were silently ignored. This should only happen when the macro
+name is prefixed with a questionmark in the macro call.</para></listitem>
+
+<listitem><para>Properly report effort and load of group resources
+that have children with an efficiency different than
+0.</para></listitem>
+
+<listitem><para>Fixed a crash when an illegal date was specified in a
+project file.</para></listitem>
+
+<listitem><para>The XML reports now also include the
+accounts.</para></listitem>
+
+<listitem><para>Fixed a rounding error that caused dependency gaps to
+be one time slot short.</para></listitem>
+
+<listitem><para>The commandline version now properly returns a
+non-zero value if the report generation caused an
+error.</para></listitem>
+
+<listitem><para>Fixed the reversed sorting order for resource specific
+sorting criteria.</para></listitem>
+
+<listitem><para>Add workaround for new bahviour of tzset function in
+glibc 2.5.</para></listitem>
+
+<listitem><para>Fixed off-by-one-slot bug for limits on allocations
+with multiple resources.</para></listitem>
+
+</itemizedlist></para>
+
+</sect2>
+<sect2 id="Changelog_2_4_1"><title>Version 2.4.1 (2008-05-06)</title>
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>Fixed a serious bug in the optimizer part of the
+scheduling algorithm. When many tasks had the same priority, the path
+criticalness was not always respected resulting in longer running
+projects than necessary. The effect mostly showed under heavy resource
+pressure.</para></listitem>
+
+<listitem><para>Add <computeroutput>taskroot</computeroutput> support
+for XML reports.</para></listitem>
+
+<listitem><para>The task outlines in the UI resource reports have been
+replaced with relative load bars. One can now see what load is
+assigned to what resource at which point of time.</para></listitem>
+
+<listitem><para>Fixed calculation of effort based values in group task
+line items of resource reports.</para></listitem>
+
+<listitem><para>The isChildOf() function no longer returns true for
+self.</para></listitem>
+
+<listitem><para>Use alternating background pattern for Gantt chart to
+enhance readability.</para></listitem>
+
+<listitem><para>Make tasks and resources in Gantt charts selectable
+and enable RMB menu to edit and view them quickly.</para></listitem>
+
+<listitem><para>Added filter for GUI report list
+items.</para></listitem>
+
+<listitem><para>The report interval of interactive reports can now be
+changed from the GUI temporarily.</para></listitem>
+
+<listitem><para>Fixed the coloring of completed part of a container
+task in HTML task reports.</para></listitem>
+
+<listitem><para>Added new column
+<computeroutput>scheduling</computeroutput>,
+<computeroutput>completedeffort</computeroutput> and
+<computeroutput>remainingeffort</computeroutput> to reports. The first shows the
+scheduling direction of tasks and can be used to find potential
+sources for priority inversions. The other two show the task effort
+that has been completed already and the remaining effort.</para></listitem>
+
+<listitem><para>iCalendar files are now properly encoded when Unicode
+characters are used.</para></listitem>
+
+<listitem><para>The <computeroutput>hasAssignment()</computeroutput>
+		function for logical expressions now properly accepts
+		3 parameters as documented.</para></listitem>
+
+<listitem><para>Enable <computeroutput>taskroot</computeroutput>
+		support for csvtaskreports as well.</para></listitem>
+
+<listitem><para>Fixed a serious bug in the floating point formatter.
+		Zeros right after the decimal separator were
+		lost.</para></listitem>
+
+<listitem><para>Fixed display of progress bar in GUI Gantt chart. It
+		sometimes extended the task bar in higher zooms.
+</para></listitem>
+
+<listitem><para>Changed the how-to-contribute section of the manual to
+		use git instead of subversion. We no longer accept
+		non-git patches now.</para></listitem>
+
+<listitem><para>Added 'criticalpath' attribute to task scenario
+		section of XML reports.</para></listitem>
+
+<listitem><para>Fixed handling of multiple allocation with same
+		mandatory resource set.</para></listitem>
+
+<listitem><para>Added new Pertt chart generator from Gregoire Barbier
+		to the contrib directory.</para></listitem>
+
+<listitem><para>Improved the scheduling heuristic to generate projects
+		with overall smaller project
+		durations.</para></listitem>
+
+<listitem><para>New report column
+		<computeroutput>hierarchlevel</computeroutput> was
+		included.</para></listitem>
+
+<listitem><para>Hotkey for date/time picker in the GUI editor has
+		been remapped to CTRL-SHIFT-T to avoid a conflict with
+		built-in CTRL-D.</para></listitem>
+
+<listitem><para>Fixed sorting of resources in GUI resource
+		reports.</para></listitem>
+
+<listitem><para>Unicode characters in macros no longer get
+		corrupted.</para></listitem>
+
+</itemizedlist></para>
+
+</sect2>
+<sect2 id="Changelog_2_4_2"><title>Version 2.4.2 (2009-07-11)</title>
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>Fixed crash when existing template dialog with
+		unchanged selection. This only happened on systems
+		with older Qt versions.</para></listitem>
+
+<listitem><para>Properly report summary columns in CSV account reports
+		and use separators between all
+		columns.</para></listitem>
+
+<listitem><para>Fixed missing start time for certain tasks in ICal reports.</para></listitem>
+
+<listitem><para>Fixed wrong total values in CSV account reports when tree mode (default) was used.</para></listitem>
+
+<listitem><para>Fixed crash when pressing F9 at a high rate in the GUI.</para></listitem>
+
+<listitem><para>Don't overwrite table boundaries with alternating background in printed reports.</para></listitem>
+
+<listitem><para>Fixed crash when the UI was started with a project without reports.</para></listitem>
+
+<listitem><para>Corrected a bug that caused tasks with no end date
+		when the specified bookings matched exactly the
+		specified effort but the daily working hours were not
+		in sync with the declaration.</para></listitem>
+
+<listitem><para>Fixed the completion reporting for container tasks
+		which subtasks had allocated resources but got no
+		slots allocated.</para></listitem>
+
+<listitem><para>Fixed a crash on vacation dates that were outside of
+		the project time interval.</para></listitem>
+
+<listitem><para>The end date of duration tasks with bookings was not
+		properly calculated. Fixed.</para></listitem>
+
+<listitem><para>Added support for timezones where the difference to
+		UTC is not a multiple of 60 minutes.</para></listitem>
+
+<listitem><para>Added 'accounts' column to reports.</para></listitem>
+
+<listitem><para>Added 'isDependencyOf()' function for logical
+		expressions.</para></listitem>
+
+<listitem><para>Added double and middle click facility in interactive 
+		report.</para></listitem>
+
+<listitem><para>Added taskbarprefix and taskbarpostfix properties in taskreport.</para></listitem>
+
+<listitem><para>Export reports now contain vacation dates.</para></listitem>
+
+</itemizedlist></para>
+
+</sect2>
+<sect2 id="Changelog_2_4_3"><title>Version 2.4.3 (2009-07-15)</title>
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>iCal support can now be disabled by configuring with
+		--with-ical-support=no for distros that no longer ship
+		with KDEPIM3 packages.</para></listitem>
+
+</itemizedlist></para>
+</sect2>
+</sect1>

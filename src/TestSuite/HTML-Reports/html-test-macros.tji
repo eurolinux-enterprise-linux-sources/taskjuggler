@@ -1,0 +1,11 @@
+macro AllColumns [	
+	columns completed, completedeffort, cost, depends, duration,
+  effort, criticalness,
+	pathcriticalness, efficiency, end, endbuffer,
+	endbufferstart, flags, follows, freeload, id, index, maxeffort,
+	maxend, maxstart, mineffort, minend, minstart, name, no, note,
+	priority, profit, projectid, rate, reference, remainingeffort, resources,
+	responsibilities, responsible, revenue, scenario, scheduling, seqno, start,
+	startbuffer, startbufferend, status, utilization, daily, weekly, monthly
+]
+

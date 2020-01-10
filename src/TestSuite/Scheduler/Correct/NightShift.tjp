@@ -1,0 +1,146 @@
+project test "Test" "$Id" 2002-01-01-0:00-CET - 2002-11-31-0:00-CET {
+	timezone "Europe/Berlin"
+  workinghours mon - fri 8:00 - 12:00, 13:00-17:00
+  workinghours sat - sun off
+}
+
+shift s1 "Shift1" {
+  workinghours mon - sun 6:00-14:00
+}
+
+shift s2 "Shift2" {
+  workinghours mon - sun 14:00 - 22:00
+}
+
+shift s3 "Shift3" {
+	workinghours mon - sun 0:00 - 6:00, 22:00 - 24:00
+}
+
+maxeffort 1.0
+
+resource r1 "Resource1" {
+	shift s1 2002-01-01-22:00 - 2002-01-08-22:00
+	vacation 2002-01-08-22:00 - 2002-01-10-22:00
+	shift s2 2002-01-10-22:00 - 2002-01-17-22:00
+	vacation 2002-01-17-22:00 - 2002-01-19-22:00
+	shift s3 2002-01-19-22:00 - 2002-01-26-22:00
+
+  shift s1 2002-03-09-22:00 - 2002-03-16-22:00
+	vacation 2002-03-16-22:00 - 2002-03-18-22:00
+	shift s2 2002-03-18-22:00 - 2002-03-25-22:00
+	vacation 2002-03-25-22:00 - 2002-03-27-22:00
+	shift s3 2002-03-27-22:00 - 2002-04-02-22:00
+
+  shift s1 2002-10-24-22:00 - 2002-10-30-22:00
+	vacation 2002-10-30-22:00 - 2002-11-01-22:00
+	shift s2 2002-11-01-22:00 - 2002-11-08-22:00
+	vacation 2002-11-08-22:00 - 2002-11-10-22:00
+	shift s3 2002-11-10-22:00 - 2002-11-17-22:00
+}
+
+resource r2 "Resource2" {
+	shift s2 2002-01-01-22:00 - 2002-01-08-22:00
+	vacation 2002-01-08-22:00 - 2002-01-10-22:00
+	shift s3 2002-01-10-22:00 - 2002-01-17-22:00
+	vacation 2002-01-17-22:00 - 2002-01-19-22:00
+	shift s1 2002-01-19-22:00 - 2002-01-26-22:00
+
+  shift s2 2002-03-09-22:00 - 2002-03-16-22:00
+	vacation 2002-03-16-22:00 - 2002-03-18-22:00
+	shift s3 2002-03-18-22:00 - 2002-03-25-22:00
+	vacation 2002-03-25-22:00 - 2002-03-27-22:00
+	shift s1 2002-03-27-22:00 - 2002-04-02-22:00
+
+  shift s2 2002-10-24-22:00 - 2002-10-30-22:00
+	vacation 2002-10-30-22:00 - 2002-11-01-22:00
+	shift s3 2002-11-01-22:00 - 2002-11-08-22:00
+	vacation 2002-11-08-22:00 - 2002-11-10-22:00
+	shift s1 2002-11-10-22:00 - 2002-11-17-22:00
+}
+
+resource r3 "Resource3" {
+	shift s3 2002-01-01-22:00 - 2002-01-08-22:00
+	vacation 2002-01-08-22:00 - 2002-01-10-22:00
+	shift s1 2002-01-10-22:00 - 2002-01-17-22:00
+	vacation 2002-01-17-22:00 - 2002-01-19-22:00
+	shift s2 2002-01-19-22:00 - 2002-01-26-22:00
+
+  shift s3 2002-03-09-22:00 - 2002-03-16-22:00
+	vacation 2002-03-16-22:00 - 2002-03-18-22:00
+	shift s1 2002-03-18-22:00 - 2002-03-25-22:00
+	vacation 2002-03-25-22:00 - 2002-03-27-22:00
+	shift s2 2002-03-27-22:00 - 2002-04-02-22:00
+
+  shift s3 2002-10-24-22:00 - 2002-10-30-22:00
+	vacation 2002-10-30-22:00 - 2002-11-01-22:00
+	shift s1 2002-11-01-22:00 - 2002-11-08-22:00
+	vacation 2002-11-08-22:00 - 2002-11-10-22:00
+	shift s2 2002-11-10-22:00 - 2002-11-17-22:00
+
+	# need extra hour for switch
+	maxeffort 1.2
+}
+
+resource r4 "Resource4" {
+}
+
+task t1 "Task1" {
+  start 2002-01-01-22:00
+  effort 60d
+  allocate r3 { alternative r1, r2 }
+	minend 2002-01-25-22:00:00
+	maxend 2002-01-25-22:00:00
+}
+
+# ST to DST switch
+task t2 "Task2" {
+  start 2002-03-09-22:00
+  effort 60d
+  allocate r3 { alternative r1, r2 }
+	minend 2002-04-03-9:00:00
+	maxend 2002-04-03-9:00:00
+}
+
+# DST to ST switch
+task t3 "task3" {
+	start 2002-10-24-22:00
+	effort 20d
+	# needs extended load for switch day
+	allocate r3 { alternative r1, r2 }
+ 	minend 2002-11-02-13:00:00
+ 	maxend 2002-11-02-13:00:00
+}
+
+taskreport "Tasks" {
+  columns start, end, effort, duration, chart
+  hideresource 0
+  period 2002-10-24 +20d
+}
+
+resourcereport "Resources" {
+  columns name, chart
+  period 2002-03-30 +4d
+  hidetask 0
+}
+
+htmltaskreport "NightShift.html" {
+  columns no, name, start, end, daily
+	loadunit hours
+	hideresource 0
+  notimestamp
+}
+
+htmlweeklycalendar "NightShiftTimes.html" {
+	columns name, schedule
+	hidetask 1
+	hideresource 0
+	notimestamp
+}
+
+export "NightShift-Export.tjp" {
+	hidetask 0
+	hideresource 0
+	taskattributes all
+	notimestamp
+}
+

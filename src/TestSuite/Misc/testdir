@@ -1,0 +1,21 @@
+#! /bin/sh
+
+errors=0
+
+dirs=`find * -maxdepth 0 -type d`
+
+for d in $dirs ; do
+  if [ $d != "CVS" ] ; then
+    cd $d
+    ./runtest
+    res=$?
+    errors=`expr $errors + $res`
+    if [ $res -ne 0 ] ; then
+      echo "Test $d failed"
+    fi
+    cd ..
+  fi
+done
+
+exit $errors
+

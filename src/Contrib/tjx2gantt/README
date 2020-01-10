@@ -1,0 +1,53 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!  This Software is __APLHA__  !!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+tjx2gantt.pl - gantt chart generator for TaskJuggler
+
+
+required
+
+    Perl > 5.6.x
+    XML::Parser
+            http://www.cpan.org/modules/by-module/XML/XML-Parser-2.31.tar.gz
+
+    PostScript::Simple
+            http://www.cpan.org/modules/by-module/PostScript/PostScript-Simple-0.04.tar.gz
+
+    Date::Calc
+            http://www.cpan.org/modules/by-module/Date/Date-Calc-5.0.tar.gz
+
+    Class::MethodMaker
+            http://www.cpan.org/modules/by-module/Class/Class-MethodMaker-1.06.tar.gz
+
+    Data::Dumper (only for debug)
+            http://www.cpan.org/modules/by-module/Data/Data-Dumper-2.101.tar.gz
+
+    Poster (optional for generate poster)
+            http://www.geocities.com/SiliconValley/5682/poster.html
+
+
+usage
+
+    tjx2gantt.pl xml_export_from_taskjuggler.tjx
+
+
+output
+
+    PostScript document text conforming at level 3.0 - type EPS
+
+    <project name>.eps              big gantt on one page
+    <project name>_poster.eps       big gantt on multiple page (a4) poster,
+                                    ready for printing (requires poster utility)
+
+
+
+--
+Copyright (c) 2001, 2002 by Remo Behn <ray@suse.de>
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of version 2 of the GNU General Public License as
+published by the Free Software Foundation.
+
+$Id$
+

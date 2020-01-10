@@ -1,0 +1,334 @@
+<chapter id="reference"><title>Language Reference</title>
+<sect1 id="comments"><title>Comments</title>
+
+<para>There are three ways to annotate a project file with comments. All text
+in a line after a hash mark '#' or a pair of slashes '//' will be ignored.
+Comments that span multiple rows must be
+started with '/*' and ended with '*/'.</para>
+
+</sect1>
+<sect1 id="attribute_classes"><title>Attribute Classes</title>
+<sect2 id="TYPE_DATE"><title>DATE</title>
+
+<para>A DATE is an ISO-compliant date in the format
+<computeroutput>YYYY-MM-DD[-hh:mm[:ss]][-TIMEZONE]</computeroutput>.
+Hour, minutes, seconds, and the
+<computeroutput>TIMEZONE</computeroutput> are optional. If not
+specified, the values are set to 0. The local timezone or the default
+<link linkend="PROPERTY_timezone">timezone</link> is used if no other
+is specified. If the timezone is not known, TaskJuggler will fall back
+to UTC (GMT). The value of TIMEZONE can either be a timezone name or
+&ndash; since this can be ambiguous &ndash; the offset to GMT as
+<computeroutput>+HHMM</computeroutput> or
+<computeroutput>-HHMM</computeroutput>. See the source code
+(<filename>taskjuggler/Utility.cpp</filename>) for details.</para>
+
+</sect2>
+<sect2 id="TYPE_DATEINTERVAL"><title>DATEINTERVAL</title>
+
+<para>There are three ways to specify a date interval. The first is
+the most obvious. A date interval consists of a start and end <link
+linkend="TYPE_DATE">DATE</link>. The start
+and end dates may be separated by a hyphen character. In the second form,
+the end date is omitted. A 24 hour interval is assumed. The third form
+specifies the interval duration. In this form the start date
+is followed by a plus character. The plus character must be separated
+from the start date by a space or newline character. The plus must be
+followed by a number and a <link linkend="TYPE_UNIT">UNIT</link>:
+<screen>2006-02-18 - 2006-02-19
+2006-02-18
+2006-02-18 +1d</screen></para>
+
+</sect2>
+<sect2 id="TYPE_GLOBAL_ID"><title>GLOBAL_ID</title>
+
+<para>A GLOBAL_ID may have the same characters as ID, but additionally may
+contain dots '.' and exclamation marks'!'. An exclamation mark '!' may only be used
+at the beginning and is used in relative IDs; each '!' means one level up.</para>
+
+</sect2>
+<sect2 id="TYPE_ID"><title>ID</title>
+
+<para>A string that may consist of the characters
+A&ndash;Z, a&ndash;z, 0&ndash;9, and _.  It may not start with a number.</para>
+
+</sect2>
+<sect2 id="TYPE_INTEGER"><title>INTEGER</title>
+
+<para>A number that is an integer.</para>
+
+</sect2>
+<sect2 id="TYPE_LOGICALEXPRESSION"><title>LOGICALEXPRESSION</title>
+
+<para>A logical expression consists of logical operations,
+	such as '&amp;' for and, '|' for or, '&tilde;' for not, '&gt;' for
+	greater than, '&lt;' for less than, '=' for equal, '&gt;=' for
+	greater than or equal and '&lt;=' for less than or equal to operate
+	on INTEGER values or symbols. Flag names and certain functions are
+	supported as symbols as well.  The expression is evaluated from left to
+	right. '&tilde;' has a higher precedence than other operators. Use
+	parentheses to avoid ambiguous operations. If flagFoo, flagFooBar, and
+	flagBar are declared flags, the following example is a correct 	expression:
+	<screen>(flagFoo | flagFooBar) &amp; &tilde;flagBar</screen></para>
+
+<para>The following functions can be used in logical expressions:
+
+<variablelist>
+
+<varlistentry><term>hasAssignment(<link linkend="TYPE_ID">ID</link>,
+<link linkend="TYPE_DATE">DATE</link>,
+<link linkend="TYPE_DATE">DATE</link>)</term>
+
+<listitem><para>true if the task or resource currently has allocations
+in the specified time interval in the scenario with the specified ID.
+</para></listitem>
+
+</varlistentry>
+<varlistentry><term>isChildOf(<link linkend="TYPE_ID">ID</link>)</term>
+<listitem><para>true if the property has ID as sub.</para></listitem></varlistentry>
+
+<varlistentry><term>isParentOf(<link linkend="TYPE_ID">ID</link>)</term>
+<listitem><para>true if the property has ID as enclosing property.
+</para></listitem></varlistentry>
+
+<varlistentry><term>isLeaf(<link linkend="TYPE_ID">ID</link>)</term>
+<listitem><para>true if the property has no sub properties.</para></listitem>
+
+</varlistentry>
+<varlistentry><term>endsAfter(<link linkend="TYPE_ID">ID</link>,
+	<link linkend="TYPE_DATE">DATE</link>)</term>
+
+<listitem><para>true if the task ends in scenario ID after the
+specified date</para></listitem>
+
+</varlistentry>
+<varlistentry><term>endsBefore(<link linkend="TYPE_ID">ID</link>, <link
+linkend="TYPE_DATE">DATE</link>)</term>
+
+<listitem><para>true if the task ends in scenario ID before the
+specified date</para></listitem>
+
+</varlistentry>
+<varlistentry><term>isAnAccount()</term>
+
+<listitem><para>true if the property is an account</para></listitem>
+
+</varlistentry>
+<varlistentry><term>isAccount(<link linkend="TYPE_ID">ID</link>)</term>
+
+<listitem><para>true if the account has the listed
+ID</para></listitem>
+
+</varlistentry>
+<varlistentry><term>isAllocated(<link linkend="TYPE_ID">ID</link>,
+<link linkend="TYPE_DATE">DATE</link>,
+<link linkend="TYPE_DATE">DATE</link>)</term>
+
+<listitem><para>true if the resource has been
+allocated in the specified time interval in the scenario with the
+specified ID.
+</para></listitem>
+
+</varlistentry>
+<varlistentry><term>isAllocatedToProject(<link linkend="TYPE_ID">PRJID</link>
+<link linkend="TYPE_ID">SCENARIOID</link>,
+<link linkend="TYPE_DATE">DATE</link>,
+<link linkend="TYPE_DATE">DATE</link>)</term>
+
+<listitem><para>true if the resource has been
+allocated to the specified project in the specified time interval in
+the scenario with the specified ID.
+</para></listitem>
+
+</varlistentry>
+<varlistentry><term>isDependencyOf(<link linkend="TYPE_ID">TASK</link>,
+		<link linkend="TYPE_INTEGER">HOPS</link>)</term>
+
+<listitem><para>true if a task is a dependency of the specified task and no more than the specified number of hops away.</para></listitem>
+
+</varlistentry>
+<varlistentry><term>isMilestone()</term>
+
+<listitem><para>true if the task is a milestone.</para></listitem>
+
+</varlistentry>
+<varlistentry><term>isAResource()</term>
+
+<listitem><para>true if the property is a resource
+ID.</para></listitem>
+
+</varlistentry>
+<varlistentry><term>isResource(<link linkend="TYPE_ID">ID</link>)</term>
+
+<listitem><para>true if the resource has the listed
+ID.</para></listitem>
+
+</varlistentry>
+<varlistentry><term>isATask()</term>
+
+<listitem><para>true if the property is a task.</para></listitem>
+
+</varlistentry>
+<varlistentry><term>isTask(<link linkend="TYPE_ID">ID</link>)</term>
+
+<listitem><para>true if the task has the listed ID.</para></listitem>
+
+</varlistentry>
+<varlistentry><term>isOnCriticalPath(<link linkend="TYPE_ID">ID</link>)</term>
+
+<listitem><para>true if the task is on a critical path in scenario
+ID.</para></listitem>
+
+</varlistentry>
+<varlistentry><term>isTaskStatus(<link linkend="TYPE_ID">ID</link>,
+STATUS)</term>
+<listitem><para>true if the task has in scenario ID the specified
+status. STATUS can be any of
+<computeroutput>notstarted</computeroutput>,
+	<computeroutput>inprogresslate</computeroutput>,
+	<computeroutput>inprogress</computeroutput>,
+	<computeroutput>ontime</computeroutput>,
+	<computeroutput>inprogressearly</computeroutput>,
+	<computeroutput>late</computeroutput>,
+	<computeroutput>finished</computeroutput>.</para></listitem>
+
+</varlistentry>
+<varlistentry><term>startsAfter(<link linkend="TYPE_ID">ID</link>, <link
+linkend="TYPE_DATE">DATE</link>)</term>
+
+<listitem><para>true if the task starts in scenario ID after the
+specified date</para></listitem>
+
+</varlistentry>
+<varlistentry><term>startsBefore(<link linkend="TYPE_ID">ID</link>, <link
+linkend="TYPE_DATE">DATE</link>)</term>
+
+<listitem><para>true if the task starts in scenario ID before the
+specified date</para></listitem>
+
+</varlistentry>
+<varlistentry><term>isTaskOfProject(<link linkend="TYPE_ID">ID</link>)</term>
+
+<listitem><para>true if the task is part of the project with the
+specified ID.</para></listitem>
+
+</varlistentry>
+<varlistentry><term>isDutyOf(<link linkend="TYPE_ID">RESOURCE_ID</link>,
+<link linkend="TYPE_ID">SCENARIO_ID</link>)</term>
+
+<listitem><para>true if the resource with the specified ID is assigned
+to the task in the specified scenario.</para></listitem>
+
+</varlistentry>
+<varlistentry><term>treeLevel()</term>
+
+<listitem><para>Nesting level of the property.</para></listitem>
+
+</varlistentry>
+</variablelist>
+</para>
+</sect2>
+<sect2 id="TYPE_REAL"><title>REAL</title>
+
+<para>A real number (e.g., 3.14).</para>
+
+</sect2>
+<sect2 id="TYPE_SORTINGCRITERIA"><title>SORTINGCRITERIA</title>
+
+<para>See attribute description for allowed values.</para>
+
+</sect2>
+<sect2 id="TYPE_STRING"><title>STRING</title>
+
+<para>A string may contain any characters and is enclosed in single
+quotes or double quotes. A single quoted string may contain double
+quote characters and vice versa. A string may include line
+breaks. To include single quotes in a single quoted string the single
+quotes have to be preceded by a backslash character to escape them.
+This works for double quoted strings as well.</para>
+
+</sect2>
+<sect2 id="TYPE_TIME"><title>TIME</title>
+
+<para>A time in the format HH:MM.</para>
+
+</sect2>
+<sect2 id="TYPE_TIMEINTERVAL"><title>TIME</title>
+
+<para>A time interval consists of a start and end TIME. The start and
+end times must be separated by a hyphen character.</para>
+
+</sect2>
+<sect2 id="TYPE_UNIT"><title>UNIT</title>
+
+<para>May be <computeroutput>min</computeroutput> for minutes,
+	<computeroutput>h</computeroutput> for hours,
+	<computeroutput>d</computeroutput> for days,
+	<computeroutput>w</computeroutput> for weeks,
+	<computeroutput>m</computeroutput> for months,
+	<computeroutput>y</computeroutput> for years. Week, month, and year
+	specifications are only approximated values and are handled slightly
+	differently for length, effort, and duration intervals. For length and
+	effort only working days are counted. The number or working days per
+	week, month or year is determined by the setting of <link
+	linkend="PROPERTY_yearlyworkingdays">yearlyworkingdays</link>. The
+	number of working hours or minutes per working day is determined by
+	the setting of <link
+	linkend="PROPERTY_dailyworkinghours">dailyworkinghours</link>.</para>
+
+</sect2>
+<sect2 id="TYPE_WEEKDAY"><title>WEEKDAY</title>
+<para>May be one of
+<simplelist type="horiz" columns="4">
+<member><computeroutput>mon</computeroutput> for Monday</member>
+<member><computeroutput>tue</computeroutput> for Tuesday</member>
+<member><computeroutput>wed</computeroutput> for Wednesday</member>
+<member><computeroutput>thu</computeroutput> for Thursday</member>
+<member><computeroutput>fri</computeroutput> for Friday</member>
+<member><computeroutput>sat</computeroutput> for Saturday</member>
+<member><computeroutput>sun</computeroutput> for Sunday</member>
+</simplelist></para>
+
+<para>Optional attributes of a property must be enclosed by
+curly braces {}.</para>
+
+</sect2>
+</sect1>
+<sect1 id="macros"><title>Macros</title>
+<sect2 id="automacros"><title>Automatic macros</title>
+
+<para>Automatic macros are implicitly defined and updated in
+conjuction with the setting of the corresponding project property.
+Automatic macros always have all-lowercase names.</para>
+
+<para>TaskJuggler supports the following automatic macros, which all default
+to the moment when TaskJuggler was invoked:
+
+<simplelist type="horiz" columns="2">
+
+<member><computeroutput>now</computeroutput></member>
+<member>The current date and time as defined in the project
+header.</member>
+
+<member><computeroutput>projectend</computeroutput></member>
+<member>The project end date and time as defined in the project
+header.</member>
+
+<member><computeroutput>projectstart</computeroutput></member>
+<member>The project start date and time as defined in the project
+header.</member>
+
+</simplelist></para>
+
+</sect2>
+<sect2 id="usermacros"><title>User defined macros</title>
+
+<para>User defined macros are defined in the project file by using the
+<link linkend="PROPERTY_macro">macro</link> property. The name of a
+user defined macro must have at least one uppercase character in order
+not to conflict with automatic macros that might be added with later
+versions of TaskJuggler.</para>
+
+</sect2>
+</sect1>
+</chapter>

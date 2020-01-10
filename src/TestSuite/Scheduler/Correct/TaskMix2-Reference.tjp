@@ -1,0 +1,572 @@
+/*
+ * For details about TaskJuggler see http://www.taskjuggler.org
+ */
+project prj "TaskMix2 Project" "$Id" 2003-01-01-00:00:00-+0000 - 2003-01-31-00:00:00-+0000 {
+  timezone "GMT"
+  dailyworkinghours 8
+  yearlyworkingdays 260.714
+  timingresolution 60min
+  timeformat "%Y-%m-%d %H:%M"
+  shorttimeformat "%H:%M"
+  currencyformat "(" ")" "," "." 0
+  weekstartsmonday
+  workinghours sun off
+  workinghours mon 9:00 - 12:00, 13:00 - 18:00
+  workinghours tue 9:00 - 12:00, 13:00 - 18:00
+  workinghours wed 9:00 - 12:00, 13:00 - 18:00
+  workinghours thu 9:00 - 12:00, 13:00 - 18:00
+  workinghours fri 9:00 - 12:00, 13:00 - 18:00
+  workinghours sat off
+  scenario plan "Plan" {
+    enabled
+  }
+}
+resource tux1 "Tux1" {
+}
+resource tux10 "Tux10" {
+}
+resource tux11 "Tux11" {
+}
+resource tux12 "Tux12" {
+}
+resource tux2 "Tux2" {
+}
+resource tux3 "Tux3" {
+}
+resource tux4 "Tux4" {
+}
+resource tux5 "Tux5" {
+}
+resource tux6 "Tux6" {
+}
+resource tux7 "Tux7" {
+}
+resource tux8 "Tux8" {
+}
+resource tux9 "Tux9" {
+}
+projectids prj
+task t1 "|->" {
+  projectid prj
+  plan:start 2003-01-06-00:00:00-+0000
+  plan:end 2003-01-10-18:00:00-+0000
+  plan:scheduled
+  scheduling asap
+}
+task m1 "Milestone1" {
+  projectid prj
+  depends t1
+  plan:start 2003-01-10-18:00:00-+0000
+  plan:scheduled
+  milestone 
+  scheduling asap
+}
+task c21 "-D --> |" {
+  projectid prj
+  depends m1
+  plan:start 2003-01-10-18:00:00-+0000
+  plan:end 2003-01-18-00:00:00-+0000
+  plan:scheduled
+  scheduling alap
+}
+task c23 "-D --> |D" {
+  projectid prj
+  depends m1
+  precedes m2
+  plan:start 2003-01-10-18:00:00-+0000
+  plan:end 2003-01-18-00:00:00-+0000
+  plan:scheduled
+  scheduling asap
+}
+task c28 "-D <-- |" {
+  projectid prj
+  depends m1
+  plan:start 2003-01-10-18:00:00-+0000
+  plan:end 2003-01-18-00:00:00-+0000
+  plan:scheduled
+  scheduling alap
+}
+task c30 "-D <-- |D" {
+  projectid prj
+  depends m1
+  precedes m2
+  plan:start 2003-01-10-18:00:00-+0000
+  plan:end 2003-01-18-00:00:00-+0000
+  plan:scheduled
+  scheduling alap
+}
+task c22 "-D --> -D" {
+  projectid prj
+  depends m1
+  precedes m2
+  plan:start 2003-01-10-18:00:00-+0000
+  plan:end 2003-01-20-09:00:00-+0000
+  plan:scheduled
+  scheduling asap
+}
+task c29 "-D <-- -D" {
+  projectid prj
+  depends m1
+  precedes m2
+  plan:start 2003-01-10-18:00:00-+0000
+  plan:end 2003-01-20-09:00:00-+0000
+  plan:scheduled
+  scheduling alap
+}
+task c3 "| --> |" {
+  projectid prj
+  plan:start 2003-01-13-00:00:00-+0000
+  plan:end 2003-01-18-00:00:00-+0000
+  plan:scheduled
+  scheduling alap
+}
+task c5 "| --> |D" {
+  projectid prj
+  precedes m2
+  plan:start 2003-01-13-00:00:00-+0000
+  plan:end 2003-01-18-00:00:00-+0000
+  plan:scheduled
+  scheduling asap
+}
+task c6 "| <-- |" {
+  projectid prj
+  plan:start 2003-01-13-00:00:00-+0000
+  plan:end 2003-01-18-00:00:00-+0000
+  plan:scheduled
+  scheduling alap
+}
+task c8 "| <-- |D" {
+  projectid prj
+  precedes m2
+  plan:start 2003-01-13-00:00:00-+0000
+  plan:end 2003-01-18-00:00:00-+0000
+  plan:scheduled
+  scheduling alap
+}
+task c11 "|D --> |" {
+  projectid prj
+  depends m1
+  plan:start 2003-01-13-00:00:00-+0000
+  plan:end 2003-01-18-00:00:00-+0000
+  plan:scheduled
+  scheduling asap
+}
+task c13 "|D --> |D" {
+  projectid prj
+  depends m1
+  precedes m2
+  plan:start 2003-01-13-00:00:00-+0000
+  plan:end 2003-01-18-00:00:00-+0000
+  plan:scheduled
+  scheduling asap
+}
+task c14 "|D <-- |" {
+  projectid prj
+  depends m1
+  plan:start 2003-01-13-00:00:00-+0000
+  plan:end 2003-01-18-00:00:00-+0000
+  plan:scheduled
+  scheduling alap
+}
+task c15 "|D <-- -D" {
+  projectid prj
+  depends m1
+  precedes m2
+  plan:start 2003-01-13-00:00:00-+0000
+  plan:end 2003-01-18-00:00:00-+0000
+  plan:scheduled
+  scheduling alap
+}
+task c4 "| --> -D" {
+  projectid prj
+  precedes m2
+  plan:start 2003-01-13-00:00:00-+0000
+  plan:end 2003-01-20-09:00:00-+0000
+  plan:scheduled
+  scheduling asap
+}
+task c7 "| <-- -D" {
+  projectid prj
+  precedes m2
+  plan:start 2003-01-13-00:00:00-+0000
+  plan:end 2003-01-20-09:00:00-+0000
+  plan:scheduled
+  scheduling alap
+}
+task c12 "|D --> -D" {
+  projectid prj
+  depends m1
+  precedes m2
+  plan:start 2003-01-13-00:00:00-+0000
+  plan:end 2003-01-20-09:00:00-+0000
+  plan:scheduled
+  scheduling asap
+}
+task c1 "| x-> -" {
+  projectid prj
+  plan:start 2003-01-13-09:00:00-+0000
+  plan:end 2003-01-17-18:00:00-+0000
+  plan:scheduled
+  scheduling asap
+}
+task c2 "| x-> -D" {
+  projectid prj
+  precedes m2
+  plan:start 2003-01-13-09:00:00-+0000
+  plan:end 2003-01-17-18:00:00-+0000
+  plan:scheduled
+  scheduling asap
+}
+task c9 "|D x-> -" {
+  projectid prj
+  depends m1
+  plan:start 2003-01-13-09:00:00-+0000
+  plan:end 2003-01-17-18:00:00-+0000
+  plan:scheduled
+  scheduling asap
+}
+task c10 "|D x-> -D" {
+  projectid prj
+  depends m1
+  precedes m2
+  plan:start 2003-01-13-09:00:00-+0000
+  plan:end 2003-01-17-18:00:00-+0000
+  plan:scheduled
+  scheduling asap
+}
+task c16 "- <-x |" {
+  projectid prj
+  plan:start 2003-01-13-09:00:00-+0000
+  plan:end 2003-01-17-18:00:00-+0000
+  plan:scheduled
+  scheduling alap
+}
+task c17 "- <-x -D" {
+  projectid prj
+  precedes m2
+  plan:start 2003-01-13-09:00:00-+0000
+  plan:end 2003-01-17-18:00:00-+0000
+  plan:scheduled
+  scheduling alap
+}
+task c18 "- <-x |D" {
+  projectid prj
+  precedes m2
+  plan:start 2003-01-13-09:00:00-+0000
+  plan:end 2003-01-17-18:00:00-+0000
+  plan:scheduled
+  scheduling alap
+}
+task c19 "-D x-> -" {
+  projectid prj
+  depends m1
+  plan:start 2003-01-13-09:00:00-+0000
+  plan:end 2003-01-17-18:00:00-+0000
+  plan:scheduled
+  scheduling asap
+}
+task c20 "-D x-> -D" {
+  projectid prj
+  depends m1
+  precedes m2
+  plan:start 2003-01-13-09:00:00-+0000
+  plan:end 2003-01-17-18:00:00-+0000
+  plan:scheduled
+  scheduling asap
+}
+task c24 "-D <-x |" {
+  projectid prj
+  depends m1
+  plan:start 2003-01-13-09:00:00-+0000
+  plan:end 2003-01-17-18:00:00-+0000
+  plan:scheduled
+  scheduling alap
+}
+task c25 "-D <-x -D" {
+  projectid prj
+  depends m1
+  precedes m2
+  plan:start 2003-01-13-09:00:00-+0000
+  plan:end 2003-01-17-18:00:00-+0000
+  plan:scheduled
+  scheduling alap
+}
+task c26 "-D <-x |D" {
+  projectid prj
+  depends m1
+  precedes m2
+  plan:start 2003-01-13-09:00:00-+0000
+  plan:end 2003-01-17-18:00:00-+0000
+  plan:scheduled
+  scheduling alap
+}
+task m2 "Milestone2" {
+  projectid prj
+  precedes t2
+  plan:start 2003-01-20-09:00:00-+0000
+  plan:scheduled
+  milestone 
+  scheduling alap
+}
+task t2 "<-|" {
+  projectid prj
+  plan:start 2003-01-20-09:00:00-+0000
+  plan:end 2003-01-27-00:00:00-+0000
+  plan:scheduled
+  scheduling alap
+}
+supplement task t1 {
+  priority 500
+}
+supplement task m1 {
+  priority 500
+}
+supplement task c21 {
+  priority 500
+}
+supplement task c23 {
+  priority 500
+}
+supplement task c28 {
+  priority 500
+}
+supplement task c30 {
+  priority 500
+}
+supplement task c22 {
+  priority 500
+}
+supplement task c29 {
+  priority 500
+}
+supplement task c3 {
+  priority 500
+}
+supplement task c5 {
+  priority 500
+}
+supplement task c6 {
+  priority 500
+}
+supplement task c8 {
+  priority 500
+}
+supplement task c11 {
+  priority 500
+}
+supplement task c13 {
+  priority 500
+}
+supplement task c14 {
+  priority 500
+}
+supplement task c15 {
+  priority 500
+}
+supplement task c4 {
+  priority 500
+}
+supplement task c7 {
+  priority 500
+}
+supplement task c12 {
+  priority 500
+}
+supplement task c1 {
+  priority 500
+}
+supplement task c2 {
+  priority 500
+}
+supplement task c9 {
+  priority 500
+}
+supplement task c10 {
+  priority 500
+}
+supplement task c16 {
+  priority 500
+}
+supplement task c17 {
+  priority 500
+}
+supplement task c18 {
+  priority 500
+}
+supplement task c19 {
+  priority 500
+}
+supplement task c20 {
+  priority 500
+}
+supplement task c24 {
+  priority 500
+}
+supplement task c25 {
+  priority 500
+}
+supplement task c26 {
+  priority 500
+}
+supplement task m2 {
+  priority 500
+}
+supplement task t2 {
+  priority 500
+}
+supplement resource tux1 {
+  plan:booking c1
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux10 {
+  plan:booking c24
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux11 {
+  plan:booking c25
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux12 {
+  plan:booking c26
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux2 {
+  plan:booking c2
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux3 {
+  plan:booking c9
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux4 {
+  plan:booking c10
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux5 {
+  plan:booking c16
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux6 {
+  plan:booking c17
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux7 {
+  plan:booking c18
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux8 {
+  plan:booking c19
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux9 {
+  plan:booking c20
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}

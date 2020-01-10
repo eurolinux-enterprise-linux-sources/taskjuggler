@@ -1,0 +1,1 @@
+SUBDIRS = FirstProject BigProject ShiftSchedule

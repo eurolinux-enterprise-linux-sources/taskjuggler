@@ -1,0 +1,464 @@
+/*
+ * For details about TaskJuggler see http://www.taskjuggler.org
+ */
+project prj "TaskMix2 Project" "$Id" 2003-01-01-00:00:00-+0000 - 2003-01-31-00:00:00-+0000 {
+  timezone "GMT"
+  dailyworkinghours 8
+  yearlyworkingdays 260.714
+  timingresolution 60min
+  timeformat "%Y-%m-%d %H:%M"
+  shorttimeformat "%H:%M"
+  currencyformat "(" ")" "," "." 0
+  weekstartsmonday
+  workinghours sun off
+  workinghours mon 9:00 - 12:00, 13:00 - 18:00
+  workinghours tue 9:00 - 12:00, 13:00 - 18:00
+  workinghours wed 9:00 - 12:00, 13:00 - 18:00
+  workinghours thu 9:00 - 12:00, 13:00 - 18:00
+  workinghours fri 9:00 - 12:00, 13:00 - 18:00
+  workinghours sat off
+  scenario plan "Plan" {
+    enabled
+  }
+}
+resource tux1 "Tux1" {
+}
+resource tux10 "Tux10" {
+}
+resource tux11 "Tux11" {
+}
+resource tux12 "Tux12" {
+}
+resource tux2 "Tux2" {
+}
+resource tux3 "Tux3" {
+}
+resource tux4 "Tux4" {
+}
+resource tux5 "Tux5" {
+}
+resource tux6 "Tux6" {
+}
+resource tux7 "Tux7" {
+}
+resource tux8 "Tux8" {
+}
+resource tux9 "Tux9" {
+}
+projectids prj
+task container3 "Container3" {
+  projectid prj
+  task c9 "|D x-> -" {
+    plan:start 2003-01-13-09:00:00-+0000
+    plan:end 2003-01-17-18:00:00-+0000
+    plan:scheduled
+    scheduling asap
+  }
+  task c11 "|D --> |" {
+    plan:start 2003-01-13-00:00:00-+0000
+    plan:end 2003-01-18-00:00:00-+0000
+    plan:scheduled
+    scheduling asap
+  }
+  task c14 "|D <-- |" {
+    plan:start 2003-01-13-00:00:00-+0000
+    plan:end 2003-01-18-00:00:00-+0000
+    plan:scheduled
+    scheduling alap
+  }
+  task c19 "-D x-> -" {
+    plan:start 2003-01-13-09:00:00-+0000
+    plan:end 2003-01-17-18:00:00-+0000
+    plan:scheduled
+    scheduling asap
+  }
+  task c21 "-D --> |" {
+    plan:start 2003-01-11-00:00:00-+0000
+    plan:end 2003-01-18-00:00:00-+0000
+    plan:scheduled
+    scheduling alap
+  }
+  task c24 "-D <-x |" {
+    plan:start 2003-01-13-09:00:00-+0000
+    plan:end 2003-01-17-18:00:00-+0000
+    plan:scheduled
+    scheduling alap
+  }
+  task c28 "-D <-- |" {
+    plan:start 2003-01-11-00:00:00-+0000
+    plan:end 2003-01-18-00:00:00-+0000
+    plan:scheduled
+    scheduling alap
+  }
+  scheduling asap
+}
+task container4 "Container4" {
+  projectid prj
+  task c10 "|D x-> -D" {
+    plan:start 2003-01-13-09:00:00-+0000
+    plan:end 2003-01-17-18:00:00-+0000
+    plan:scheduled
+    scheduling asap
+  }
+  task c12 "|D --> -D" {
+    plan:start 2003-01-13-00:00:00-+0000
+    plan:end 2003-01-20-00:00:00-+0000
+    plan:scheduled
+    scheduling asap
+  }
+  task c13 "|D --> |D" {
+    plan:start 2003-01-13-00:00:00-+0000
+    plan:end 2003-01-18-00:00:00-+0000
+    plan:scheduled
+    scheduling asap
+  }
+  task c15 "|D <-- -D" {
+    plan:start 2003-01-13-00:00:00-+0000
+    plan:end 2003-01-18-00:00:00-+0000
+    plan:scheduled
+    scheduling alap
+  }
+  task c20 "-D x-> -D" {
+    plan:start 2003-01-13-09:00:00-+0000
+    plan:end 2003-01-17-18:00:00-+0000
+    plan:scheduled
+    scheduling asap
+  }
+  task c22 "-D --> -D" {
+    plan:start 2003-01-11-00:00:00-+0000
+    plan:end 2003-01-20-00:00:00-+0000
+    plan:scheduled
+    scheduling asap
+  }
+  task c23 "-D --> |D" {
+    plan:start 2003-01-11-00:00:00-+0000
+    plan:end 2003-01-18-00:00:00-+0000
+    plan:scheduled
+    scheduling asap
+  }
+  task c25 "-D <-x -D" {
+    plan:start 2003-01-13-09:00:00-+0000
+    plan:end 2003-01-17-18:00:00-+0000
+    plan:scheduled
+    scheduling alap
+  }
+  task c26 "-D <-x |D" {
+    plan:start 2003-01-13-09:00:00-+0000
+    plan:end 2003-01-17-18:00:00-+0000
+    plan:scheduled
+    scheduling alap
+  }
+  task c29 "-D <-- -D" {
+    plan:start 2003-01-11-00:00:00-+0000
+    plan:end 2003-01-20-00:00:00-+0000
+    plan:scheduled
+    scheduling alap
+  }
+  task c30 "-D <-- |D" {
+    plan:start 2003-01-11-00:00:00-+0000
+    plan:end 2003-01-18-00:00:00-+0000
+    plan:scheduled
+    scheduling alap
+  }
+  scheduling alap
+}
+task container1 "Container1" {
+  projectid prj
+  task c1 "| x-> -" {
+    plan:start 2003-01-13-09:00:00-+0000
+    plan:end 2003-01-17-18:00:00-+0000
+    plan:scheduled
+    scheduling asap
+  }
+  task c3 "| --> |" {
+    plan:start 2003-01-13-00:00:00-+0000
+    plan:end 2003-01-18-00:00:00-+0000
+    plan:scheduled
+    scheduling alap
+  }
+  task c6 "| <-- |" {
+    plan:start 2003-01-13-00:00:00-+0000
+    plan:end 2003-01-18-00:00:00-+0000
+    plan:scheduled
+    scheduling alap
+  }
+  task c16 "- <-x |" {
+    plan:start 2003-01-13-09:00:00-+0000
+    plan:end 2003-01-17-18:00:00-+0000
+    plan:scheduled
+    scheduling alap
+  }
+  scheduling asap
+}
+task container2 "Container2" {
+  projectid prj
+  task c2 "| x-> -D" {
+    plan:start 2003-01-13-09:00:00-+0000
+    plan:end 2003-01-17-18:00:00-+0000
+    plan:scheduled
+    scheduling asap
+  }
+  task c4 "| --> -D" {
+    plan:start 2003-01-13-00:00:00-+0000
+    plan:end 2003-01-20-00:00:00-+0000
+    plan:scheduled
+    scheduling asap
+  }
+  task c5 "| --> |D" {
+    plan:start 2003-01-13-00:00:00-+0000
+    plan:end 2003-01-18-00:00:00-+0000
+    plan:scheduled
+    scheduling asap
+  }
+  task c7 "| <-- -D" {
+    plan:start 2003-01-13-00:00:00-+0000
+    plan:end 2003-01-20-00:00:00-+0000
+    plan:scheduled
+    scheduling alap
+  }
+  task c8 "| <-- |D" {
+    plan:start 2003-01-13-00:00:00-+0000
+    plan:end 2003-01-18-00:00:00-+0000
+    plan:scheduled
+    scheduling alap
+  }
+  task c17 "- <-x -D" {
+    plan:start 2003-01-13-09:00:00-+0000
+    plan:end 2003-01-17-18:00:00-+0000
+    plan:scheduled
+    scheduling alap
+  }
+  task c18 "- <-x |D" {
+    plan:start 2003-01-13-09:00:00-+0000
+    plan:end 2003-01-17-18:00:00-+0000
+    plan:scheduled
+    scheduling alap
+  }
+  scheduling alap
+}
+supplement task container3 {
+  supplement task c9 {
+  }
+  supplement task c11 {
+  }
+  supplement task c14 {
+  }
+  supplement task c19 {
+  }
+  supplement task c21 {
+  }
+  supplement task c24 {
+  }
+  supplement task c28 {
+  }
+  priority 500
+}
+supplement task container4 {
+  supplement task c10 {
+  }
+  supplement task c12 {
+  }
+  supplement task c13 {
+  }
+  supplement task c15 {
+  }
+  supplement task c20 {
+  }
+  supplement task c22 {
+  }
+  supplement task c23 {
+  }
+  supplement task c25 {
+  }
+  supplement task c26 {
+  }
+  supplement task c29 {
+  }
+  supplement task c30 {
+  }
+  priority 500
+}
+supplement task container1 {
+  supplement task c1 {
+  }
+  supplement task c3 {
+  }
+  supplement task c6 {
+  }
+  supplement task c16 {
+  }
+  priority 500
+}
+supplement task container2 {
+  supplement task c2 {
+  }
+  supplement task c4 {
+  }
+  supplement task c5 {
+  }
+  supplement task c7 {
+  }
+  supplement task c8 {
+  }
+  supplement task c17 {
+  }
+  supplement task c18 {
+  }
+  priority 500
+}
+supplement resource tux1 {
+  plan:booking container1.c1
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux10 {
+  plan:booking container3.c24
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux11 {
+  plan:booking container4.c25
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux12 {
+  plan:booking container4.c26
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux2 {
+  plan:booking container2.c2
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux3 {
+  plan:booking container3.c9
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux4 {
+  plan:booking container4.c10
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux5 {
+  plan:booking container1.c16
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux6 {
+  plan:booking container2.c17
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux7 {
+  plan:booking container2.c18
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux8 {
+  plan:booking container3.c19
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}
+supplement resource tux9 {
+  plan:booking container4.c20
+    2003-01-13-09:00:00-+0000 +3h,
+    2003-01-13-13:00:00-+0000 +5h,
+    2003-01-14-09:00:00-+0000 +3h,
+    2003-01-14-13:00:00-+0000 +5h,
+    2003-01-15-09:00:00-+0000 +3h,
+    2003-01-15-13:00:00-+0000 +5h,
+    2003-01-16-09:00:00-+0000 +3h,
+    2003-01-16-13:00:00-+0000 +5h,
+    2003-01-17-09:00:00-+0000 +3h,
+    2003-01-17-13:00:00-+0000 +5h
+}

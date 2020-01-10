@@ -1,0 +1,63 @@
+#! /bin/sh
+
+# Use a well defined LOCALE to create the reference files.
+LANG=en_US ; export LANG
+LC_COLLATE=POSIX ; export LC_COLLATE
+
+cd Misc
+dirs=`find . -type d`
+for d in "$dirs" ; do
+  cd $d
+  if test -x createrefs ; then
+    ./createrefs
+  fi
+  cd ..
+done
+
+cd Scheduler/Correct
+/bin/rm -f *-Export.tjp *-Reference.tjp
+for f in *.tjp ; do
+  echo Processing $f...
+  referenceFile=`echo $f | sed s/\\\\\(.*\\\\\).tjp/\\\1-Reference.tjp/g`
+  exportFile=`echo $f | sed s/\\\\\(.*\\\\\).tjp/\\\1-Export.tjp/g`
+  ../../../taskjuggler/taskjuggler $f
+  if [ -f $exportFile ] ; then
+    ../../../taskjuggler/taskjuggler $exportFile
+    if [ $? -ne 0 ] ; then
+      echo "Taskjuggler failed to process export file"
+      exit 1
+    fi
+    mv -f $exportFile $referenceFile
+    echo $referenceFile created
+  fi
+  rm -f *.html
+done
+cd ../..
+
+cd HTML-Reports
+
+for f in *.tjp ; do
+  referenceFile=`echo $f | sed s/\\\\\(.*\\\\\).tjp/\\\1-Reference.html/g`
+  ../../taskjuggler/taskjuggler $f | \
+  fgrep -v TaskJuggler > $referenceFile || exit 1
+
+  if which xmllint >/dev/null 2>&1 ; then
+    xmllint --noout $referenceFile
+    if [ $? -ne 0 ] ; then
+      exit 1
+    fi
+  else
+      echo "Warn: xmllint not installed!"    
+  fi
+  echo $referenceFile created
+done
+cd ..
+
+cd CSV-Reports
+for f in *.tjp ; do
+  referenceFile=`echo $f | sed s/\\\\\(.*\\\\\).tjp/\\\1-Reference.csv/g`
+  ../../taskjuggler/taskjuggler $f > $referenceFile || exit 1
+  echo $referenceFile created
+done
+cd ..
+

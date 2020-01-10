@@ -1,0 +1,28 @@
+project test "Test" "$Id" 2000-01-01-00:00:00-MST - 2000-03-10-00:00:00-MST {
+	timezone "America/Denver"
+}
+
+include "workforce.tji"
+
+include "project_b2_export.tji"
+
+htmltaskreport "project_b3.html" {
+	columns name, id, projectid, start, end, daily
+	sorttasks nameup
+	hideresource 0
+	notimestamp
+}
+
+htmlresourcereport "project_b3_res.html" {
+	columns name, daily
+	hidetask 0
+	sorttasks nameup
+	notimestamp
+}
+
+export "project_b3_export.tji" {
+  hideresource 0
+	taskattributes flags, note, minstart, maxstart, minend, maxend,
+	complete, responsible, depends
+}
+

@@ -1,0 +1,35 @@
+project prj "ICal Export Demo" "1.0" 2005-06-06 - 2005-06-26
+  
+resource tux "Tux"
+resource tuxia "Tuxia"
+
+task items "Project breakdown" {
+  start 2005-06-06
+
+  task plan "Plan work" {
+    task phase1 "Phase 1" {
+      effort 5d
+      allocate tuxia
+    }
+    task phase2 "Phase 2" {
+      effort 2d
+      allocate tux
+    }
+  }
+
+  task implementation "Implement work" {
+    effort 5d
+    allocate tux
+    depends !plan
+  }
+
+  task acceptance "Customer acceptance" {
+    duration 5d
+    depends !implementation
+  }
+}
+
+icalreport "Tux-TODO-List.ics" {
+  # Only export tasks that tux is assigned to
+  hidetask ~isDutyOf(tux, plan)
+}

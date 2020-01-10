@@ -1,0 +1,61 @@
+/*
+ * For details about TaskJuggler see http://www.taskjuggler.org
+ */
+project test "Sloppy Bookings" "1.0" 2003-08-07-00:00:00-+0000 - 2003-10-01-00:00:00-+0000 {
+  timezone "GMT"
+  dailyworkinghours 8
+  yearlyworkingdays 260.714
+  timingresolution 60min
+  timeformat "%Y-%m-%d %H:%M"
+  shorttimeformat "%H:%M"
+  currencyformat "(" ")" "," "." 0
+  weekstartsmonday
+  workinghours sun off
+  workinghours mon 9:00 - 12:00, 13:00 - 18:00
+  workinghours tue 9:00 - 12:00, 13:00 - 18:00
+  workinghours wed 9:00 - 12:00, 13:00 - 18:00
+  workinghours thu 9:00 - 12:00, 13:00 - 18:00
+  workinghours fri 9:00 - 12:00, 13:00 - 18:00
+  workinghours sat off
+  scenario plan "Plan" {
+    enabled
+  }
+}
+resource r1 "Resource 1" {
+  vacation 2003-08-12-00:00:00-+0000 - 2003-08-15-00:00:00-+0000
+}
+projectids test
+task t1 "Task 1" {
+  projectid test
+  plan:start 2003-08-07-09:00:00-+0000
+  plan:end 2003-09-08-18:00:00-+0000
+  plan:scheduled
+  scheduling asap
+}
+supplement task t1 {
+  plan:complete 40
+  priority 500
+}
+supplement resource r1 {
+  plan:booking t1
+    2003-08-07-09:00:00-+0000 +3h,
+    2003-08-07-13:00:00-+0000 +5h,
+    2003-08-08-09:00:00-+0000 +3h,
+    2003-08-08-13:00:00-+0000 +5h,
+    2003-08-11-09:00:00-+0000 +3h,
+    2003-08-11-13:00:00-+0000 +5h,
+    2003-08-15-09:00:00-+0000 +3h,
+    2003-08-15-13:00:00-+0000 +5h,
+    2003-09-01-09:00:00-+0000 +3h,
+    2003-09-01-13:00:00-+0000 +5h,
+    2003-09-02-09:00:00-+0000 +3h,
+    2003-09-02-13:00:00-+0000 +5h,
+    2003-09-03-09:00:00-+0000 +3h,
+    2003-09-03-13:00:00-+0000 +5h,
+    2003-09-04-09:00:00-+0000 +3h,
+    2003-09-04-13:00:00-+0000 +5h,
+    2003-09-05-09:00:00-+0000 +3h,
+    2003-09-05-13:00:00-+0000 +5h,
+    2003-09-08-09:00:00-+0000 +3h,
+    2003-09-08-13:00:00-+0000 +5h
+}

@@ -1,0 +1,3229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="PropertyReference.xsl"?>
+<!DOCTYPE properties [
+<!--  <!ENTITY % DocBookDTD PUBLIC "-//OASIS//DTD DocBook V4.2//EN"
+"/usr/share/sgml/docbook/dtd/4.2xml/docbookx.dtd">
+ %DocBookDTD; -->
+ <!ELEMENT properties (property*)>
+
+ <!ELEMENT property (descr, attributes?, optattributes?,
+                     seealso?, freestyle?, example? )>
+ <!ATTLIST property
+   name CDATA #REQUIRED
+   id CDATA #REQUIRED
+   inheritable (Yes|No) "No" 
+   scenario (Yes|No) "No"
+ >
+
+ <!ELEMENT descr (para*)>
+ <!ELEMENT attributes (attr*)>
+ <!ELEMENT attr (para*)>
+ <!ATTLIST attr
+   name CDATA #REQUIRED
+   type CDATA #REQUIRED
+   list (0|1) "0"
+   optional (0|1) "0"
+ >
+
+ <!ELEMENT optattributes (optattr*)>
+ <!ELEMENT optattr (#PCDATA)>
+
+ <!ELEMENT seealso (also*)>
+ <!ELEMENT also (#PCDATA)>
+ <!ELEMENT freestyle (para*)>
+ <!ELEMENT example (#PCDATA)>
+
+ <!ELEMENT para (#PCDATA|varname|link|simplelist|screen)*>
+ <!ELEMENT varname (#PCDATA)*>
+ <!ELEMENT link (#PCDATA)>
+ <!ATTLIST link
+   linkend CDATA #REQUIRED
+ >
+ <!ELEMENT simplelist (member)*>
+ <!ATTLIST simplelist
+   type CDATA #REQUIRED
+   columns CDATA #REQUIRED
+ >
+ <!ELEMENT member (#PCDATA|para|varname|link)*>
+ <!ELEMENT screen (#PCDATA)>
+ 
+  <!ENTITY example_account SYSTEM
+   "../../TestSuite/Syntax/Correct/Account.tjp">
+  <!ENTITY example_allocate SYSTEM
+   "../../TestSuite/Syntax/Correct/Allocate-1.tjp">
+  <!ENTITY example_alternative SYSTEM
+   "../../TestSuite/Syntax/Correct/Alternative.tjp">
+  <!ENTITY example_booking SYSTEM
+   "../../TestSuite/Syntax/Correct/Booking.tjp">
+  <!ENTITY example_buffer SYSTEM
+   "../../TestSuite/Syntax/Correct/Buffer.tjp">
+  <!ENTITY example_columns SYSTEM
+   "../../TestSuite/Syntax/Correct/Columns.tjp">
+  <!ENTITY example_complete SYSTEM
+   "../../TestSuite/Syntax/Correct/Complete.tjp">
+  <!ENTITY example_criticalpath SYSTEM
+   "../../TestSuite/Syntax/Correct/CriticalPath.tjp">
+  <!ENTITY example_depends SYSTEM
+   "../../TestSuite/Syntax/Correct/Depends1.tjp">
+  <!ENTITY example_durations SYSTEM
+   "../../TestSuite/Syntax/Correct/Durations.tjp">
+  <!ENTITY example_efficiency SYSTEM
+   "../../TestSuite/Syntax/Correct/Efficiency.tjp">
+  <!ENTITY example_export SYSTEM
+   "../../TestSuite/Syntax/Correct/Export.tjp">
+  <!ENTITY example_extend SYSTEM
+   "../../TestSuite/Syntax/Correct/CustomAttributes.tjp">
+  <!ENTITY example_flags SYSTEM
+   "../../TestSuite/Syntax/Correct/Flags.tjp">
+  <!ENTITY example_gap SYSTEM
+   "../../TestSuite/Syntax/Correct/Gap.tjp">
+  <!ENTITY example_guireport SYSTEM
+   "../../TestSuite/Syntax/Correct/GUIReport.tjp">
+  <!ENTITY example_taskbarprefixpostfix SYSTEM
+   "../../TestSuite/Syntax/Correct/TaskbarPrefixPostfix.tjp">
+  <!ENTITY example_htmltaskreport SYSTEM
+   "../../TestSuite/Syntax/Correct/HtmlTaskReport.tjp">
+  <!ENTITY example_icalreport SYSTEM
+   "../../TestSuite/Syntax/Correct/ICalReport.tjp">
+  <!ENTITY example_include SYSTEM
+   "../../TestSuite/Syntax/Correct/Include2.tjp">
+  <!ENTITY example_journalentry SYSTEM
+   "../../TestSuite/Syntax/Correct/Journal.tjp">
+  <!ENTITY example_limits SYSTEM
+   "../../TestSuite/Syntax/Correct/Limits-1.tjp">
+  <!ENTITY example_mandatory SYSTEM
+   "../../TestSuite/Syntax/Correct/Mandatory.tjp">
+  <!ENTITY example_milestone SYSTEM
+   "../../TestSuite/Syntax/Correct/Milestone.tjp">
+  <!ENTITY example_minmax SYSTEM
+   "../../TestSuite/Syntax/Correct/MinMax.tjp">
+  <!ENTITY example_numberformat SYSTEM
+   "../../TestSuite/Syntax/Correct/Numberformat.tjp">
+  <!ENTITY example_period SYSTEM
+   "../../TestSuite/Syntax/Correct/Period.tjp">
+  <!ENTITY example_persistent SYSTEM
+   "../../TestSuite/Syntax/Correct/Persistent.tjp">
+  <!ENTITY example_precedes SYSTEM
+   "../../TestSuite/Syntax/Correct/Precedes1.tjp">
+  <!ENTITY example_priority SYSTEM
+   "../../TestSuite/Syntax/Correct/Priority.tjp">
+  <!ENTITY example_project SYSTEM
+   "../../TestSuite/Syntax/Correct/Project.tjp">
+  <!ENTITY example_projectids SYSTEM
+   "../../TestSuite/Syntax/Correct/ProjectIDs.tjp">
+  <!ENTITY example_reports SYSTEM
+   "../../TestSuite/Syntax/Correct/Reports.tjp">
+  <!ENTITY example_resource SYSTEM
+   "../../TestSuite/Syntax/Correct/Resource.tjp">
+  <!ENTITY example_responsible SYSTEM
+   "../../TestSuite/Syntax/Correct/Responsible.tjp">
+  <!ENTITY example_scenario SYSTEM
+   "../../TestSuite/Syntax/Correct/Scenario.tjp">
+  <!ENTITY example_scheduling SYSTEM
+   "../../TestSuite/Syntax/Correct/Scheduling.tjp">
+  <!ENTITY example_select SYSTEM
+   "../../TestSuite/Syntax/Correct/Select.tjp">
+  <!ENTITY example_shift SYSTEM
+   "../../TestSuite/Syntax/Correct/Shift.tjp">
+  <!ENTITY example_simple SYSTEM
+   "../../TestSuite/Syntax/Correct/Simple.tjp">
+  <!ENTITY example_supplement SYSTEM
+   "../../TestSuite/Syntax/Correct/Supplement.tjp">
+  <!ENTITY example_taskroot SYSTEM
+   "../../TestSuite/Syntax/Correct/TaskRoot.tjp">
+  <!ENTITY example_timezone SYSTEM
+   "../../TestSuite/Syntax/Correct/Timezone.tjp">
+  <!ENTITY example_vacation SYSTEM
+   "../../TestSuite/Syntax/Correct/Vacation.tjp">
+  <!ENTITY example_xmlreport SYSTEM
+   "../../TestSuite/Syntax/Correct/XMLReport.tjp">
+]>
+
+<properties>
+ <property name="The TJP File" id="global_scope">
+ <descr><para>All TaskJuggler project files should start with the
+project property and must contain at least one task definition. To
+visualize the results of the scheduling process, at least one of the
+reports should be specified.</para></descr>
+ <optattributes>
+   <optattr>account</optattr>
+   <optattr>copyright</optattr>
+   <optattr>csvaccountreport</optattr>
+   <optattr>csvresourcereport</optattr>
+   <optattr>csvtaskreport</optattr>
+   <optattr>export</optattr>
+   <optattr>flags_declare</optattr>
+   <optattr>htmlaccountreport</optattr>
+   <optattr>htmlresourcereport</optattr>
+   <optattr>htmlstatusreport</optattr>
+   <optattr>htmltaskreport</optattr>
+   <optattr>htmlmonthlycalendar</optattr>
+   <optattr>htmlweeklycalendar</optattr>
+   <optattr>include</optattr>
+   <optattr>macro</optattr>
+   <optattr>maxeffort</optattr>
+   <optattr>limits</optattr>
+   <optattr>priority</optattr>
+   <optattr>projectid</optattr>
+   <optattr>projectids</optattr>
+   <optattr>project</optattr>
+   <optattr>rate</optattr>
+   <optattr>resource</optattr>
+   <optattr>shift</optattr>
+   <optattr>supplement</optattr>
+   <optattr>task</optattr>
+   <optattr>vacation_global</optattr>
+   <optattr>xmlreport</optattr>
+  </optattributes>
+  <example>&example_simple;</example>
+ </property>
+ <property name="account" id="account">
+  <descr><para>Declares an account. Accounts can be used to calculate costs
+of tasks or the whole project. Account declaration may be nested, but
+only the top level accounts may have a type attribute specified. An
+account that has sub-accounts may not have a <link
+linkend="PROPERTY_credit">credit</link>.  sub-accounts inherit
+this type.</para></descr>
+  <attributes>
+   <attr name="id" type="ID">
+    <para>Each account must have a unique ID.</para>
+   </attr> 
+   <attr name="name" type="STRING"/>
+   <attr name="type" type="ID" optional="1">
+    <para>The type may be <varname>cost</varname> or
+<varname>revenue</varname>.</para></attr>
+  </attributes>
+  <optattributes>
+   <optattr>account</optattr>
+   <optattr>credit</optattr>
+  </optattributes>
+  <seealso>
+   <also>csvaccountreport</also>
+   <also>htmlaccountreport</also>
+  </seealso>
+  <example>&example_account;</example>
+ </property>
+ <property name="account" id="account_task" inheritable="Yes">
+  <descr><para>All amounts associated with the task will be credited
+to the specified account. The account must not be an account group.
+</para></descr>
+  <attributes>
+   <attr name="accountid" type="ID"/>
+  </attributes>
+  <seealso>
+   <also>account</also>
+  </seealso>
+  <example>&example_account;</example>
+ </property>
+ <property name="accumulate" id="accumulate" inheritable="No">
+  <descr><para>If this attribute is specified the values in the calendar
+columns are accumulated over the reported interval.</para></descr>
+  <example>&example_account;</example>
+ </property>
+ <property name="allowredefinition" id="allowredefinition" inheritable="No">
+  <descr><para>If this attribute is specified, redefinitions of task,
+resources or accounts are not flagged as errors. The primary use of
+this attribute is for projects that are created by merging sub projects
+which are again the result of sub project merging. In certain
+situations enclosing tasks, accounts or resources can be included in more
+than one sub project. This attribute then avoids the error message which is
+in most other cases a real user error. So use this feature with care
+as real errors might go undetected.</para>
+
+<para>In case attributes of the same property must be specified in two
+different locations the <link linkend="PROPERTY_supplement">supplement</link>
+construct is the recommended way to do this.</para></descr>
+ </property>
+ <property name="allocate" id="allocate" inheritable="Yes">
+  <descr><para>Specify which resources should be allocated to the
+task. The optional attributes provide numerous ways to control which
+resource is used and when exactly it will be assigned to the task.
+Shifts and limits can be used to restrict the allocation to certain
+time intervals or to limit them to a certain maximum per time period.
+</para></descr>
+  <attributes>
+   <attr name="resource" type="ID"/>
+  </attributes>
+  <optattributes>
+   <optattr>alternative</optattr>
+   <optattr>limits</optattr>
+   <optattr>mandatory</optattr>
+   <optattr>persistent</optattr>
+   <optattr>purge</optattr>
+   <optattr>select</optattr>
+   <optattr>shift_selection</optattr>
+  </optattributes>
+  <seealso>
+   <also>effort</also>
+  </seealso>
+  <example>&example_allocate;</example>
+ </property>
+ <property name="alternative" id="alternative" inheritable="No">
+  <descr><para>A list of alternative resources for an allocation.
+  There is no difference between the allocated resource and its
+  alternatives. If no selection criteria is given, TaskJuggler picks
+  the resource that it finds most appropriate.</para></descr>
+  <attributes>
+   <attr name="resource" type="ID" list="1"/>
+  </attributes>
+  <seealso>
+   <also>select</also>
+  </seealso>
+  <example>&example_alternative;</example>
+ </property>
+ <property name="barlabels" id="barlabels" inheritable="No">
+  <descr><para>Specifies the contents of the Gantt chart like bars in
+HTML calendar columns. The default is to show load values.</para></descr>
+  <attributes>
+   <attr name="mode" type="ID">
+    <para>See table below for possible values.</para>
+   </attr>
+  </attributes>
+  <seealso>
+   <also>columns</also>
+   <also>showprojectids</also>
+  </seealso>
+  <freestyle>
+   <para><simplelist type="horiz" columns="2">
+   
+   <member><varname>empty</varname></member>
+   <member>Do not show any values on calendar bars.</member>
+   
+   <member><varname>load</varname></member>
+   <member>Show task or resource load on calendar bars.</member>
+   
+   </simplelist></para>
+  </freestyle>
+ </property>
+ <property name="baseline" id="baseline" inheritable="Yes"
+ scenario="Yes">
+  <descr><para>Disables the projection mode for the scenario. This is
+  the default for the top-level scenario. In baseline mode it is
+  assumed that no bookings are provided for any task.</para></descr>
+  <seealso>
+   <also>projection</also>
+  </seealso>
+ </property>
+ <property name="booking" id="booking" inheritable="No" scenario="Yes">
+  <descr><para>The booking attribute can be used to report completed
+  work. This can be part of the necessary effort or the whole effort.
+  When the scenario is scheduled in projection mode, TaskJuggler
+  assumes that only the work reported with bookings has been done up
+  to now. It then schedules a plan for the still missing effort.</para>
+  <para>This attribute is also used within export reports to describe
+  the details of a scheduled project.</para>
+  <para>The sloppy attribute can be used when you want to skip
+  non-working time or other allocations automatically. If it's not
+  given, all bookings must only cover working time for the
+  resource.</para></descr>
+  <attributes>
+   <attr name="task" type="ID"/>
+   <attr name="period" type="DATEINTERVAL" list="1"/>
+  </attributes>
+  <optattributes>
+   <optattr>overtime</optattr>
+   <optattr>sloppy</optattr>
+  </optattributes>
+  <seealso>
+   <also>complete</also>
+   <also>projection</also>
+   <also>sloppy_projection</also>
+   <also>strict</also>
+  </seealso>
+  <example>&example_booking;</example>
+ </property>
+ <property name="caption" id="caption" inheritable="No">
+  <descr><para>Specifies the caption used for a report table.</para></descr>
+  <attributes>
+   <attr name="text" type="STRING"/>
+  </attributes>
+  <seealso>
+   <also>complete</also>
+   <also>copyright</also>
+   <also>headline</also>
+  </seealso>
+  <example>&example_htmltaskreport;</example>
+ </property>
+ <property name="celltext" id="celltext" inheritable="No">
+  <descr><para>Specifies an alternative text that is used for all
+cells of the column. Usually such a text contains a runtime macro,
+otherwise all cells of the column will have the same fixed value.</para></descr>
+  <attributes>
+   <attr name="text" type="STRING"/>
+  </attributes>
+  <seealso>
+   <also>cellurl</also>
+  </seealso>
+  <example>&example_columns;</example>
+ </property>
+ <property name="cellurl" id="cellurl" inheritable="No">
+  <descr><para>Specifies an URL that is attached to the cell contents
+of the cells of the column in HTML reports.</para></descr>
+  <attributes>
+   <attr name="url" type="STRING"/>
+  </attributes>
+  <seealso>
+   <also>celltext</also>
+  </seealso>
+  <example>&example_columns;</example>
+ </property>
+ <property name="columns" id="columns" inheritable="No">
+  <descr><para>Specifies which columns shall be included in a
+report.</para>
+
+<para>All columns support macro expansion. Contrary to the normal
+macro expansion, these macros are expanded during the report
+generation. So the value of the macro is being changed after each
+table cell or table line. Consequently only build in macros can be
+used. To protect the macro calls against expansion during the initial
+file processing, the report macros must be prefixed with an additional
+<varname>$</varname>.</para></descr>
+  <attributes>
+   <attr name="columnid" type="ID" list="1">
+    <para>See table below for possible values.</para>
+   </attr>
+  </attributes>
+  <optattributes>
+   <optattr>celltext</optattr>
+   <optattr>cellurl</optattr>
+   <optattr>hidecelltext</optattr>
+   <optattr>hidecellurl</optattr>
+   <optattr>subtitle</optattr>
+   <optattr>subtitleurl</optattr>
+   <optattr>title</optattr>
+   <optattr>titleurl</optattr>
+  </optattributes>
+  <freestyle>
+   <para><simplelist type="horiz" columns="2">
+   
+   <member><varname>accounts</varname></member>
+   <member>This columns lists the account that is assigned to the
+	   respective task. It is called 'accounts' because later
+	   versions will have support for multiple accounts.</member>
+   
+   <member><varname>chart</varname></member>
+   <member>Use this column to get Gantt and resource charts. It's only
+   supported by the interactive reports in the GUI.</member>
+   
+   <member><varname>completed</varname></member>
+   <member>The percentage the task has been completed already. This is
+   either the value specified by <link
+   linkend="PROPERTY_complete">complete</link> or a value computed according
+   to the current date (or the date specified by <link
+   linkend="PROPERTY_now">now</link>) and the length, duration or
+   effort.</member>
+   
+   <member><varname>completedeffort</varname></member>
+   <member>The effort of a task that has already been completed.</member>
+   
+   <member><varname>cost</varname></member>
+   <member>The accumulated costs of the task and its sub tasks</member>
+   
+   <member><varname>criticalness</varname></member>
+   <member>The criticalness of the task. It is a measure for the
+   probability that an effort task gets the requested resources
+   early.</member>
+   
+   <member><varname>daily</varname></member>
+   <member>A day-by-day calendar view of the tasks</member>
+   
+   <member><varname>depends</varname></member>
+   <member>The task index of the tasks on which this task
+   depends</member>
+   
+   <member><varname>duration</varname></member>
+   <member>The duration of the task</member>
+   
+   <member><varname>efficiency</varname></member>
+   <member>The efficiency of the resource. It's a measurement of how
+   much the resource can contribute to the workload of tasks.</member>
+   
+   <member><varname>effort</varname></member>
+   <member>The effort put into the task</member>
+   
+   <member><varname>end</varname></member>
+   <member>The end date of a task</member>
+   
+   <member><varname>endbuffer</varname></member>
+   <member>The percentage of the endbuffer</member>
+   
+   <member><varname>endbufferstart</varname></member>
+   <member>The start time of the end buffer</member>
+   
+   <member><varname>flags</varname></member>
+   <member>The list of flags assigned to the task or resource</member>
+   
+   <member><varname>follows</varname></member>
+   <member>The task index of the tasks that depend on this task</member>
+   
+   <member><varname>freeload</varname></member>
+   <member>The workload of the resource that has not been allocated.</member>
+   
+   <member><varname>hierarchindex</varname></member>
+   <member>The hierarchical index of a task. The index is calculated from the
+   hierarchical structure of the list as well as the start and end dates.
+   </member>
+   
+   <member><varname>hierarchno</varname></member>
+   <member>The hierarchical number of a task. It is based on the order of
+   declaration.</member>
+   
+   <member><varname>id</varname></member>
+   <member>The global ID of a task</member>
+   
+   <member><varname>index</varname></member>
+   <member>The index of a task. The index is calculated from the
+   hierarchical structure of the list as well as the start and end dates.
+   </member>
+   
+   <member><varname>maxeffort</varname></member>
+   <member>The maximum daily load wanted for the resource</member>
+   
+   <member><varname>maxend</varname></member>
+   <member>The latest desired end date</member>
+   
+   <member><varname>maxstart</varname></member>
+   <member>The latest desired start date</member>
+   
+   <member><varname>mineffort</varname></member>
+   <member>The minimum daily load wanted for the resource</member>
+   
+   <member><varname>minend</varname></member>
+   <member>The earliest desired end date</member>
+   
+   <member><varname>minstart</varname></member>
+   <member>The earliest desired start date</member>
+   
+   <member><varname>monthly</varname></member>
+   <member>A month-by-month calendar view of the tasks</member>
+   
+   <member><varname>name</varname></member>
+   <member>The name of a task, resource, or account</member>
+   
+   <member><varname>no</varname></member>
+   <member>The task index in the list. It starts with 1 and increases for
+   every listed item by 1.</member>
+   
+   <member><varname>note</varname></member>
+   <member>The description of the task</member>
+   
+   <member><varname>pathcriticalness</varname></member>
+   <member>The overall criticalness of the task. It is a measure for the
+   probability that an effort task gets scheduled as early as
+   possible. The tasks of the most critical path have the highest path
+   criticalness.</member>
+   
+   <member><varname>priority</varname></member>
+   <member>The scheduling priority</member>
+   
+   <member><varname>profit</varname></member>
+   <member>The accumulated profit of the task and its sub tasks</member>
+   
+   <member><varname>projectid</varname></member>
+   <member>The project ID of the task</member>
+   
+   <member><varname>projectids</varname></member>
+   <member>The project IDs of the projects a resource is allocated to</member>
+   
+   <member><varname>quarterly</varname></member>
+   <member>A quarter-by-quarter calendar view of the tasks</member>
+   
+   <member><varname>rate</varname></member>
+   <member>The daily rate of the resource</member>
+   
+   <member><varname>reference</varname></member>
+   <member>A reference to a URL that contains further information.</member>
+   
+   <member><varname>remainingeffort</varname></member>
+   <member>The effort of a task that still needs to be done to
+   complete the task..</member>
+   
+   <member><varname>resources</varname></member>
+   <member>The names of the used resources</member>
+   
+   <member><varname>responsibilities</varname></member>
+   <member>A list of all tasks indices for which a resource is
+   responsible </member>
+   
+   <member><varname>responsible</varname></member>
+   <member>The name of the resource responsible for a task</member>
+   
+   <member><varname>revenue</varname></member>
+   <member>The accumulated revenue of the task and its sub tasks</member>
+   
+   <member><varname>scenario</varname></member>
+   <member>The name of the scenario. This column is helpful when multiple
+   scenarios are shown in the table. See also <link
+   linkend="PROPERTY_scenarios">scenarios</link>.</member>
+   
+   <member><varname>schedule</varname></member>
+   <member>A detailed schedule of the allocations for the resource.</member>
+   
+   <member><varname>scheduling</varname></member>
+   <member>The scheduling direction of the task. ASAP (As Soon As
+   Possible) tasks are scheduled from start to end, ALAP (As Late As
+   Possible) are scheduled from end to start.</member>
+   
+   <member><varname>seqno</varname></member>
+   <member>The task index in the order of declaration. Each
+   time a task declaration is completed, the sequence number is increased
+   by 1. </member>
+   
+   <member><varname>start</varname></member>
+   <member>The start date of a task</member>
+   
+   <member><varname>startbuffer</varname></member>
+   <member>The percentage of the start buffer</member>
+   
+   <member><varname>startbufferend</varname></member>
+   <member>The end time of the start buffer</member>
+   
+   <member><varname>status</varname></member>
+   <member>The current status of the task. This is derived from the
+   current date or the date specified by <link
+   linkend="PROPERTY_now">now</link> and the degree of completion. The
+   degree of completion is either computed or has been specified by <link
+   linkend="PROPERTY_complete">complete</link>.</member>
+  
+   <member><varname>statusnote</varname></member>
+   <member>Some comment about the current status of the task.</member>
+   
+   <member><varname>total</varname></member>
+   <member>Total accumulated values</member>
+   
+   <member><varname>utilization</varname></member>
+   <member>The ratio between the allocated work load of the resource
+   and it's overall available work load.</member>
+   
+   <member><varname>weekly</varname></member>
+   <member>A week-by-week calendar view of the tasks</member>
+   
+   <member><varname>yearly</varname></member>
+   <member>A year-by-year calendar view of the tasks</member>
+   
+   </simplelist></para>
+<para>The following macros are supported for normal table cells:</para>
+
+<para><simplelist type="horiz" columns="2">
+<member><varname>$${0}</varname></member>
+<member>This is the original value of the table cell. This macro is
+useful if the user would like to extend the cell text with a fixed
+string.</member>
+
+<member><varname>$${accountid}</varname></member>
+<member>The ID of the account.</member>
+
+<member><varname>$${resourceid}</varname></member>
+<member>The ID of the resource.</member>
+
+<member><varname>$${taskid}</varname></member> <member>the
+id of the task.</member>
+
+</simplelist></para>
+
+<para>Additionally the original contents of other cells of the same
+report line can be accessed by the column ID. The following columns
+are supported:</para>
+
+<para><varname>index, no, hierarchindex, hierarchno, id,
+name</varname></para>
+
+<para>For the title or sub title of the calendar columns
+(<varname>daily, weekly, monthly, quarterly, yearly</varname>) the
+following macros are supported:</para>
+
+<para><varname>$${day}, $${month}, $${week}, $${quarter},
+$${year}</varname>.</para>
+  </freestyle>
+  <example>&example_columns;</example>
+ </property>
+ <property name="complete" id="complete" inheritable="No"
+scenario="Yes">
+  <descr><para>Specifies what percentage of the task is already
+completed. This can be useful for project tracking. Reports with
+calendar elements may show the completed part of the task in a
+different color. The completion percentage has no impact on the
+scheduler. It's meant for documentation purposes only.</para>
+
+<para>Tasks may not have subtasks if this attribute is used.</para></descr>
+  <attributes>
+   <attr name="percent" type="INTEGER">
+    <para>The value must be between 0 and 100.</para>
+   </attr>
+  </attributes>
+  <example>&example_complete;</example>
+  <seealso>
+   <also>booking</also>
+  </seealso>
+ </property>
+ <property name="copyright" id="copyright" inheritable="No">
+  <descr><para>Adds a copyright notice to all subsequently defined
+reports. This notice may contain any text. The notice is added at the
+bottom of the report.</para></descr>
+  <attributes>
+   <attr name="text" type="STRING"/>
+  </attributes>
+  <seealso>
+   <also>headline</also>
+   <also>caption</also>
+  </seealso>
+  <example>&example_htmltaskreport;</example>
+ </property>
+ <property name="credit" id="credit">
+  <descr><para>Credits the specified amount to the account at the
+specified date. The description should contain some information about
+the reason for the transaction.</para></descr>
+  <attributes>
+   <attr name="date" type="DATE"/>
+   <attr name="description" type="STRING"/>
+   <attr name="amount" type="REAL"/>
+  </attributes>
+  <example>&example_account;</example>
+ </property>
+ <property name="csvaccountreport" id="csvaccountreport">
+  <descr><para>The report lists all specified account values as a comma
+separated list. This is useful to export TaskJuggler data to Office
+Suites like OpenOffice.org or KOffice.</para></descr>
+  <attributes>
+   <attr name="filename" type="STRING"/>
+  </attributes>
+  <optattributes>
+   <optattr>accumulate</optattr>
+   <optattr>columns</optattr>
+   <optattr>end_report</optattr>
+   <optattr>rollupaccount</optattr>
+   <optattr>hideaccount</optattr>
+   <optattr>period_report</optattr>
+   <optattr>scenario_report</optattr>
+   <optattr>separator</optattr>
+   <optattr>sortaccounts</optattr>
+   <optattr>start_report</optattr>
+  </optattributes>
+  <seealso>
+   <also>htmlaccountreport</also>
+  </seealso>
+ </property>
+ <property name="csvresourcereport" id="csvresourcereport" inheritable="No">
+  <descr><para>The report lists all specified resource values as a
+comma separated list. This is useful to export TaskJuggler data to
+Office Suites like OpenOffice.org or KOffice.</para></descr>
+  <attributes>
+   <attr name="filename" type="STRING"/>
+  </attributes>
+  <optattributes>
+   <optattr>columns</optattr>
+   <optattr>end_report</optattr>
+   <optattr>rollupresource</optattr>
+   <optattr>hideresource</optattr>
+   <optattr>loadunit</optattr>
+   <optattr>period_report</optattr>
+   <optattr>scenario_report</optattr>
+   <optattr>separator</optattr>
+   <optattr>shorttimeformat</optattr>
+   <optattr>sortresources</optattr>
+   <optattr>start_report</optattr>
+   <optattr>timeformat</optattr>
+  </optattributes>
+  <seealso>
+   <also>htmlresourcereport</also>
+   <also>resourcereport</also>
+  </seealso>
+ </property>
+ <property name="csvtaskreport" id="csvtaskreport" inheritable="No">
+  <descr><para>The report lists all specified task values as a comma
+separated list. This is useful to export TaskJuggler data to Office
+Suites like OpenOffice.org or KOffice.</para></descr>
+  <attributes>
+   <attr name="filename" type="STRING"/>
+  </attributes>
+  <optattributes>
+   <optattr>columns</optattr>
+   <optattr>end_report</optattr>
+   <optattr>rolluptask</optattr>
+   <optattr>hidetask</optattr>
+   <optattr>loadunit</optattr>
+   <optattr>period_report</optattr>
+   <optattr>scenario_report</optattr>
+   <optattr>separator</optattr>
+   <optattr>shorttimeformat</optattr>
+   <optattr>sorttasks</optattr>
+   <optattr>start_report</optattr>
+   <optattr>taskroot</optattr>
+   <optattr>timeformat</optattr>
+  </optattributes>
+  <seealso>
+   <also>htmltaskreport</also>
+   <also>taskreport</also>
+  </seealso>
+ </property>
+ <property name="currency" id="currency" inheritable="No">
+  <descr><para>The default currency unit.</para></descr>
+  <attributes>
+   <attr name="text" type="STRING"/>
+  </attributes>
+  <seealso>
+   <also>currencyformat</also>
+  </seealso>
+  <example>&example_account;</example>
+ </property>
+ <property name="currencyformat" id="currencyformat" inheritable="Yes">
+  <descr><para>These values specify the default format used for all
+currency values. The <varname>negativeprefix</varname> and
+<varname>negativesuffix</varname> strings enclose negative currency
+values. The <varname>thousandseparator</varname> can be used to make
+large numbers more readable. The <varname>fractionseparator</varname>
+separates the fractional part from the rest.
+<varname>fractiondigits</varname> specifies how many fractional digits
+should be shown at a maximum.</para></descr>
+  <attributes>
+   <attr name="negativeprefix" type="STRING"/>
+   <attr name="negativesuffix" type="STRING"/>
+   <attr name="thousandseparator" type="STRING"/>
+   <attr name="fractionseparator" type="STRING"/>
+   <attr name="fractiondigits" type="INTEGER"/>
+  </attributes>
+  <seealso>
+   <also>currency</also>
+  </seealso>
+  <example>&example_numberformat;</example>
+ </property>
+ <property name="dailymax" id="dailymax" inheritable="Yes">
+  <descr><para>Sets the daily limit of a resource usage or a resource
+allocation to a task.</para></descr>
+  <attributes>
+   <attr name="value" type="REAL"/>
+   <attr name="unit" type="UNIT"/>
+  </attributes>
+  <seealso>
+   <also>monthlymax</also>
+   <also>weeklymax</also>
+  </seealso>
+  <example>&example_limits;</example>
+ </property>
+ <property name="dailyworkinghours" id="dailyworkinghours" inheritable="No">
+  <descr><para>Set the average number of working hours per day. This
+is used as the base to convert working hours into working days. This
+affects for example the <link linkend="PROPERTY_length">length</link> task
+attribute. The default value is 8 hours and should work for most
+Western countries.  The value you specify should match the settings
+you specified for <link
+linkend="PROPERTY_workinghours">workinghours</link>.</para></descr>
+  <attributes>
+   <attr name="hours" type="REAL"/>
+  </attributes>
+  <seealso>
+   <also>yearlyworkingdays</also>
+  </seealso>
+  <example>&example_project;</example>
+ </property>
+ <property name="drawemptycontainersastasks" id="drawemptycontainersastasks" inheritable="No">
+  <descr><para>If set, every container that has no subtask visible will be drawn as a regular task. The default behaviour is to draw containers as containers even if all their subtasks are hidden.</para></descr>
+ </property>
+ <property name="depends" id="depends" inheritable="No">
+  <descr><para>Specifies that the task cannot start before the task
+with the specified IDs have been finished. If multiple IDs are
+specified, they must be separated by commas. IDs must be either global
+or relative. A relative ID starts with a number of '!'. Each '!' moves
+the scope to the parent task. Global IDs do
+not contain '!', but have IDs separated by dots.</para>
+
+<para>Each task ID can have optional attributes enclosed in
+braces.</para>
+
+<para>By using the 'depends' attribute, the scheduling policy is
+automatically set to <varname>asap</varname>. If both
+<varname>depends</varname> and <varname>precedes</varname> are used,
+the last policy counts.</para></descr> <attributes>
+   <attr name="task" type="ID" list="1"/>
+  </attributes>
+  <optattributes>
+   <optattr>gapduration</optattr>
+   <optattr>gaplength</optattr>
+  </optattributes>
+  <seealso>
+   <also>scheduling</also>
+   <also>precedes</also>
+  </seealso>
+  <example>&example_depends;</example>
+ </property>
+ <property name="disabled" id="disabled" inheritable="Yes"
+ scenario="Yes">
+  <descr><para>Disables the scenario for scheduling.</para></descr>
+  <example>&example_scenario;</example>
+  <seealso>
+   <also>enabled</also>
+  </seealso> 
+ </property>
+ <property name="duration" id="duration" inheritable="No"
+ scenario="Yes">
+  <descr><para>Specifies the time the task occupies the resources.
+This is calendar time, not working time. 7d means one week. If
+resources are specified they are allocated when available.
+Availability of resources has no impact on the duration of the task.
+It will always be the specified duration.</para>
+
+<para>Tasks may not have subtasks if this attribute is used.</para></descr>
+  <attributes>
+   <attr name="value" type="REAL"/>
+   <attr name="unit" type="UNIT"/>
+  </attributes>
+  <seealso>
+   <also>effort</also>
+   <also>length</also>
+  </seealso>
+  <example>&example_durations;</example>
+ </property>
+ <property name="efficiency" id="efficiency" inheritable="Yes">
+  <descr><para>The efficiency of a resource can be used for two
+purposes. First you can use it as a crude way to model a team. A team
+of 5 people should have an efficiency of 5.0. Keep in mind that you
+cannot track the member of the team individually if you use this
+feature. The other use is to model performance variations between your
+resources.</para>
+<para>All resources that do not contribute effort to the task, should
+have an efficiency of 0.0.</para></descr>
+  <attributes>
+   <attr name="value" type="REAL"/>
+  </attributes>
+  <seealso>
+   <also>load</also>
+  </seealso>
+  <example>&example_efficiency;</example>
+ </property>
+ <property name="effort" id="effort" inheritable="No" scenario="Yes">
+  <descr><para>Specifies the effort needed to complete the task. An
+effort of 4d can be done with 2 full-time resources in 2 days. The
+task will not finish before the resources have contributed the
+specified effort. So the duration of the task will depend on the
+availability of the resources.</para>
+
+<para>WARNING: In almost all real world projects effort is not the product
+of time and resources. This is only true if the task can be
+partitioned without adding any overhead. For more information about
+this read "The Mythical Man-Month" by Frederick P. Brooks, Jr.</para>
+
+<para>Tasks may not have subtasks if this attribute is
+used.</para></descr>
+  <attributes>
+   <attr name="value" type="REAL"/>
+   <attr name="unit" type="UNIT"/>
+  </attributes>
+  <seealso>
+   <also>duration</also>
+   <also>length</also>
+  </seealso>
+  <example>&example_durations;</example>
+ </property>
+ <property name="enabled" id="enabled" inheritable="Yes"
+ scenario="Yes">
+  <descr><para>Enable the scenario for scheduling. This is the default
+  for the top-level scenario.</para></descr>
+  <seealso>
+   <also>disabled</also>
+  </seealso> 
+ </property>
+ <property name="end" id="end_report" inheritable="No">
+  <descr><para>Specifies the end date of the report. In task reports only
+tasks that start before this end date are listed.</para></descr>
+  <attributes>
+   <attr name="date" type="DATE"/>
+  </attributes>
+  <seealso>
+   <also>period_report</also>
+   <also>start_report</also>
+  </seealso>
+  <example>&example_export;</example>
+ </property>
+ <property name="end" id="end" inheritable="Yes" scenario="Yes">
+  <descr><para>The end date of the task. When specified for the
+  top-level (default) scenario this attributes also
+  implicitly sets the scheduling policy of the tasks to
+  <varname>alap</varname>.</para></descr>
+  <attributes>
+   <attr name="date" type="DATE"/>
+  </attributes>
+  <seealso>
+   <also>period</also>
+   <also>start</also>
+   <also>maxend</also>
+   <also>minend</also>
+   <also>scheduling</also>
+   <also>endbuffer</also>
+  </seealso>
+  <example>&example_durations;</example>
+ </property>
+ <property name="endbuffer" id="endbuffer" inheritable="No"
+scenario="Yes">
+  <descr><para>Specifies how much slack time you expect to have at the
+end of the task. This has no impact on the scheduling of the process.
+This information is for documentation purposes only.</para></descr>
+  <attributes>
+   <attr name="percent" type="REAL">
+    <para>Percent slack of the overall effort, duration or length of
+the task.</para>
+   </attr>
+  </attributes>
+  <seealso>
+   <also>duration</also>
+   <also>effort</also>
+   <also>length</also>
+   <also>startbuffer</also>
+  </seealso>
+  <example>&example_buffer;</example>
+ </property>
+ <property name="endcredit" id="endcredit" inheritable="No"
+scenario="Yes">
+  <descr><para>Specifies an amount that is credited to the account
+specified by the <link linkend="PROPERTY_account_task">account</link> property
+at the moment the tasks ends.</para></descr>
+  <attributes>
+   <attr name="amount" type="REAL"/>
+  </attributes>
+  <seealso>
+   <also>startcredit</also>
+  </seealso>
+  <example>&example_account;</example>
+ </property>
+ <property name="export" id="export" inheritable="No">
+  <descr><para>The export report looks like a regular TaskJuggler file
+but contains fixed start and end dates for all tasks. The tasks only
+have start and end times, their description and their project id
+listed. No other attributes are exported unless they are requested
+using the <link
+linkend="PROPERTY_taskattributes">taskattributes</link> attribute. The
+contents also depends on the extension of the file name. If the file
+name ends with <varname>.tjp</varname> a complete project with header,
+resource and shift definitions is generated. In case it ends with
+<varname>.tji</varname> only the tasks and resource allocations are
+exported.</para>
+
+<para>If specified the resource usage for the tasks is reported as
+well. But only those allocations are listed that belong to tasks
+listed in the same export report.</para>
+
+<para>The export report can be used to share certain tasks or
+milestones with other projects. When an export report is included the
+project IDs of the included tasks must be declared first with the
+<link linkend="PROPERTY_projectid">project id property</link>.</para></descr>
+  <attributes>
+   <attr name="filename" type="STRING"/>
+  </attributes>
+  <optattributes>
+   <optattr>end_report</optattr>
+   <optattr>hideresource</optattr>
+   <optattr>hidetask</optattr>
+   <optattr>properties</optattr>
+   <optattr>rollupresource</optattr>
+   <optattr>rolluptask</optattr>
+   <optattr>period_report</optattr>
+   <optattr>scenarios</optattr>
+   <optattr>start_report</optattr>
+   <optattr>taskattributes</optattr>
+   <optattr>taskroot</optattr>
+  </optattributes>
+  <seealso>
+   <also>include</also>
+  </seealso>
+  <example>&example_export;</example>
+ </property>
+ <property name="extend" id="extend" inheritable="No">
+  <descr><para>Often it is desirable to collect more information in
+the project file than is necessary for task scheduling and resource
+allocation. To add such information to tasks, resources or accounts
+the user can extend these properties with user-defined attributes. The
+new attributes can be <varname>text</varname> or
+<varname>reference</varname> attributes. Optionally the user can
+specify if the attribute value should be inherited from the enclosing
+property.</para></descr>
+  <attributes>
+   <attr name="property" type="ID">
+    <para>Possible values are <varname>task</varname>, <varname>
+resource</varname> or <varname> account</varname></para>
+   </attr>
+  </attributes>
+  <optattributes>
+   <optattr>inherit</optattr>
+  </optattributes>
+  <freestyle>
+   <para>&lt;type&gt; &lt;id&gt; &lt;name&gt;</para>
+
+<para><simplelist type="horiz" columns="2">
+<member>type:</member>
+<member>Specifies the type of the user-defined
+attribute. <varname>text</varname> is a simple text attribute.
+<varname>reference</varname> is an URL to another document.</member>
+
+<member>id:</member>
+<member>An user-defined ID that is unique within
+the used-defined task attributes. To avoid conflicts with future
+built-in attributes, all user defined attributes must start with a
+capital letter.</member>
+
+<member>name:</member>
+<member>A short description of the attribute. It will be used as
+default column header in reports.</member> 
+
+</simplelist></para>
+  </freestyle>
+  <example>&example_extend;</example>
+ </property>
+ <property name="flags" id="flags" inheritable="Yes">
+  <descr><para>Attach a set of flags. The flags can be used in logical
+expressions to filter properties from the reports.</para></descr>
+  <attributes>
+   <attr name="flag" type="ID" list="1"/>
+  </attributes>
+  <seealso>
+   <also>flags_declare</also>
+  </seealso>
+  <example>&example_flags;</example>
+ </property>
+ <property name="flags" id="flags_declare" inheritable="No">
+  <descr><para>Declare a set of flags for later use.</para></descr>
+  <attributes>
+   <attr name="flag" type="ID" list="1"/>
+  </attributes>
+  <seealso>
+   <also>flags</also>
+  </seealso>
+  <example>&example_flags;</example>
+ </property>
+ <property name="gapduration" id="gapduration" inheritable="Yes"
+ scenario="Yes">
+  <descr><para>Specifies the minimum required gap between the end of a
+  preceding task and the start of this task, or the start of a
+  following task and the end of this task.  This is calendar time, not
+  working time. 7d means one week.</para></descr>
+  <attributes>
+   <attr name="value" type="REAL"/>
+   <attr name="unit" type="UNIT"/>
+  </attributes>
+  <seealso>
+   <also>duration</also>
+   <also>gaplength</also>
+  </seealso>
+  <example>&example_gap;</example>
+ </property>
+ <property name="gaplength" id="gaplength" inheritable="Yes" scenario="Yes">
+  <descr><para>Specifies the minimum required gap between the end of a
+  preceding task and the start of this task, or the start of a
+  following task and the end of this task. This is working time, not
+  calendar time. 7d means 7 working days, not one week.  Whether a day
+  is considered a working day or not depends on the defined <link
+  linkend="PROPERTY_workinghours">working hours</link> and global
+  <link linkend="PROPERTY_vacation_global">vacations</link>.</para></descr>
+  <attributes>
+   <attr name="value" type="REAL"/>
+   <attr name="unit" type="UNIT"/>
+  </attributes>
+  <seealso>
+   <also>gapduration</also>
+   <also>length</also>
+  </seealso>
+  <example>&example_gap;</example>
+ </property>
+ <property name="headline" id="headline" inheritable="No">
+  <descr><para>Specifies the headline for a report.</para></descr>
+  <attributes>
+   <attr name="text" type="STRING"/>
+  </attributes>
+  <seealso>
+   <also>caption</also>
+   <also>copyright</also>
+  </seealso>
+  <example>&example_htmltaskreport;</example>
+ </property>
+ <property name="hideaccount" id="hideaccount" inheritable="No">
+  <descr><para>Do not show accounts that match the specified logical
+expression. If the report is sorted in tree mode (default) then
+enclosing accounts are listed even if the expression matches the
+account.</para></descr>
+  <attributes>
+   <attr name="logicalexpression" type="LOGICALEXPRESSION"/>
+  </attributes>
+ </property>
+ <property name="hidecelltext" id="hidecelltext" inheritable="No">
+  <descr><para>If the expression is true, the cell will be empty.</para></descr>
+  <attributes>
+   <attr name="expression" type="LOGICALEXPRESSION"/>
+  </attributes>
+  <seealso>
+   <also>hidecellurl</also>
+  </seealso>
+  <example>&example_columns;</example>
+ </property>
+ <property name="hidecellurl" id="hidecellurl" inheritable="No">
+  <descr><para>If the expression is true, no URL will be attached to the cell
+contents.</para></descr>
+  <attributes>
+   <attr name="expression" type="LOGICALEXPRESSION"/>
+  </attributes>
+  <seealso>
+   <also>hidecelltext</also>
+  </seealso>
+  <example>&example_columns;</example>
+ </property>
+ <property name="inherit" id="inherit" inheritable="No">
+  <descr><para>If this flag is present a user defined attribute gets
+  inherited by child properties when specified for a parent.</para></descr>
+ </property>
+ <property name="hideresource" id="hideresource" inheritable="No">
+  <descr><para>Do not show resources that match the specified logical
+expression. If the report is sorted in tree mode (default) then
+enclosing resources are listed even if the expression matches the
+resource.</para></descr>
+  <attributes>
+   <attr name="logicalexpression" type="LOGICALEXPRESSION"/>
+  </attributes>
+  <example>&example_htmltaskreport;</example>
+ </property>
+ <property name="hidetask" id="hidetask" inheritable="No">
+  <descr><para>Do not show tasks that match the specified logical
+expression. If the report is sorted in tree mode (default) then
+enclosing tasks are listed even if the expression matches the
+task.</para></descr>
+  <attributes>
+   <attr name="logicalexpression" type="LOGICALEXPRESSION"/>
+  </attributes>
+  <example>&example_guireport;</example>
+ </property>
+ <property name="htmlaccountreport" id="htmlaccountreport" inheritable="No">
+  <descr><para>The report lists all specified account values as a HTML
+page.</para></descr>
+  <attributes>
+   <attr name="file" type="STRING"/>
+  </attributes>
+  <optattributes>
+   <optattr>accumulate</optattr>
+   <optattr>caption</optattr>
+   <optattr>columns</optattr>
+   <optattr>end_report</optattr>
+   <optattr>headline</optattr>
+   <optattr>hideaccount</optattr>
+   <optattr>period_report</optattr>
+   <optattr>rawhead</optattr>
+   <optattr>rawstylesheet</optattr>
+   <optattr>rawtail</optattr>
+   <optattr>rollupaccount</optattr>
+   <optattr>scenarios</optattr>
+   <optattr>shorttimeformat</optattr>
+   <optattr>sortaccounts</optattr>
+   <optattr>start_report</optattr>
+   <optattr>timeformat</optattr>
+  </optattributes>
+  <seealso>
+   <also>csvaccountreport</also>
+   <also>htmlresourcereport</also>
+   <also>htmltaskreport</also>
+  </seealso>
+  <example>&example_account;</example>
+ </property>
+ <property name="htmlmonthlycalendar" id="htmlmonthlycalendar" inheritable="No">
+  <descr><para>Generates a calendar like HTML report with one column
+  for each month.</para></descr>
+  <attributes>
+   <attr name="file" type="STRING"/>
+  </attributes>
+  <optattributes>
+   <optattr>barlabels</optattr>
+   <optattr>caption</optattr>
+   <optattr>columns</optattr>
+   <optattr>end_report</optattr>
+   <optattr>headline</optattr>
+   <optattr>hideresource</optattr>
+   <optattr>hidetask</optattr>
+   <optattr>loadunit</optattr>
+   <optattr>period_report</optattr>
+   <optattr>rawhead</optattr>
+   <optattr>rawstylesheet</optattr>
+   <optattr>rawtail</optattr>
+   <optattr>rollupresource</optattr>
+   <optattr>rolluptask</optattr>
+   <optattr>scenarios</optattr>
+   <optattr>shorttimeformat</optattr>
+   <optattr>showprojectids</optattr>
+   <optattr>sortresources</optattr>
+   <optattr>sorttasks</optattr>
+   <optattr>start_report</optattr>
+   <optattr>taskroot</optattr>
+   <optattr>timeformat</optattr>
+   <optattr>weekdays</optattr>
+  </optattributes>
+  <seealso>
+   <also>htmlaccountreport</also>
+   <also>htmlresourcereport</also>
+   <also>htmltaskreport</also>
+   <also>htmlstatusreport</also>
+   <also>htmlweeklycalendar</also>
+  </seealso>
+ </property>
+ <property name="htmlresourcereport" id="htmlresourcereport" inheritable="No">
+  <descr><para>The report lists all resources and their respective
+values as a HTML page. The tasks that the resources are allocated to
+can be listed as well.</para></descr>
+  <attributes>
+   <attr name="file" type="STRING"/>
+  </attributes>
+  <optattributes>
+   <optattr>barlabels</optattr>
+   <optattr>caption</optattr>
+   <optattr>columns</optattr>
+   <optattr>end_report</optattr>
+   <optattr>headline</optattr>
+   <optattr>hideresource</optattr>
+   <optattr>hidetask</optattr>
+   <optattr>loadunit</optattr>
+   <optattr>period_report</optattr>
+   <optattr>rawhead</optattr>
+   <optattr>rawstylesheet</optattr>
+   <optattr>rawtail</optattr>
+   <optattr>rollupresource</optattr>
+   <optattr>rolluptask</optattr>
+   <optattr>scenarios</optattr>
+   <optattr>shorttimeformat</optattr>
+   <optattr>showprojectids</optattr>
+   <optattr>sortresources</optattr>
+   <optattr>sorttasks</optattr>
+   <optattr>start_report</optattr>
+   <optattr>taskroot</optattr>
+   <optattr>timeformat</optattr>
+  </optattributes>
+  <seealso>
+   <also>csvresourcereport</also>
+   <also>htmlaccountreport</also>
+   <also>htmltaskreport</also>
+   <also>resourcereport</also>
+  </seealso>
+ </property>
+ <property name="htmlstatusreport" id="htmlstatusreport" inheritable="No">
+  <descr><para>Generates a HTML status report. The report consists of 4
+tables: Overdue tasks, ongoing tasks, finished tasks and upcoming
+tasks. The default reporting interval is 1 week.</para></descr>
+  <attributes>
+   <attr name="file" type="STRING"/>
+  </attributes>
+  <optattributes>
+   <optattr>headline</optattr>
+   <optattr>caption</optattr>
+   <optattr>rawhead</optattr>
+   <optattr>rawstylesheet</optattr>
+   <optattr>rawtail</optattr>
+  </optattributes>
+  <seealso>
+   <also>htmlaccountreport</also>
+   <also>htmlresourcereport</also>
+   <also>htmltaskreport</also>
+   <also>htmlmonthlycalendar</also>
+   <also>htmlweeklycalendar</also>
+  </seealso>
+ </property>
+ <property name="htmltaskreport" id="htmltaskreport" inheritable="No">
+  <descr><para>The report lists all tasks and their respective values
+as a HTML page. The resources that are allocated to the tasks can be
+listed as well.</para></descr>
+  <attributes>
+   <attr name="file" type="STRING"/>
+  </attributes>
+  <optattributes>
+   <optattr>barlabels</optattr>
+   <optattr>caption</optattr>
+   <optattr>columns</optattr>
+   <optattr>end_report</optattr>
+   <optattr>headline</optattr>
+   <optattr>hideresource</optattr>
+   <optattr>hidetask</optattr>
+   <optattr>loadunit</optattr>
+   <optattr>period_report</optattr>
+   <optattr>rawhead</optattr>
+   <optattr>rawstylesheet</optattr>
+   <optattr>rawtail</optattr>
+   <optattr>rollupresource</optattr>
+   <optattr>rolluptask</optattr>
+   <optattr>scenarios</optattr>
+   <optattr>shorttimeformat</optattr>
+   <optattr>showprojectids</optattr>
+   <optattr>sortresources</optattr>
+   <optattr>sorttasks</optattr>
+   <optattr>start_report</optattr>
+   <optattr>taskroot</optattr>
+   <optattr>timeformat</optattr>
+  </optattributes>
+  <seealso>
+   <also>csvtaskreport</also>
+   <also>htmlaccountreport</also>
+   <also>htmlresourcereport</also>
+   <also>taskreport</also>
+  </seealso>
+ </property>
+ <property name="htmlweeklycalendar" id="htmlweeklycalendar" inheritable="No">
+  <descr><para>Generates a calendar like HTML report with one row for
+  each week.</para></descr>
+  <attributes>
+   <attr name="file" type="STRING"/>
+  </attributes>
+  <optattributes>
+   <optattr>barlabels</optattr>
+   <optattr>caption</optattr>
+   <optattr>columns</optattr>
+   <optattr>end_report</optattr>
+   <optattr>headline</optattr>
+   <optattr>hideresource</optattr>
+   <optattr>hidetask</optattr>
+   <optattr>loadunit</optattr>
+   <optattr>period_report</optattr>
+   <optattr>rawhead</optattr>
+   <optattr>rawstylesheet</optattr>
+   <optattr>rawtail</optattr>
+   <optattr>resourcereport_type</optattr>
+   <optattr>rollupresource</optattr>
+   <optattr>rolluptask</optattr>
+   <optattr>scenarios</optattr>
+   <optattr>shorttimeformat</optattr>
+   <optattr>showprojectids</optattr>
+   <optattr>sortresources</optattr>
+   <optattr>sorttasks</optattr>
+   <optattr>start_report</optattr>
+   <optattr>taskroot</optattr>
+   <optattr>timeformat</optattr>
+   <optattr>weekdays</optattr>
+  </optattributes>
+  <seealso>
+   <also>htmlaccountreport</also>
+   <also>htmlmonthlycalendar</also>
+   <also>htmlresourcereport</also>
+   <also>htmltaskreport</also>
+   <also>htmlstatusreport</also>
+  </seealso>
+ </property>
+ <property name="icalreport" id="icalreport" inheritable="No">
+  <descr><para>Generates an ICal report according to RFC2445. This is
+  standardized format used by many calendar applications such as
+  KOrganizer. The filename should have a
+  <varname>.ics</varname> extension.</para></descr>
+  <attributes>
+   <attr name="file" type="STRING"/>
+  </attributes>
+  <optattributes>
+   <optattr>hideresource</optattr>
+   <optattr>hidetask</optattr>
+   <optattr>rollupresource</optattr>
+   <optattr>rolluptask</optattr>
+   <optattr>scenarios</optattr>
+  </optattributes>
+  <example>&example_icalreport;</example>
+ </property>
+ <property name="include" id="include" inheritable="No">
+  <descr><para>Includes the specified file name as if its contents
+would be written instead of the include property. The only exception
+is the <varname>include</varname> statement itself. When the included
+files contains other include statements or report definitions, the
+filenames are relative to file where they are defined in.
+<varname>include</varname> commands can be used in the project header,
+at global scope or between property declarations of tasks, resources,
+and accounts.</para>
+
+<para>For technical reasons you have to supply the optional pair of
+curly brackets if the include is followed immediately by a macro call that
+is defined within the included file.</para></descr> <attributes>
+   <attr name="file" type="STRING"/>
+  </attributes>
+  <optattributes>
+   <optattr>taskprefix</optattr>
+  </optattributes>
+  <seealso>
+   <also>export</also>
+  </seealso>
+  <example>&example_include;</example>
+ </property>
+ <property name="journalentry" id="journalentry" inheritable="No">
+  <descr><para>Journal entries are meant for documentation purposes.
+  They consist of a date and a text entry. Each journal entry adds a
+  new entry to the journal of the property.</para></descr>
+  <attributes>
+   <attr name="date" type="DATE"/>
+   <attr name="text" type="STRING"/>
+  </attributes>
+  <seealso>
+   <also>note</also>
+   <also>statusnote</also>
+  </seealso>
+  <example>&example_journalentry;</example>
+ </property>
+ <property name="label" id="label" inheritable="No">
+  <descr><para>Specifies the text for the URL in HTML reports. If no
+  label is specified, the URL will be displayed. If a label has been
+  specified, the URL will not be shown.</para></descr>
+  <attributes>
+   <attr name="text" type="STRING"/>
+  </attributes>
+  <example>&example_extend;</example>
+ </property>
+ <property name="length" id="length" inheritable="No" scenario="Yes">
+  <descr><para>Specifies the time the task occupies the resources.
+This is working time, not calendar time. 7d means 7 working days, not
+one week.  Whether a day is considered a working day or not depends on
+the defined <link linkend="PROPERTY_workinghours">working hours</link>
+and global <link linkend="PROPERTY_vacation_global">vacations</link>. A task
+with a length specification may have resource allocations. Resources
+are allocated when they are available. The availability has no impact
+on the duration of the task. A day where none of the specified
+resources is available is still considered a working day, if there is
+no global vacation or global working time defined.</para>
+
+<para>Tasks may not have subtasks if this attribute is used.</para></descr>
+  <attributes>
+   <attr name="value" type="REAL"/>
+   <attr name="unit" type="UNIT"/>
+  </attributes>
+  <seealso>
+   <also>duration</also>
+   <also>effort</also>
+  </seealso>
+  <example>&example_durations;</example>
+ </property>
+ <property name="limits" id="limits" inheritable="Yes">
+  <descr><para>Specifies limits on the usage of a resource in general,
+or of the allocation of a resource to a task. This property replaces
+the less flexible properties <link
+linkend="PROPERTY_maxeffort">maxeffort</link> and <link
+linkend="PROPERTY_load">load</link>.</para>
+<para>When applied to an allocation this limits the use of all
+alternative resources or group members as a whole. There has been a
+bug in version 2.0.x that resulted in faulty limit computation. This
+has been fixed with version 2.1.</para></descr>
+  <optattributes>
+   <optattr>dailymax</optattr>
+   <optattr>weeklymax</optattr>
+   <optattr>monthlymax</optattr>
+  </optattributes>
+  <example>&example_limits;</example>
+ </property>
+ <property name="load" id="load" inheritable="No">
+  <descr><para>This property has been replaced by <link
+linkend="PROPERTY_limits">limits</link>. The further usage of load is
+strongly discouraged. It will be dropped from future versions of
+TaskJuggler.</para>
+  <para>Specifies the daily load of a resource for an
+allocation. A load of 1.0 (default) means the resource is allocated
+for as many hours as specified by <link
+linkend="PROPERTY_dailyworkinghours">dailyworkinghours</link>. A load
+of 0.5 means half that many hours. This only works if enough working
+hours have been specified for the particular day.</para></descr>
+  <attributes>
+   <attr name="factor" type="REAL"/>
+  </attributes>
+  <seealso>
+   <also>workinghours</also>
+   <also>vacation_global</also>
+  </seealso>
+ </property>
+ <property name="loadunit" id="loadunit" inheritable="No">
+  <descr><para>Specifies the unit in which loads are reported in a
+report.</para></descr>
+  <attributes>
+   <attr name="unit" type="ID">
+    <para>See table below for possible values.</para>
+   </attr>
+  </attributes>
+  <seealso>
+   <also>dailyworkinghours</also>
+   <also>yearlyworkingdays</also>
+  </seealso>
+  <freestyle>
+   <para><simplelist type="horiz" columns="2">
+
+   <member><varname>days</varname></member>
+   <member>Show load in man or resource-days.</member>
+   
+   <member><varname>hours</varname></member>
+   <member>Show load in man resource-hours.</member>
+   
+   <member><varname>longauto</varname></member>
+   <member>Show load in the most appropriate unit and show long
+   unit name.</member>
+   
+   <member><varname>minutes</varname></member>
+   <member>Show load in man or resource-minutes.</member>
+   
+   <member><varname>months</varname></member>
+   <member>Show load in man or resource-months.</member>
+   
+   <member><varname>shortauto</varname></member>
+   <member>Show load in the most appropriate unit and show short
+   unit name.</member>
+   
+   <member><varname>weeks</varname></member>
+   <member>Show load in man or resource-weeks.</member>
+   
+   <member><varname>years</varname></member>
+   <member>Show load in man or resource-years.</member>
+   
+   </simplelist></para>
+  </freestyle>
+ </property>
+ <property name="macro" id="macro" inheritable="No">
+  <descr><para>Defines a text fragment that can later be inserted by
+using the specified ID.</para>
+<para>See the description of the <varname>include</varname> statement
+for details on how to use a macro immediately after including the file
+where the macro has been defined in.</para></descr>
+  <attributes>
+   <attr name="id" type="ID"/>
+  </attributes>
+  <freestyle>
+<para>The body is not optional. It must be enclosed in [ ].
+Macros can be declared like this:</para>
+
+<para><screen>
+macro FOO [ This text ];
+</screen></para>
+
+<para>If later ${FOO} is found in the project file, it is expanded to ' This
+text '. Macros may have arguments. Arguments are special macros with
+numbers as names. The number specifies the index of the
+argument.</para>
+
+<para><screen>
+macro FOO [ This ${1} text ]
+</screen></para>
+
+<para>will expand to ' This stupid text ' if called as ${FOO
+"stupid"}. Macros may call other macros.</para>
+
+<para>Macro IDs should have at least one uppercase
+letter as all lowercase letter IDs may be used in a later version for
+built-in macros like 'if', 'expr' or 'for'. Macro names can be
+prefixed by a question mark. In this case the macro will expand to
+nothing if the macro is not defined. Otherwise the undefined macro
+would be flagged with an error message.</para>
+
+<para><screen>
+This macro call ${?foo} will expand to nothing if foo is undefined.
+</screen></para>
+  </freestyle>
+  <seealso>include</seealso>
+ </property>
+ <property name="mandatory" id="mandatory" inheritable="No">
+  <descr><para>Makes a resource allocation mandatory. This means, that
+  for each time slot only then resources are allocated when all
+  mandatory resources are available. So either all mandatory resources
+  can be allocated for the time slot, or no resource will be
+  allocated.</para></descr>
+  <example>&example_mandatory;</example>
+ </property>
+ <property name="maxeffort" id="maxeffort" inheritable="No">
+  <descr><para>This property has been replaced by <link
+linkend="PROPERTY_limits">limits</link>. The further usage of maxeffort is
+strongly discouraged. It will be dropped from future versions of
+TaskJuggler.</para>
+  <para>The daily maximum effort for a resource. Resources will not be
+scheduled to be used more than this value. A value of 1.0 means a full
+working day. 0.5 means half a working day.</para></descr>
+  <attributes>
+   <attr name="workingdays" type="REAL"/>
+  </attributes>
+  <seealso>
+   <also>dailyworkinghours</also>
+   <also>workinghours</also>
+  </seealso>
+ </property>
+ <property name="maxend" id="maxend" inheritable="Yes" scenario="Yes">
+  <descr><para>Specifies the maximum wanted end time of the task. The
+value is not used during scheduling, but is checked after all tasks
+have been scheduled. If the end of the task is later than
+the specified value, then an error is reported.</para></descr>
+  <attributes>
+   <attr name="date" type="DATE"/>
+  </attributes>
+  <seealso>
+   <also>maxstart</also>
+   <also>minend</also>
+   <also>minstart</also>
+  </seealso>
+  <example>&example_minmax;</example>
+ </property>
+ <property name="maxpaths" id="maxpaths" inheritable="Yes"
+ scenario="Yes">
+  <descr><para>The scheduler contains a critical path detector.
+  Detecting a critical path requires the analysis of every possible
+  path between 2 end tasks. The number of paths that have to be
+  checked can grow exponentially with the number of tasks and their
+  dependencies. By default, only 10 million paths will be checked.
+  With this parameter the user can define how many paths should be
+  checked. Using 0 as value will trigger an exhaustive search under
+  all circumstances. Scheduling times of hours if not days are
+  certainly possible for large projects.</para></descr>
+  <attributes>
+   <attr name="paths" type="INTEGER"/>
+  </attributes> 
+  <seealso>
+   <also>minslackrate</also>
+  </seealso>  
+ </property>
+ <property name="maxstart" id="maxstart" inheritable="Yes"
+scenario="Yes">
+  <descr><para>Specifies the maximum wanted start time of the task.
+The value is not used during scheduling, but is checked after all
+tasks have been scheduled. If the start of the task is later than
+the specified value, then an error is reported.</para></descr>
+  <attributes>
+   <attr name="date" type="DATE"/>
+  </attributes>
+  <seealso>
+   <also>maxend</also>
+   <also>minend</also>
+   <also>minstart</also>
+  </seealso>
+  <example>&example_minmax;</example>
+ </property>
+ <property name="minend" id="minend" inheritable="Yes" scenario="Yes">
+  <descr><para>Specifies the minimum wanted end time of the task. The
+value is not used during scheduling, but is checked after all tasks
+have been scheduled. If the end of the task is earlier than
+the specified value, then an error is reported.</para></descr>
+  <attributes>
+   <attr name="date" type="DATE"/>
+  </attributes>
+  <seealso>
+   <also>maxend</also>
+   <also>maxstart</also>
+   <also>minstart</also>
+  </seealso>
+  <example>&example_minmax;</example>
+ </property>
+ <property name="minslackrate" id="minslackrate" inheritable="Yes" scenario="Yes">
+  <descr><para>Specifies the minimum percentage of slack a task path
+  must have before it is marked as critical. A path is any list of
+  explicitely or implicitely connected tasks measured from first task
+  to last task. The slack is the time between start of the
+  first task and end of the last task that is not covered by any task
+  of the path. The default value is 5%.</para>
+  <para>Larger values in combination with a project that uses lots of
+  inherited dependencies and long dependency pathes can result in very
+  long scheduling times. The more slack you require, the more pathes
+  have to be searched till the end. For larger projects an increase of
+  5% can turn a 10 second scheduling run into a 1 hour or more
+  scheduling run. If you need larger slack rate values, avoid the use
+  of inherited dependencies.</para>
+  <para>A value of 0 turns off the critical path detector.</para>
+  </descr>
+  <attributes>
+   <attr name="rate" type="REAL"/>
+  </attributes>
+  <seealso>
+   <also>maxpaths</also>
+  </seealso>  
+  <example>&example_criticalpath;</example>
+ </property>
+ <property name="minstart" id="minstart" inheritable="Yes"
+scenario="Yes">
+  <descr><para>Specifies the minimum wanted start time of the task.
+The value is not used during scheduling, but is checked after all
+tasks have been scheduled. If the start of the task is earlier than
+the specified value, then an error is reported.</para></descr>
+  <attributes>
+   <attr name="date" type="DATE"/>
+  </attributes>
+  <seealso>
+   <also>maxend</also>
+   <also>maxstart</also>
+   <also>minend</also>
+  </seealso>
+  <example>&example_minmax;</example>
+ </property>
+ <property name="milestone" id="milestone" inheritable="No">
+  <descr><para>Turns the task into a special task that has no
+duration. You may not specify a <link
+linkend="PROPERTY_duration">duration</link>, <link
+linkend="PROPERTY_length">length</link>, <link
+linkend="PROPERTY_effort">effort</link> or subtasks for a milestone
+task.</para>
+<para>A task that only has a start or an end specification and no
+duration specification or sub tasks, will be recognized as milestone
+automatically.</para></descr>
+  <example>&example_milestone;</example>
+ </property>
+ <property name="note" id="note" inheritable="No">
+  <descr><para>Attach a note to the task. This is usually a more
+detailed specification of what the task is about.</para></descr>
+  <attributes>
+   <attr name="text" type="STRING"/>
+  </attributes>
+  <seealso>
+   <also>journalentry</also>
+   <also>statusnote</also>
+  </seealso>
+  <example>&example_minmax;</example>
+ </property>
+ <property name="monthlymax" id="monthlymax" inheritable="Yes">
+  <descr><para>Sets the monthly limit of a resource usage or a resource
+allocation to a task.</para></descr>
+  <attributes>
+   <attr name="value" type="REAL"/>
+   <attr name="unit" type="UNIT"/>
+  </attributes>
+  <seealso>
+   <also>dailymax</also>
+   <also>weeklymax</also>
+  </seealso>
+  <example>&example_limits;</example>
+ </property>
+ <property name="now" id="now" inheritable="Yes">
+  <descr><para>Specify the date that TaskJuggler uses for calculation
+as current date. If no value is specified, the current value of the
+system clock is used.</para></descr> <attributes>
+   <attr name="date" type="DATE"/>
+  </attributes>
+  <example>&example_complete;</example>
+ </property>
+ <property name="numberformat" id="numberformat" inheritable="Yes">
+  <descr><para>These values specify the default format used for all
+numerical real values. The <varname>negativeprefix</varname> and
+<varname>negativesuffix</varname> strings enclose negative currency
+values. The <varname>thousandseparator</varname> can be used to make
+large numbers more readable. The <varname>fractionseparator</varname>
+separates the fractional part from the rest.
+<varname>fractiondigits</varname> specifies how many fractional digits
+should be shown at a maximum.</para></descr>
+  <attributes>
+   <attr name="negativeprefix" type="STRING"/>
+   <attr name="negativesuffix" type="STRING"/>
+   <attr name="thousandseparator" type="STRING"/>
+   <attr name="fractionseparator" type="STRING"/>
+   <attr name="fractiondigits" type="INTEGER"/>
+  </attributes>
+  <example>&example_numberformat;</example>
+ </property>
+ <property name="overtime" id="overtime" inheritable="No">
+  <descr><para>This attribute enables bookings to override working
+  hours and vacations.</para></descr>
+  <attributes>
+   <attr name="value" type="INTEGER">
+    <para>Number between 0 and 2. See table below.</para>
+   </attr>
+  </attributes>
+  <freestyle>
+   <para><simplelist type="horiz" columns="2">
+   
+   <member><varname>overtime 0:</varname></member>
+   <member>You can only book available working hours. (Default)</member>
+
+   <member><varname>overtime 1:</varname></member>
+   <member>You can book off-hours as well.</member>
+   
+   <member><varname>overtime 2:</varname></member>
+   <member>You can book normal working hours, off-hours and vacations.</member>
+
+   </simplelist></para>
+  </freestyle>
+  <example>&example_booking;</example>
+ </property>
+ <property name="period" id="period" inheritable="yes">
+  <descr><para>This property is a shortcut for setting the start and
+  end property at the same time. In contrast to using these, it does
+  not change the scheduling direction.</para></descr>
+  <seealso>
+   <also>end</also>
+   <also>start</also>
+  </seealso>
+  <example>&example_period;</example>
+ </property>
+ <property name="period" id="period_report" inheritable="no">
+  <descr><para>This property is a shortcut for setting the start and end
+  property at the same time.</para></descr>
+  <seealso>
+   <also>end_report</also>
+   <also>start_report</also>
+  </seealso>
+  <example>&example_period;</example>
+ </property>
+ <property name="persistent" id="persistent" inheritable="No">
+  <descr><para>Specifies that once a resource is picked from the list
+  of alternatives this resource is used for the whole task.
+  This is useful when several alternative resources have been
+  specified. Normally the selected resource can change after each
+  break. A break is an interval of at least one timeslot where no
+  resources were available.</para></descr>
+  <seealso>
+   <also>alternative</also>
+  </seealso>
+  <example>&example_persistent;</example>
+ </property>
+ <property name="priority" id="priority" inheritable="No">
+  <descr><para>Specifies a priority between 1 and 1000. A task with
+higher priority is more likely to get the requested resources. Don't
+confuse the priority of a tasks with the importance or urgency of a
+task. It only increases the chances that the tasks gets the requested
+resources. It does not mean that the task happens earlier, though that
+is usually the effect you will see. It also does not have any effect
+on tasks that don't have any resources assigned (e.g. milestones).</para>
+
+<para>This attribute is inherited by subtasks if specified prior to
+the definition of the subtask.</para></descr>
+  <attributes>
+   <attr name="value" type="INTEGER"/>
+  </attributes>
+  <example>&example_priority;</example>
+ </property>
+ <property name="precedes" id="precedes" inheritable="No">
+  <descr><para>Specifies that the tasks with the specified IDs cannot
+start before the task has been finished. If multiple IDs are
+specified, they must be separated by commas. IDs must be either global
+or relative. A relative ID starts with a number of '!'. Each '!' moves
+the scope to the parent task. Global IDs do
+not contain '!', but have IDs separated by dots.</para>
+
+<para>By using the 'precedes' attribute, the scheduling policy is
+automatically set to <varname>alap</varname>. If both
+<varname>depends</varname> and <varname>precedes</varname> are used
+within a task, the last policy counts.</para></descr>
+  <attributes>
+   <attr name="task" type="ID" list="1"/>
+  </attributes>
+  <optattributes>
+   <optattr>gapduration</optattr>
+   <optattr>gaplength</optattr>
+  </optattributes>
+  <seealso>
+   <also>depends</also>
+   <also>scheduling</also>
+  </seealso>
+  <example>&example_precedes;</example>
+ </property>
+ <property name="project" id="project" inheritable="No">
+  <descr><para>The project property is mandatory and should be the
+first property in a project file. &lt;id&gt; is the default project
+ID used to register resource allocations in a global database.
+&lt;name&gt; is the name of the project.  &lt;version&gt; is the
+version of the project file. Typically this is the CVS ID.
+&lt;start&gt; and &lt;end&gt; define the time frame of the project.
+The end may be well after the end of the last task, but must be
+specified to terminate the scheduling process.</para></descr>
+  <attributes>
+   <attr name="id" type="ID">
+    <para>The default project ID.</para>
+   </attr>
+   <attr name="name" type="STRING">
+    <para>The name of the project.</para>
+   </attr>
+   <attr name="version" type="STRING">
+    <para>The version of the project file. This could be a revision
+number from a revision control system.</para>
+   </attr>
+   <attr name="period" type="DATEINTERVAL">
+    <para>The expected interval of the project. It may be larger than
+    necessary, but it needs to be large enough to fit all tasks.</para>
+   </attr>
+  </attributes>
+  <optattributes>
+   <optattr>allowredefinition</optattr>
+   <optattr>currencyformat</optattr>
+   <optattr>currency</optattr>
+   <optattr>dailyworkinghours</optattr>
+   <optattr>drawemptycontainersastasks</optattr>
+   <optattr>extend</optattr>
+   <optattr>include</optattr>
+   <optattr>journalentry</optattr>
+   <optattr>now</optattr>
+   <optattr>numberformat</optattr>
+   <optattr>scenario</optattr>
+   <optattr>shorttimeformat</optattr>
+   <optattr>timeformat</optattr>
+   <optattr>timezone</optattr>
+   <optattr>timingresolution</optattr>
+   <optattr>weekstartsmonday</optattr>
+   <optattr>weekstartssunday</optattr>
+   <optattr>workinghours</optattr>
+   <optattr>yearlyworkingdays</optattr>
+  </optattributes>
+  <example>&example_simple;</example>
+ </property>
+ <property name="projectid" id="projectid" inheritable="Yes">
+  <descr><para>At global scope it declares a new project id and
+activates it. All subsequent task definitions will inherit this
+ID. If used within a task it simply assigns this project ID to the
+task. The tasks of a project can have different IDs. This is
+particularly helpful if the project is merged from several sub
+projects that each have their own ID.</para></descr> <attributes>
+<attr name="id" type="ID"/>
+  </attributes>
+  <seealso>
+   <also>project</also>
+   <also>projectids</also>
+  </seealso>
+  <example>&example_projectids;</example>
+ </property>
+ <property name="projectids" id="projectids" inheritable="No">
+  <descr><para>Declares a list of project IDs.</para></descr>
+  <attributes>
+   <attr name="projectid" type="ID" list="1"/>
+  </attributes>
+  <seealso>
+   <also>project</also>
+   <also>projectid</also>
+  </seealso>
+  <example>&example_projectids;</example>
+ </property>
+ <property name="projection" id="projection" inheritable="Yes"
+ scenario="Yes">
+  <descr><para>Enables the projection mode for the scenario. All tasks
+will be scheduled taking the manual bookings into account. The
+tasks will be extended by scheduling new bookings starting with the
+current date until the specified effort, length or duration has been
+reached. In sloppy mode tasks with no bookings will be filled from the
+original start. In strict mode all tasks will be filled starting with
+the current date. No bookings will be added prior to the current
+date.</para></descr> <optattributes>
+<optattr>sloppy_projection</optattr>
+   <optattr>strict</optattr>
+  </optattributes> 
+  <seealso>
+   <also>baseline</also>
+   <also>booking</also>
+  </seealso>
+  <example>&example_booking;</example>
+ </property>
+ <property name="properties" id="properties" inheritable="No">
+  <descr><para>This attribute determines which properties will be
+  included in the report.</para></descr>
+  <attributes>
+   <attr name="property" type="ID" list="1">
+    <para>See table below for possible values.</para>
+   </attr> 
+  </attributes>
+  <freestyle>
+   <para><simplelist type="horiz" columns="2">
+   
+   <member><varname>all</varname></member>
+   <member>Include all properties.</member>
+   
+   <member><varname>bookings</varname></member>
+   <member>Include all bookings for the report interval. Only bookings
+   for non-filtered resources will be included.</member>
+   
+   <member><varname>shifts</varname></member>
+   <member>Include all shift definitions.</member>
+   
+   <member><varname>tasks</varname></member>
+   <member>Include all task definitions for non-filtered tasks.</member>
+   
+   <member><varname>resources</varname></member>
+   <member>Include all resource definitions for non-filtered
+   resources.</member>
+   
+   </simplelist></para>
+  </freestyle> 
+  <example>&example_export;</example>
+ </property>
+ <property name="purge" id="purge" inheritable="No">
+  <descr><para>This attribute can be used to purge inherited flags or
+  allocations. Possible values for
+  <computeroutput>attributeName</computeroutput> are
+  <computeroutput>allocations</computeroutput> or
+  <computeroutput>flags</computeroutput>.</para></descr>
+  <attributes>
+   <attr name="attributeName" type="ID"/>
+  </attributes>
+ </property>
+ <property name="rate" id="rate" inheritable="Yes">
+  <descr><para>Specifies the daily costs of the resource. The amount
+are credited to the account specified with the task that makes use of
+the resource.</para></descr>
+  <attributes>
+   <attr name="value" type="REAL"/>
+  </attributes>
+  <seealso>
+   <also>account</also>
+   <also>task</also>
+  </seealso>
+  <example>&example_account;</example>
+ </property>
+ <property name="rawhead" id="rawhead" inheritable="No">
+  <descr><para>Specifies a section of raw HTML code that will be
+inserted at the top of the report.</para></descr>
+  <attributes>
+   <attr name="html" type="STRING"/>
+  </attributes>
+  <seealso>
+   <also>rawstylesheet</also>
+   <also>rawtail</also>
+  </seealso>
+ </property>
+ <property name="rawstylesheet" id="rawstylesheet" inheritable="No">
+  <descr><para>Specifies a stylesheet for HTML reports.</para></descr>
+  <attributes>
+   <attr name="stylesheet" type="STRING"/>
+  </attributes>
+ </property>
+ <property name="rawtail" id="rawtail" inheritable="No">
+  <descr><para>Specifies a section of raw HTML code that will be
+inserted at the bottom of the report.</para></descr>
+  <attributes>
+   <attr name="html" type="STRING"/>
+  </attributes>
+  <seealso>
+   <also>rawhead</also>
+   <also>rawstylesheet</also>
+  </seealso>
+ </property>
+ <property name="reference" id="reference" inheritable="No">
+  <descr><para>A reference to an external document. If you need more
+than one reference, you can create your own URL placeholders.</para></descr>
+  <attributes>
+   <attr name="url" type="STRING">
+    <para>Should be a well formed URL.</para>
+   </attr>
+  </attributes>
+  <optattributes>
+   <optattr>label</optattr>
+  </optattributes>
+  <seealso>
+   <also>extend</also>
+  </seealso>
+  <example>&example_extend;</example>
+ </property>
+ <property name="resource" id="resource" inheritable="No">
+  <descr><para>Task use resources to fulfil the specified
+efforts.</para></descr> <attributes> <attr name="id" type="ID"/> <attr
+name="name" type="STRING"/> </attributes>
+  <optattributes>
+   <optattr>booking</optattr>
+   <optattr>efficiency</optattr>
+   <optattr>flags</optattr>
+   <optattr>journalentry</optattr>
+   <optattr>maxeffort</optattr>
+   <optattr>limits</optattr>
+   <optattr>rate</optattr>
+   <optattr>resource</optattr>
+   <optattr>shift_selection</optattr>
+   <optattr>vacation_resource</optattr>
+   <optattr>workinghours</optattr>
+  </optattributes>
+  <seealso>
+   <also>task</also>
+  </seealso>
+  <example>&example_resource;</example>
+ </property>
+ <property name="resourcereport" id="resourcereport" inheritable="No">
+  <descr><para>This report is intended for the TaskJuggler graphical
+  user interface. The report lists all tasks and their respective values
+as a HTML page. The resources that are allocated to the tasks can be
+listed as well.</para></descr>
+  <attributes>
+   <attr name="file" type="STRING"/>
+  </attributes>
+  <optattributes>
+   <optattr>caption</optattr>
+   <optattr>columns</optattr>
+   <optattr>end_report</optattr>
+   <optattr>headline</optattr>
+   <optattr>hideresource</optattr>
+   <optattr>hidetask</optattr>
+   <optattr>loadunit</optattr>
+   <optattr>period_report</optattr>
+   <optattr>rollupresource</optattr>
+   <optattr>rolluptask</optattr>
+   <optattr>scenario_report</optattr>
+   <optattr>shorttimeformat</optattr>
+   <optattr>showprojectids</optattr>
+   <optattr>sortresources</optattr>
+   <optattr>sorttasks</optattr>
+   <optattr>start_report</optattr>
+   <optattr>timeformat</optattr>
+  </optattributes>
+  <seealso>
+   <also>csvtaskreport</also>
+   <also>htmlaccountreport</also>
+   <also>htmlresourcereport</also>
+   <also>taskreport</also>
+  </seealso>
+  <example>&example_guireport;</example>
+ </property>
+ <property name="resourcereport" id="resourcereport_type" inheritable="No">
+  <descr><para>This attribute switches a calendar report from task
+  report mode to resource report mode.</para></descr>
+ </property>
+ <property name="responsible" id="responsible" inheritable="Yes">
+   <descr><para>The ID of the resource that is responsible for this
+   task. This value is for documentation purposes only. It's not used
+   by the scheduler.</para></descr>
+  <attributes>
+   <attr name="resource" type="ID"/>
+  </attributes>
+  <seealso>
+   <also>resource</also>
+  </seealso>
+  <example>&example_responsible;</example>
+ </property>
+ <property name="rollupaccount" id="rollupaccount" inheritable="No">
+  <descr><para>Do not show sub-accounts of accounts that match the
+specified logical expression.</para></descr>
+  <attributes>
+   <attr name="logicalexpression" type="LOGICALEXPRESSION"/>
+  </attributes>
+  <seealso>
+   <also>rollupresource</also>
+   <also>rolluptask</also>
+  </seealso>
+ </property>
+ <property name="rollupresource" id="rollupresource" inheritable="No">
+  <descr><para>Do not show sub-resources of resources that match the
+specified logical expression.</para></descr>
+  <attributes>
+   <attr name="logicalexpression" type="LOGICALEXPRESSION"/>
+  </attributes>
+  <seealso>
+   <also>rollupaccount</also>
+   <also>rolluptask</also>
+  </seealso>
+ </property>
+ <property name="rolluptask" id="rolluptask" inheritable="No">
+  <descr><para>Do not show sub-tasks of tasks that match the
+specified logical expression.</para></descr>
+  <attributes>
+   <attr name="logicalexpression" type="LOGICALEXPRESSION"/>
+  </attributes>
+  <seealso>
+   <also>rollupaccount</also>
+   <also>rollupresource</also>
+  </seealso>
+ </property>
+ <property name="scenario" id="scenario" inheritable="No">
+  <descr><para>Specifies the different project scenarios. A scenario
+  that is nested into another one inherits all inheritable values from
+  the enclosing scenario. There can only be one top-level scenario. It
+  is usually called <computeroutput>plan</computeroutput> scenario. By
+  default this scenario is pre-defined but can be overwritten with any
+  other scenario. In this documenation each attribute is listed as
+  scenario specific or not. A scenario specific attribute can be
+  overwritten in a child scenario thereby creating a new, slightly
+  different variant of the parent scenario. This can be helpful to do
+  plan/actual comparisons if what-if-anlysises.</para>
+  <para>By using bookings and enabling the projection mode you can
+  capture the progress of your project and constantly get updated
+  project plans for the future work.</para></descr>
+  <attributes>
+   <attr name="id" type="ID"/>
+   <attr name="name" type="STRING"/>
+  </attributes>
+  <optattributes>
+   <optattr>baseline</optattr>
+   <optattr>disabled</optattr>
+   <optattr>enabled</optattr>
+   <optattr>maxpaths</optattr>
+   <optattr>minslackrate</optattr>
+   <optattr>projection</optattr>
+   <optattr>scenario</optattr>
+  </optattributes>
+  <seealso>
+   <also>scenarios</also>
+  </seealso>
+  <example>&example_scenario;</example>
+ </property>
+ <property name="scenario" id="scenario_report" inheritable="No">
+  <descr><para>ID of the scenario that should be included in the
+report.</para></descr>
+  <attributes>
+   <attr name="scenarioid" type="ID">
+    <para>The ID of the scenario.</para>
+   </attr>
+  </attributes>
+  <seealso>
+   <also>scenario</also>
+  </seealso>
+ </property>
+ <property name="scenarios" id="scenarios" inheritable="No">
+  <descr><para>List of scenarios that should be included in the
+report.</para></descr>
+  <attributes>
+   <attr name="scenarioid" type="ID" list="1">
+    <para>The ID of the scenario.</para>
+   </attr>
+  </attributes>
+  <seealso>
+   <also>scenario</also>
+  </seealso>
+ </property>
+ <property name="scheduled" id="scheduled" inheritable="No"
+scenario="Yes">
+  <descr><para>This is mostly for internal use. It specifies that the
+task can be ignored for scheduling in the scenario.</para></descr>
+ </property>
+ <property name="scheduling" id="scheduling" inheritable="Yes">
+  <descr><para>Specifies the scheduling policy for the task. A task
+can be scheduled from start to end (As Soon As Possible,
+<varname>asap</varname>) or from
+end to start (As Late As Possible, <varname>alap</varname>).</para>
+  <para>A task can be scheduled from start to end (ASAP mode) when it
+  has a hard (start) or soft (depends) criteria for the start time. A
+  task can be scheduled from end to start (ALAP mode) when it has a
+  hard (end) or soft (precedes) criteria for the end time.</para>
+  <para>Some task attributes set the scheduling policy implicitly.
+  This attribute can be used to explicitly set the scheduling policy
+  of the task to a certain direction. To avoid it being overwritten
+  again by an implicit attribute this attribute should always be the
+  last attribute of the task.</para>
+  <para>A random mixture of ASAP and ALAP tasks can have unexpected
+  side effects on the scheduling of the project. It increases
+  significantly the scheduling complexity and results in much longer
+  scheduling times. Especially in projects with many hundreds of tasks
+  the scheduling time of a project with a mixture of ASAP and ALAP
+  times can be 2 to 10 times longer. When the projects contains chains
+  of ALAP and ASAP tasks the tasks further down the dependency chain
+  will be served much later than other non-chained task even when they
+  have a much higher priority. This can result in situations where
+  high priority tasks do not get their resources even though the
+  parallel competing tasks have a much lower priority.</para>
+  <para>As a general rule, try to avoid ALAP tasks whenever possible.
+  Have a close eye on tasks that have been switched implicitly to
+  ALAP mode because the <varname>end</varname> attribute comes after
+  the <varname>start</varname> attribute.</para>
+  </descr>
+  <attributes>
+   <attr name="type" type="ID">
+    <para>Possible values are <varname>alap</varname> or
+<varname>asap</varname>.</para>
+   </attr>
+  </attributes>
+  <seealso>
+    <also>depends</also>
+    <also>end</also>
+    <also>precedes</also>
+    <also>start</also>
+    <also>period</also>
+  </seealso>  
+  <example>&example_scheduling;</example>
+ </property>
+ <property name="separator" id="separator" inheritable="No">
+  <descr><para>Specifies the separator used in CSV reports between the
+  values. The default value is a semicolon.</para></descr>
+  <attributes>
+   <attr name="sep" type="STRING"/>
+  </attributes>
+ </property>
+ <property name="select" id="select" inheritable="No">
+  <descr><para>The select functions controls which resource is picked
+from an allocation and it's alternatives. The selection is
+re-evaluated each time the resource used in the previous time slot
+becomes unavailable.</para>
+<para>Even for non-persistent allocations a change in the resource
+selection only happens if the resource used in the previous (or next
+for ASAP tasks) time slot has become unavailable.</para></descr>
+  <attributes>
+   <attr name="mode" type="ID">
+    <para>See table below for possible values.</para>
+   </attr>
+  </attributes>
+  <seealso>
+   <also>persistent</also>
+  </seealso>
+  <freestyle>
+   <para><simplelist type="horiz" columns="2">
+   
+   <member><varname>maxloaded</varname></member>
+   <member>Pick the available resource that has been used the most so
+   far.</member>
+   
+   <member><varname>minloaded</varname></member>
+   <member>Pick the available resource that has been used the least so
+   far.</member>
+   
+   <member><varname>minallocated</varname></member>
+   <member>Pick the resource that has the smallest allocation factor.
+   The allocation factor is calculated from the various allocations of
+   the resource across the tasks. This is the default setting.</member>
+   
+   <member><varname>order</varname></member>
+   <member>Pick the first available resource from the list.</member>
+   
+   <member><varname>random</varname></member>
+   <member>Pick a random resource from the list.</member>
+   
+   </simplelist></para>
+  </freestyle>
+  <example>&example_select;</example>
+ </property>
+ <property name="shift" id="shift" inheritable="No">
+  <descr><para>When several resource have the same working hours,
+these working hours should be defined as shifts. Each shift must have
+a unique ID. Resources can be assigned to shifts for certain
+intervals. Shifts can also be used to limit work on certain tasks to
+the hours of the shift or to switch part time schedules of a
+resource.</para></descr> <attributes>
+   <attr name="id" type="ID"/>
+   <attr name="name" type="STRING"/>
+  </attributes>
+  <optattributes>
+   <optattr>shift</optattr>
+   <optattr>workinghours</optattr>
+  </optattributes>
+  <seealso>
+   <also>shift_selection</also>
+  </seealso>
+  <example>&example_shift;</example>
+ </property>
+ <property name="shift" id="shift_selection" inheritable="No">
+  <descr><para>Limits the resource working time or work on a task to
+a defined shift during the specified interval. Multiple shifts can be
+defined, but shift intervals may not overlap.</para></descr>
+  <attributes>
+   <attr name="shiftid" type="ID">
+    <para>The ID of the selected shift.</para>
+   </attr>
+   <attr name="dateinterval" type="DATEINTERVAL" optional="1">
+    <para>If an interval is specified, no allocations will be made
+outside the shift intervals unless other shifts have been selected for
+other time intervals. If the interval is omitted, the shift is
+assigned for the whole project time frame.</para>
+   </attr>
+  </attributes>
+  <seealso>
+   <also>shift</also>
+  </seealso>
+  <example>&example_shift;</example>
+ </property>
+ <property name="shorttimeformat" id="shorttimeformat"
+inheritable="Yes">
+  <descr><para>Specifies time format for time short specifications. This is
+normal just the hour and minutes.</para></descr>
+  <attributes>
+   <attr name="format" type="STRING"/>
+  </attributes>
+  <seealso>
+   <also>timeformat</also>
+  </seealso>
+ </property>
+ <property name="showprojectids" id="showprojectids" inheritable="No">
+  <descr><para>Specifies that calendar columns in reports should
+contain the project ID after the load value.</para></descr>
+  <seealso>
+   <also>barlabels</also>
+   <also>columns</also>
+  </seealso>
+ </property>
+ <property name="sloppy" id="sloppy" inheritable="No">
+  <descr><para>Controls how strict TaskJuggler checks booking
+  intervals for conflicts with vacation and other bookings. In case
+  the error is suppressed the booking will not overwrite the existing
+  bookings. It will avoid the already assigned intervals during
+  booking.</para></descr>
+  <attributes>
+   <attr name="value" type="INTEGER">
+    <para>Number between 0 and 2. See table below.</para>
+   </attr>
+  </attributes>
+  <freestyle>
+   <para><simplelist type="horiz" columns="2">
+   
+   <member><varname>sloppy 0:</varname></member>
+   <member>Period may not contain any off-duty hours, vacation or
+   other task assignments. (Default)</member>
+
+   <member><varname>sloppy 1:</varname></member>
+   <member>Period may contain off-duty hours, but not vacation or
+   other task assignments.</member>
+   
+   <member><varname>sloppy 2:</varname></member>
+   <member>Period may contain off-duty hours and vacation, but no
+   other task assignments.</member>
+
+   </simplelist></para>
+  </freestyle>
+  <example>&example_booking;</example>
+ </property>
+ <property name="sloppy" id="sloppy_projection" inheritable="Yes">
+  <descr><para>Puts the scenario in sloppy bookings mode. This is the
+  default. This mode makes only sense when you also use projection
+  mode for this scenario. In sloppy mode all task that don't have any
+  bookings provided will be filled with bookings according to the
+  original schedule. In strict mode, no bookings will be filled in for
+  any task prior to the current (or now) date.</para></descr>
+  <seealso>
+   <also>booking</also>
+   <also>projection</also>
+   <also>strict</also>
+  </seealso>
+ </property> 
+ <property name="sortaccounts" id="sortaccounts" inheritable="No">
+  <descr><para>Determines how the accounts are sorted in the report. Up to 3
+criteria can be specified. If one criteria is not sufficient to sort a
+group of accounts, the next criteria will be used to sort the accounts
+within this group.</para></descr>
+  <attributes>
+   <attr name="criteria" type="SORTINGCRITERIA" list="1">
+    <para>Possible values are 
+fullnamedown,
+fullnameup,
+iddown,
+idup,
+indexdown,
+indexup,
+namedown,
+nameup,
+sequencedown,
+sequenceup,
+tree
+   </para>
+  </attr>
+  </attributes>
+ </property>
+ <property name="sortresources" id="sortresources" inheritable="No">
+  <descr><para>Determines how the resources are sorted in the report. Up to 3
+criteria can be specified. If one criteria is not sufficient to sort a
+group of resources, the next criteria will be used to sort the
+resources within this group.</para></descr>
+  <attributes>
+   <attr name="criteria" type="SORTINGCRITERIA" list="1">
+    <para>Possible values are 
+fullnamedown,
+fullnameup,
+iddown,
+idup,
+indexdown,
+indexup,
+maxeffortdown,
+maxeffortup,
+mineffortdown,
+mineffortup,
+namedown,
+nameup,
+ratedown,
+rateup,
+sequencedown,
+sequenceup,
+tree
+   </para>
+  </attr>
+  </attributes>
+ </property>
+ <property name="sorttasks" id="sorttasks" inheritable="No">
+  <descr><para>Determines how the tasks are sorted in the report. Up to 3
+criteria can be specified. If one criteria is not sufficient to sort a
+group of tasks, the next criteria will be used to sort the tasks 
+within this group.</para></descr>
+  <attributes>
+   <attr name="criteria" type="SORTINGCRITERIA" list="1">
+    <para>Possible values are 
+fullnamedown,
+fullnameup,
+iddown,
+idup,
+indexdown,
+indexup,
+namedown,
+nameup,
+prioritydown,
+priorityup,
+responsibledown,
+responsibleup,
+sequencedown,
+sequenceup,
+tree
+   </para>
+   <para>In addition the following values are supported as well. They
+   specify scenario specific values so they can be prefixed with the
+   ID of the scenario and a colon (e.g.
+   <computeroutput>plan:startup</computeroutput>). If no scenario is
+   specified, the default scenario is used. Possible values are
+completeddown,
+completedup,
+criticalnessdown,
+criticalnessup,
+enddown,
+endup,
+pathcriticalnessdown,
+pathcriticalnessup,
+startdown, 
+startup,
+statusdown,
+statusup
+   </para>
+  </attr>
+  </attributes>
+  <example>&example_reports;</example>
+ </property>
+ <property name="start" id="start_report" inheritable="No">
+  <descr><para>Specifies the start date of the report. In task reports only
+tasks that end after this end date are listed.</para></descr>
+  <attributes>
+   <attr name="date" type="DATE"/>
+  </attributes>
+  <seealso>
+   <also>end_report</also>
+   <also>period_report</also>
+  </seealso>
+  <example>&example_export;</example>
+ </property>
+ <property name="start" id="start" inheritable="Yes"
+scenario="Yes">
+  <descr><para>The start date of the task. When specified for the
+  top-level (default) scenario this attribute also
+  implicitly sets the scheduling policy of the task to
+  <varname>asap</varname>.</para></descr>
+  <attributes>
+   <attr name="date" type="DATE"/>
+  </attributes>
+  <seealso>
+   <also>end</also>
+   <also>period</also>
+   <also>maxstart</also>
+   <also>minstart</also>
+   <also>scheduling</also>
+   <also>startbuffer</also>
+  </seealso>
+  <example>&example_durations;</example>
+ </property>
+ <property name="startbuffer" id="startbuffer" inheritable="No"
+scenario="Yes">
+  <descr><para>Specifies how much slack time you expect to have at the
+beginning of the task. This information has no impact on the scheduling
+of the project. It is for documentation purposes only.</para></descr>
+  <attributes>
+   <attr name="percent" type="REAL">
+    <para>Percent slack of the overall effort, duration or length of
+the task.</para>
+   </attr>
+  </attributes>
+  <seealso>
+   <also>duration</also>
+   <also>endbuffer</also>
+   <also>effort</also>
+   <also>length</also>
+  </seealso>
+  <example>&example_buffer;</example>
+ </property>
+ <property name="startcredit" id="startcredit" inheritable="No"
+scenario="Yes">
+  <descr><para>Specifies an amount that is credited to the account
+specified by the <link linkend="PROPERTY_account_task">account</link>
+property at the moment the tasks starts.</para></descr>
+  <attributes>
+   <attr name="amount" type="REAL"/>
+  </attributes>
+  <seealso>
+   <also>endcredit</also>
+  </seealso>
+  <example>&example_account;</example>
+ </property>
+ <property name="statusnote" id="statusnote" inheritable="No"
+scenario="Yes">
+  <descr><para>A note that describes the current status of the
+task.</para></descr>
+  <attributes>
+   <attr name="text" type="STRING"/>
+  </attributes>
+  <seealso>
+   <also>journalentry</also>
+   <also>note</also>
+  </seealso>
+ </property>
+ <property name="strict" id="strict" inheritable="Yes">
+  <descr><para>Puts the scenario in strict bookings mode. This mode
+  makes only sense when you also use projection mode for this
+  scenario. In strict mode, no bookings will be filled in for
+  any task prior to the current (or now) date. In sloppy mode all task
+  that don't have any bookings provided will be filled with bookings
+  according to the original schedule. TaskJuggler will generate a
+  warning for each task where the booked effort excedes the specified
+  effort.</para></descr>
+  <seealso>
+   <also>booking</also>
+   <also>sloppy</also>
+   <also>projection</also>
+  </seealso>
+ </property> 
+ <property name="subtitle" id="subtitle" inheritable="No">
+  <descr><para>Specifies an alternative subtitle for a report
+column.</para></descr> <attributes>
+   <attr name="text" type="STRING"/>
+  </attributes>
+  <seealso>
+   <also>subtitleurl</also>
+  </seealso>
+  <example>&example_columns;</example>
+ </property>
+ <property name="subtitleurl" id="subtitleurl" inheritable="No">
+  <descr><para>Specifies an URL that is attached to the column subtitle
+of HTML reports.</para></descr>
+  <attributes>
+   <attr name="url" type="STRING"/>
+  </attributes>
+  <seealso>
+   <also>subtitle</also>
+  </seealso>
+  <example>&example_columns;</example>
+ </property>
+ <property name="supplement" id="supplement" inheritable="No">
+  <descr><para>The supplement keyword provides a mechanism to add more
+attributes to already defined tasks or resources. The additional
+attributes must obey the same rules as in regular task or resource
+definitions and must be enclosed by curly braces.</para>
+
+<para>This construct is primarily meant for situations where the
+information about a task or resource is split over several files. E.
+g. the vacation dates for the resources may be in a separate file that
+was generated by some other tool.</para></descr>
+  <attributes>
+   <attr name="type" type="ID">
+    <para>Possible values are <varname>resource</varname> or
+<varname>task</varname>.</para>
+   </attr>
+  </attributes>
+  <seealso>
+   <also>resource</also>
+   <also>task</also>
+  </seealso>
+  <example>&example_supplement;</example>
+ </property>
+ <property name="task" id="task" inheritable="No">
+  <descr><para>Tasks are the central elements of a project plan. Use
+a task to specify which resource should be allocated for how long to
+what task.</para></descr>
+  <attributes>
+   <attr name="id" type="ID"/>
+   <attr name="name" type="STRING"/>
+  </attributes>
+  <optattributes>
+   <optattr>account_task</optattr>
+   <optattr>allocate</optattr>
+   <optattr>complete</optattr>
+   <optattr>depends</optattr>
+   <optattr>duration</optattr>
+   <optattr>effort</optattr>
+   <optattr>endbuffer</optattr>
+   <optattr>endcredit</optattr>
+   <optattr>end</optattr>
+   <optattr>flags</optattr>
+   <optattr>journalentry</optattr>
+   <optattr>length</optattr>
+   <optattr>maxend</optattr>
+   <optattr>maxstart</optattr>
+   <optattr>milestone</optattr>
+   <optattr>minend</optattr>
+   <optattr>minstart</optattr>
+   <optattr>note</optattr>
+   <optattr>period</optattr>
+   <optattr>precedes</optattr>
+   <optattr>priority</optattr>
+   <optattr>projectid</optattr>
+   <optattr>purge</optattr>
+   <optattr>reference</optattr>
+   <optattr>responsible</optattr>
+   <optattr>scheduled</optattr>
+   <optattr>scheduling</optattr>
+   <optattr>shift_selection</optattr>
+   <optattr>startbuffer</optattr>
+   <optattr>startcredit</optattr>
+   <optattr>start</optattr>
+   <optattr>statusnote</optattr>
+   <optattr>supplement</optattr>
+   <optattr>task</optattr>
+  </optattributes>
+  <seealso>
+   <also>resource</also>
+  </seealso>
+  <example>&example_simple;</example>
+ </property>
+ <property name="taskattributes" id="taskattributes" inheritable="No">
+  <descr><para>The list of attribute names specifies which task
+attributes should be listed in the report in addition to the ones
+exported by default. The following values are supported. They
+correspond to the respective attributes of a <link linkend="PROPERTY_task">
+task</link>.</para>
+
+<para><varname>complete</varname>, <varname>depends</varname>,
+<varname>flags</varname>, <varname>maxend</varname>,
+<varname>maxstart</varname>, <varname>minend</varname>,
+<varname>minstart</varname>, <varname>note</varname>,
+<varname>priority</varname>, <varname>responsible</varname></para>
+
+<para>By specifying the ID of a <link
+linkend="PROPERTY_extend">user-defined</link> attribute, these can be
+included as well.</para>
+
+<para>A special case the is <varname>all</varname> keyword. If this is
+part of the list, all supported task attributes will be included in
+the report.	This includes all user-defined task
+attributes.</para></descr>
+  <attributes>
+   <attr name="attribute" type="ID" list="1"/>
+  </attributes>
+  <example>&example_export;</example>
+ </property>
+
+ <property name="taskbarprefix" id="taskbarprefix" inheritable="No">
+  <descr><para>Display on the <varname>taskreport</varname>, on the left of the task area, the data as specified int the runtime macro. The runtime macro follows same rule as 
+<varname>celltext</varname>.</para></descr>
+  <attributes>
+   <attr name="text" type="STRING"/>
+  </attributes>
+  <seealso>
+   <also>taskreport</also><also>celltext</also>
+  </seealso>
+  <example>&example_taskbarprefixpostfix;</example>
+ </property>
+
+ <property name="taskbarpostfix" id="taskbarpostfix" inheritable="No">
+  <descr><para>Display on the <varname>taskreport</varname>, on the right of the task area, the data as specified int the runtime macro. The runtime macro follows same rule as 
+<varname>celltext</varname>.</para></descr>
+  <attributes>
+   <attr name="text" type="STRING"/>
+  </attributes>
+  <seealso>
+   <also>taskreport</also><also>celltext</also>
+  </seealso>
+  <example>&example_taskbarprefixpostfix;</example>
+ </property>
+
+
+ <property name="taskprefix" id="taskprefix" inheritable="No">
+  <descr><para>All tasks in the included file are added as sub-tasks of the
+task specified by <varname>taskprefix</varname>. The
+<varname>taskprefix</varname> must be a valid absolute ID of an
+already defined task.</para></descr>
+  <attributes>
+   <attr name="prefix" type="ID"/>
+  </attributes>
+  <seealso>
+   <also>task</also>
+  </seealso>
+  <example>&example_include;</example>
+ </property>
+
+ <property name="taskreport" id="taskreport" inheritable="No">
+  <descr><para>This report is intended for the TaskJuggler graphical
+  user interface. The report lists all tasks and their respective values
+as a HTML page. The resources that are allocated to the tasks can be
+listed as well.</para></descr>
+  <attributes>
+   <attr name="file" type="STRING"/>
+  </attributes>
+  <optattributes>
+   <optattr>caption</optattr>
+   <optattr>columns</optattr>
+   <optattr>end_report</optattr>
+   <optattr>headline</optattr>
+   <optattr>hideresource</optattr>
+   <optattr>hidetask</optattr>
+   <optattr>loadunit</optattr>
+   <optattr>period_report</optattr>
+   <optattr>rollupresource</optattr>
+   <optattr>rolluptask</optattr>
+   <optattr>scenario_report</optattr>
+   <optattr>shorttimeformat</optattr>
+   <optattr>showprojectids</optattr>
+   <optattr>sortresources</optattr>
+   <optattr>sorttasks</optattr>
+   <optattr>start_report</optattr>
+   <optattr>taskroot</optattr>
+   <optattr>timeformat</optattr>
+   <optattr>taskbarprefix</optattr>
+   <optattr>taskbarpostfix</optattr>
+  </optattributes>
+  <seealso>
+   <also>csvtaskreport</also>
+   <also>htmlaccountreport</also>
+   <also>htmlresourcereport</also>
+   <also>resourcereport</also>
+  </seealso>
+  <example>&example_guireport;</example>
+ </property>
+ <property name="taskroot" id="taskroot" inheritable="No">
+  <descr><para>Only tasks below the specified root-level tasks are
+exported.  The exported tasks will have the id of the root-level task
+stripped from their ID, so that the sub-tasks of the root-level task
+become top-level tasks in the exported file.</para></descr>
+  <attributes>
+   <attr name="root" type="ID">
+    <para>ID of a task that specifies the new root level</para>
+   </attr>
+  </attributes>
+  <example>&example_taskroot;</example>
+ </property>
+ <property name="timezone" id="timezone" inheritable="No">
+  <descr><para>Sets the default timezone of the project. All times
+that have no time zones specified will be assumed to be in this
+timezone. The value must be a string just like those used for the TZ
+environment variable. Most Linux systems have a command line utility
+called <varname>tzselect</varname> to lookup possible values.</para>
+
+<para>The project start and end time are not affected by this setting. You
+have to explicitly state the timezone for those dates or the system
+defaults are assumed.</para></descr>
+  <attributes>
+   <attr name="zone" type="STRING"/>
+  </attributes>
+  <example>&example_timezone;</example>
+ </property>
+ <property name="timeformat" id="timeformat" inheritable="Yes">
+  <descr><para>Determines how time specifications in reports look like.</para></descr>
+  <attributes>
+   <attr name="format" type="STRING">
+    <para>See table below for possible values.</para>
+   </attr>
+  </attributes>
+  <seealso>
+   <also>shorttimeformat</also>
+  </seealso>
+  <freestyle>
+<para>
+Ordinary characters placed in the format string are copied without
+conversion. Conversion specifiers are introduced by  a `%' character,
+and are replaced in s as follows:</para>
+
+<para><simplelist type="horiz" columns="2">
+
+<member>%a</member><member>The abbreviated weekday name according to
+the  current locale.</member>
+
+<member>%A</member><member>The full weekday name according  to the
+current locale.</member>
+
+<member>%b</member><member>The abbreviated month name according to the
+current locale.</member>
+
+<member>%B</member><member> The full month name according to
+the current locale.</member>  
+
+<member>%c</member><member> The preferred date and time
+representation for the current locale.</member>
+
+<member>%C</member><member> The century number (year/100) as a 2-digit
+integer. (SU)</member>
+	
+<member>%d</member><member>The day of the month as a decimal number
+(range  01 to 31).</member>
+
+<member>%D</member><member>Equivalent  to  %m/%d/%y.  (Yecch  -  for
+Americans only.  Americans should note that in other countries %d/%m/%y 
+is rather common.  This means that in international context this format is
+ambiguous  and should not be used.) (SU)</member>
+
+<member>%e</member><member>Like  %d, the day of the month as a decimal number,
+but a leading zero is replaced by a space. (SU)</member>
+	
+<member>%E</member><member>Modifier: use alternative format, see
+below. (SU)</member>
+	
+<member>%F</member><member>Equivalent to %Y-%m-%d (the ISO 8601 date
+format). (C99)</member>
+
+<member>%G</member><member>The ISO 8601 year with century as a decimal
+number.  The 4-digit year corresponding to the ISO week number  (see
+%V). This has the same format and value as %y, except that if the ISO week
+number belongs to  the previous or next year, that year is used
+instead. (TZ)</member>
+	
+<member>%g</member><member>Like %G, but without century, i.e., with a  2-digit
+year (00-99). (TZ)</member>
+	
+<member>%h</member><member>Equivalent to %b. (SU)</member>
+	
+<member>%H</member><member>The  hour as a decimal number using a
+24-hour clock (range 00 to 23).</member>
+
+<member>%I</member><member>The hour as a decimal number using a
+12-hour  clock (range 01 to 12).</member>
+
+<member>%j</member><member>The  day of the year as a decimal number
+(range 001 to 366).</member>
+
+<member>%k</member><member>The hour (24-hour clock) as a decimal
+number (range 0 to 23); single digits are preceded by a blank.  (See
+also %H.) (TZ)</member>
+
+<member>%l</member><member>The hour (12-hour clock) as a decimal
+number (range 1 to 12); single digits are preceded by a blank. (See
+also %I.) (TZ)</member>
+
+<member>%m</member><member>The month as a decimal number (range 01 to
+12).</member>
+
+<member>%M</member><member>The minute as a decimal number (range 00 to
+59).</member>
+
+<member>%n</member><member>A newline character. (SU)</member>
+
+<member>%O</member><member>Modifier: use alternative format, see
+below. (SU)</member>
+
+<member>%p</member><member>Either 'AM' or 'PM' according  to  the
+given  time value, or the corresponding strings for the
+current locale.  Noon is treated as `pm'  and  midnight as
+'am'.</member>
+
+<member>%P</member><member>Like  %p but in lowercase: 'am' or 'pm' or
+%a corresponding string for the current locale. (GNU)</member>
+
+<member>%r</member><member>The time in a.m. or p.m. notation.   In
+the  POSIX locale this is equivalent to '%I:%M:%S %p'. (SU)</member>
+
+<member>%R</member><member>The  time  in  24-hour notation (%H:%M).
+(SU) For a version including the seconds, see %T below.</member>
+
+<member>%s</member><member>The number of seconds since the Epoch,
+i.e.,  since 1970-01-01 00:00:00 UTC. (TZ)</member>
+
+<member>%S</member><member>The second as a decimal number (range 00 to
+61).</member>
+	 
+<member>%t</member><member>A tab character. (SU)</member>
+
+<member>%T</member><member>The time in 24-hour notation (%H:%M:%S).
+(SU)</member>
+
+<member>%u</member><member>The  day  of  the  week as a decimal, range
+1 to 7, Monday being 1.  See also %w. (SU)</member>
+
+<member>%U</member><member>The week number of the current year  as  a
+decimal number,  range  00  to  53, starting with the first Sunday as
+the first day of week 01. See also %V and %W.</member>
+
+<member>%V</member><member>The ISO 8601:1988 week number of the
+current year as a decimal number, range 01 to 53, where week 1 is the
+first week that has at least 4 days in the current year, and with
+Monday as the first day of the week.  See also %U %and %W.
+%(SU)</member>
+
+<member>%w</member><member>The  day  of  the  week as a decimal, range
+0 to 6, Sunday being 0.  See also %u.</member>
+
+<member>%W</member><member>The week number of the current %year  as  a
+decimal number,  range  00  to  53, starting with the first Monday as
+the first day of week 01.</member>
+
+<member>%x</member><member>The preferred date representation for  the
+current locale without the time.</member>
+
+<member>%X</member><member>The  preferred  time representation for
+the current locale without the date.</member>
+
+<member>%y</member><member>The year as a decimal number without
+a century (range 00 to 99).</member>
+
+<member>%Y</member><member> The year as a decimal number
+including the century.</member>
+
+<member>%z</member><member> The time zone as hour offset from
+GMT. Required to emit RFC822-conformant dates (using "%a, %d %%b
+%Y %H:%M:%S %%z"). (GNU)</member>
+
+<member>%Z</member><member>The time zone or name or
+abbreviation.</member>
+
+<member>%+</member><member>The date and time in date(1) format.
+(TZ)</member>
+
+<member>%%</member><member>A literal '%' character.</member>
+
+</simplelist></para>
+
+<para>Some conversion specifiers can be  modified  by preceding them
+by  the E or O modifier to indicate that an alternative format
+should be used.  If the alternative format  or specification  does
+not exist for the current locale, the behavior will be as if the
+unmodified conversion specification  were used.  (SU) The Single
+Unix Specification mentions %Ec, %EC, %Ex, %%EX, %Ry, %EY, %Od,
+%Oe,  %OH, %OI, %Om, %OM, %OS, %Ou, %OU, %OV, %Ow, %OW,
+%Oy, where the effect of the O modifier is to use alternative
+numeric symbols (say, Roman numerals), and that of the E modifier is
+to use a locale-dependent alternative representation.</para>
+
+<para>The documentation of the
+<varname>timeformat</varname> attribute has been taken
+from the man page of the GNU <varname>strftime</varname>
+function.</para>
+  </freestyle>
+ </property>
+ <property name="timingresolution" id="timingresolution" inheritable="No">
+  <descr><para>Sets the minimum timing resolution. The smaller the
+value, the longer the scheduling process lasts and the more memory the
+application needs. The maximum value is 1 hour. The smallest value is
+5 min. The default value depends on the difference between the user
+timezone and UTC. If the difference is multiples of 1 hour, it is set
+to 1 hour. If it is off by 30 minutes, the default value is 30
+minutes. Otherwise, it is set to 15 minutes. Other differences to UTC
+are not supported.</para>
+
+<para>This value is a pretty fundamental setting of TaskJuggler. It
+has a severe impact on memory usage and scheduling performance. You
+should set this value to the minimum required resolution. Make sure
+that all values that you specify are aligned with the
+resolution.</para>
+
+<para>The timing resolution should be set prior to any value that
+represents a time value like now or workinghours.</para></descr>
+  <attributes>
+   <attr name="value" type="INTEGER"/>
+   <attr name="unit" type="UNIT"/>
+  </attributes>
+ </property>
+ <property name="title" id="title" inheritable="No">
+  <descr><para>Specifies an alternative title for a report
+column.</para></descr> <attributes>
+   <attr name="text" type="STRING"/>
+  </attributes>
+  <seealso>
+   <also>titleurl</also>
+  </seealso>
+  <example>&example_columns;</example>
+ </property>
+ <property name="titleurl" id="titleurl" inheritable="No">
+  <descr><para>Specifies an URL that is attached to the column title
+of HTML reports.</para></descr>
+  <attributes>
+   <attr name="url" type="STRING"/>
+  </attributes>
+  <seealso>
+   <also>title</also>
+  </seealso>
+  <example>&example_columns;</example>
+ </property>
+ <property name="vacation" id="vacation_global" inheritable="Yes">
+  <descr><para>Specify a global vacation day. This vacation is
+respected by all resources that are defined hereafter.</para></descr>
+  <attributes>
+   <attr name="name" type="STRING"/>
+   <attr name="interval" type="DATEINTERVAL"/>
+  </attributes>
+  <seealso>
+   <also>vacation_resource</also>
+  </seealso>
+  <example>&example_vacation;</example>
+ </property>
+ <property name="vacation" id="vacation_resource" inheritable="Yes">
+  <descr><para>Specify a vacation period for the resource. It can also
+  be used to block out the time before a resource joint or after it
+  left. For employees changing their work schedule from full-time to
+  part-time, or vice versa, please refer to the 'Shift' property.
+  </para></descr>
+  <attributes>
+   <attr name="interval" type="DATEINTERVAL"/>
+  </attributes>
+  <seealso>
+   <also>vacation_global</also>
+   <also>shift_selection</also>
+  </seealso>
+  <example>&example_vacation;</example>
+ </property>
+ <property name="version" id="version" inheritable="No">
+  <descr><para>Specifies which XML format should be generated.
+Currently version 2 is highly recommended.</para></descr>
+  <attributes>
+   <attr name="number" type="INTEGER"/>
+  </attributes>
+  <example>&example_xmlreport;</example>
+ </property>
+ <property name="weekdays" id="weekdays" inheritable="No">
+  <descr><para>This attribute specifies a list of weekdays that are
+  shown in the report.</para></descr>
+  <attributes>
+   <attr name="weekday" type="WEEKDAY" list="1"/>
+  </attributes>
+  <seealso>
+   <also>workinghours</also>
+  </seealso>
+ </property>
+ <property name="weeklymax" id="weeklymax" inheritable="Yes">
+  <descr><para>Sets the weekly limit of a resource usage or a resource
+allocation to a task.</para></descr>
+  <attributes>
+   <attr name="value" type="REAL"/>
+   <attr name="unit" type="UNIT"/>
+  </attributes>
+  <seealso>
+   <also>dailymax</also>
+   <also>monthlymax</also>
+  </seealso>
+  <example>&example_limits;</example>
+ </property>
+ <property name="weekstartsmonday" id="weekstartsmonday" inheritable="No">
+  <descr><para>Specify that you want to base all week calculation on
+weeks starting on Monday. This is common in many European countries.</para></descr>
+  <seealso>
+   <also>weekstartssunday</also>
+  </seealso>
+ </property>
+ <property name="weekstartssunday" id="weekstartssunday" inheritable="No">
+  <descr><para>Specify that you want to base all week calculation on
+weeks starting on Sunday. This is common in the United States of
+America.</para></descr>
+  <seealso>
+   <also>weekstartsmonday</also>
+  </seealso>
+ </property>
+ <property name="workinghours" id="workinghours" inheritable="Yes">
+  <descr><para>The working hours specification limits the availability
+of resources to certain time slots of week days.</para></descr>
+  <attributes>
+   <attr name="weekday" type="WEEKDAY" list="1"/>
+   <attr name="interval" type="TIMEINTERVAL" list="1"/>
+  </attributes>
+  <seealso>
+   <also>dailyworkinghours</also>
+   <also>yearlyworkingdays</also>
+  </seealso>
+  <example>&example_project;</example>
+ </property>
+ <property name="xmlreport" id="xmlreport" inheritable="No">
+  <descr><para>Generates a XML report. TaskJuggler 2.x has a much
+improved XML format. This is not yet the default, but will be in later
+versions. So you should always specify which version of the XML format
+should be generated. The file name should have a
+<varname>.tjx</varname> extension. Version 2 files are gzip compressed
+XML Files. The DTD for the version 2 file format can be found on the <ulink
+url="http://www.taskjuggler.org/show_dtd.php">TaskJuggler Web
+Site</ulink>.</para></descr>
+  <attributes>
+   <attr name="file" type="STRING"/>
+  </attributes>
+  <optattributes>
+   <optattr>hideresource</optattr>
+   <optattr>hidetask</optattr>
+   <optattr>hideaccount</optattr>
+   <optattr>rollupresource</optattr>
+   <optattr>rolluptask</optattr>
+   <optattr>rollupaccount</optattr>
+   <optattr>scenarios</optattr>
+   <optattr>taskroot</optattr>
+   <optattr>version</optattr>
+  </optattributes>
+  <example>&example_xmlreport;</example>
+ </property>
+ <property name="yearlyworkingdays" id="yearlyworkingdays" inheritable="No">
+  <descr><para>Specifies the number of average working days per year.
+This should correlate to the specified workinghours and vacation. It
+affects the conversion of working hours, working days, working weeks,
+working months and working years into each other.</para>
+<para>When public holidays and vacations are disregarded, this value
+should be equal to the number of working days per week times 52.1428
+(the average number of weeks per year). E. g. for a culture with 5
+working days it is 260.714 (the default), for 6 working days it is
+312.8568 and for 7 working days it is 365.</para></descr>
+  <attributes>
+   <attr name="days" type="REAL"/>
+  </attributes>
+  <seealso>
+   <also>dailyworkinghours</also>
+   <also>loadunit</also>
+   <also>vacation_global</also>
+   <also>workinghours</also>
+  </seealso>
+  <example>&example_project;</example>
+ </property>
+<!-- 
+ <property name="" id="" inheritable="No">
+  <descr><para></para></descr>
+  <attributes>
+   <attr name="" type=""/>
+  </attributes>
+  <optattributes>
+   <optattr></optattr>
+  </optattributes>
+  <seealso>
+   <also></also>
+  </seealso>
+ </property>
+-->
+</properties>
+

@@ -1,0 +1,10 @@
+Documentation
+
+The documentation can be generated from a xml source. Type make to
+create html documentation. Calling make in this directory also patches
+the source taskjuggler.xml.in to taskjuggler.xml.
+
+- IMPORTANT -
+  Always edit taskjuggler.xml.in, not taskjuggler.xml!
+
+Klaas Freitag <freitag@suse.de>

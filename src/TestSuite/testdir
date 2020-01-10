@@ -1,0 +1,90 @@
+#! /bin/sh
+
+LANG=en_US ; export LANG
+LC_ALL=en_US ; export LC_ALL
+LC_COLLATE=POSIX ; export LC_COLLATE
+
+errors=0
+TASKJUGGLER=../../taskjuggler/taskjuggler
+if test ! -x $TASKJUGGLER ; then
+  TASKJUGGLER=taskjuggler
+else
+  TASKJUGGLER=../$TASKJUGGLER
+fi
+export TASKJUGGLER
+
+do_testing()
+{
+  f=$1
+  op=$2
+  echo "Running test $f" >> ../log
+  $TASKJUGGLER --debug 1 --warnerror $TJARGS $f 2>> ../log
+  if [ $? $op 0 ] ; then
+    errors=`expr $errors + 1`
+    echo "Test $f failed!" | tee -a ../log
+  fi
+  checkscript=`echo $f | sed s/\\\\\(.*\\\\\).tjp/\\\1.sh/g`
+  referenceFile=`echo $f | sed s/\\\\\(.*\\\\\).tjp/\\\1-Reference.tjp/g`
+  exportFile=`echo $f | sed s/\\\\\(.*\\\\\).tjp/\\\1-Export.tjp/g`
+  if [ -x $checkscript ] ; then
+    ./$checkscript 2>&1 >> ../log 
+    if [ $? -ne 0 ] ; then
+      errors=`expr $errors + 1`
+      echo "Test $f failed (check script)!" | tee -a ../log
+    fi
+  fi
+  if [ -f $referenceFile ] ; then
+    cmp $exportFile $referenceFile 2>> ../log
+    if [ $? -ne 0 ] ; then
+      errors=`expr $errors + 1`
+      echo "Test $f failed (Reference file differs)!" | tee -a ../log
+      diff -u $referenceFile $exportFile | head -n 20 | tee -a ../log
+    else
+      rm $exportFile
+    fi
+  fi
+}
+
+test_file()
+{
+  if [ -f ignorelist ] ; then
+    grep -c $f ignorelist > /dev/null
+    if [ $? -ne 0 ] ; then
+      do_testing $1 $2
+    fi
+  else  
+    do_testing $1 $2
+  fi  
+}
+
+rm -f log
+touch log
+
+touch .timeStamp
+sleep 1
+
+TJARGS=""
+if [ -f .tjargs ] ; then
+  TJARGS=`cat .tjargs`
+fi
+
+cd Correct
+echo "*** Running tests in Correct..." >> ../log
+for f in *.tjp ; do
+  test_file $f -ne
+done
+cd ../Errors
+echo "*** Running tests in Errors..." >> ../log
+for f in *.tjp ; do
+  test_file $f -eq
+done
+cd ..
+
+# remove all HTML files that are newer than the .timeStamp file
+if [ $errors -eq 0 ] ; then
+  find . -name "*.html" -newer .timeStamp | xargs /bin/rm -f
+fi
+/bin/rm -f .timeStamp
+ 
+exit $errors
+

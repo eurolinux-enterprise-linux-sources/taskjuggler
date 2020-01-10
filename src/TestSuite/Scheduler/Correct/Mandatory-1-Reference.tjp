@@ -1,0 +1,119 @@
+/*
+ * For details about TaskJuggler see http://www.taskjuggler.org
+ */
+project simple "Simple Project" "1.0" 2000-01-01-00:00:00-+0000 - 2000-01-31-00:00:00-+0000 {
+  timezone "GMT"
+  dailyworkinghours 8
+  yearlyworkingdays 260.714
+  timingresolution 60min
+  timeformat "%Y-%m-%d %H:%M"
+  shorttimeformat "%H:%M"
+  currencyformat "(" ")" "," "." 0
+  weekstartsmonday
+  workinghours sun off
+  workinghours mon 9:00 - 12:00, 13:00 - 18:00
+  workinghours tue 9:00 - 12:00, 13:00 - 18:00
+  workinghours wed 9:00 - 12:00, 13:00 - 18:00
+  workinghours thu 9:00 - 12:00, 13:00 - 18:00
+  workinghours fri 9:00 - 12:00, 13:00 - 18:00
+  workinghours sat off
+  scenario plan "Plan" {
+    enabled
+  }
+}
+resource g1 "Group 1" {
+  resource r1 "Resource 1" {
+  }
+  resource r2 "Resource 2" {
+  }
+}
+resource g2 "Group 2" {
+  resource r3 "Resource 3" {
+    vacation 2000-01-05-00:00:00-+0000 - 2000-01-07-00:00:00-+0000
+  }
+  resource r4 "Resource 4" {
+  }
+}
+projectids simple
+task t1 "Task1" {
+  projectid simple
+  plan:start 2000-01-03-09:00:00-+0000
+  plan:end 2000-01-10-18:00:00-+0000
+  plan:scheduled
+  scheduling asap
+}
+task t2 "Task2" {
+  projectid simple
+  plan:start 2000-01-05-09:00:00-+0000
+  plan:end 2000-01-06-18:00:00-+0000
+  plan:scheduled
+  scheduling asap
+}
+task t3 "Task3" {
+  projectid simple
+  plan:start 2000-01-11-09:00:00-+0000
+  plan:end 2000-01-12-14:00:00-+0000
+  plan:scheduled
+  scheduling asap
+}
+supplement task t1 {
+  priority 500
+}
+supplement task t2 {
+  priority 400
+}
+supplement task t3 {
+  priority 300
+}
+supplement resource r1 {
+  plan:booking t3
+    2000-01-11-09:00:00-+0000 +3h,
+    2000-01-11-13:00:00-+0000 +5h,
+    2000-01-12-09:00:00-+0000 +3h,
+    2000-01-12-13:00:00-+0000 +1h
+}
+supplement resource r2 {
+  plan:booking t3
+    2000-01-11-09:00:00-+0000 +3h,
+    2000-01-11-13:00:00-+0000 +5h,
+    2000-01-12-09:00:00-+0000 +3h,
+    2000-01-12-13:00:00-+0000 +1h
+}
+supplement resource r3 {
+  plan:booking t1
+    2000-01-03-09:00:00-+0000 +3h,
+    2000-01-03-13:00:00-+0000 +5h,
+    2000-01-04-09:00:00-+0000 +3h,
+    2000-01-04-13:00:00-+0000 +5h,
+    2000-01-07-09:00:00-+0000 +3h,
+    2000-01-07-13:00:00-+0000 +5h,
+    2000-01-10-09:00:00-+0000 +3h,
+    2000-01-10-13:00:00-+0000 +5h { overtime 2 }
+  plan:booking t3
+    2000-01-11-09:00:00-+0000 +3h,
+    2000-01-11-13:00:00-+0000 +5h,
+    2000-01-12-09:00:00-+0000 +3h,
+    2000-01-12-13:00:00-+0000 +1h
+}
+supplement resource r4 {
+  plan:booking t1
+    2000-01-03-09:00:00-+0000 +3h,
+    2000-01-03-13:00:00-+0000 +5h,
+    2000-01-04-09:00:00-+0000 +3h,
+    2000-01-04-13:00:00-+0000 +5h { overtime 2 }
+  plan:booking t2
+    2000-01-05-09:00:00-+0000 +3h,
+    2000-01-05-13:00:00-+0000 +5h,
+    2000-01-06-09:00:00-+0000 +3h,
+    2000-01-06-13:00:00-+0000 +5h { overtime 2 }
+  plan:booking t1
+    2000-01-07-09:00:00-+0000 +3h,
+    2000-01-07-13:00:00-+0000 +5h,
+    2000-01-10-09:00:00-+0000 +3h,
+    2000-01-10-13:00:00-+0000 +5h { overtime 2 }
+  plan:booking t3
+    2000-01-11-09:00:00-+0000 +3h,
+    2000-01-11-13:00:00-+0000 +5h,
+    2000-01-12-09:00:00-+0000 +3h,
+    2000-01-12-13:00:00-+0000 +1h
+}

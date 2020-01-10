@@ -1,0 +1,23 @@
+# The HTML reports include localized strings, so we must ensure that
+# we use the same LOCALE as the reference files have used.
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_COLLATE=POSIX 
+
+errors=0
+
+for f in *.tjp ; do
+  referenceFile=`echo $f | sed s/\\\\\(.*\\\\\).tjp/\\\1-Reference.html/g`
+  htmlFile=`echo $f | sed s/\\\\\(.*\\\\\).tjp/\\\1-Export.html/g`
+  ../../taskjuggler/taskjuggler $f | \
+  fgrep -v TaskJuggler > $htmlFile
+  cmp $htmlFile $referenceFile
+  if test $? -ne 0 ; then
+    errors=`expr $errors + 1`
+  else
+    rm $htmlFile
+  fi
+done
+
+exit $errors
+

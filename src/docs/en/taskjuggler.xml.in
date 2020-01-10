@@ -1,0 +1,798 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" [
+ <!ENTITY ChangeLog SYSTEM "ChangeLog.xml">
+ <!ENTITY FirstProject SYSTEM "FirstProject.xml">
+ <!ENTITY UsageGuide SYSTEM "UsageGuide.xml">
+ <!ENTITY SyntaxReference SYSTEM "SyntaxReference.xml">
+ <!ENTITY PropertyReference SYSTEM "GenPropertyReference.xml">
+ <!ENTITY Example SYSTEM "Example.xml">
+ <!ENTITY Freeze_Example SYSTEM
+   "../../TestSuite/Syntax/Correct/Freeze.tjp">
+]>
+<book id="index">
+<bookinfo><title>The <ulink
+url="http://www.taskjuggler.org">TaskJuggler</ulink> Manual</title>
+<authorgroup>
+<author>
+	<firstname>Chris</firstname><surname>Schl&auml;ger</surname>
+</author>
+<author>
+	<firstname>Marc</firstname><surname>R&uuml;hrschneck</surname>
+</author>
+</authorgroup>
+<copyright>
+	<year>2001, 2002, 2003, 2004, 2005, 2006</year>
+	<holder>Chris Schl&auml;ger</holder>
+</copyright>
+<date>Version @VERSION@</date>
+<releaseinfo>@VERSION@</releaseinfo>
+<abstract>
+<para>
+This document describes TaskJuggler version @VERSION@
+</para>
+</abstract>
+
+<keywordset>
+<keyword>TaskJuggler</keyword>
+<keyword>Project Management</keyword>
+<keyword>Gantt Chart</keyword>
+<keyword>Task</keyword>
+<keyword>Resources</keyword>
+</keywordset>
+</bookinfo>
+
+<preface id="about_this_document"><title>About this document</title>
+<para>
+This document describes TaskJuggler version @VERSION@
+</para>
+
+<para>The <application>TaskJuggler</application> manual consists of
+two parts. The first part contains general usage information and a
+tutorial. The tutorial is highly recommended for all first-time
+TaskJuggler users. It is a very good introduction to many TaskJuggler
+concepts and features. The second part is the language
+reference.</para>
+
+</preface>
+
+<chapter id="introduction"><title>Introduction</title>
+<sect1 id="about_taskjuggler"><title>About TaskJuggler</title>
+
+<para>TaskJuggler is a modern and powerful project management tool. Its new
+approach to project planning and tracking is far superior to the
+commonly used Gantt chart editing tools. It has already been
+successfully used in many projects and scales easily to projects with
+hundreds of resources and thousands of tasks.</para>
+
+<para>TaskJuggler is an Open Source tool for serious project managers. It
+covers the complete spectrum of project management tasks from the
+first idea to the completion of the project. It assists you during
+project scoping, resource assignment, cost and revenue planning, risk
+and communication management.</para>
+
+<para>TaskJuggler provides an optimizing scheduler that computes your
+project time lines and resource assignments based on the project
+outline and the constrains that you have provided. The built-in
+resource balancer and consistency checker offload you from having to
+worry about irrelevant details and ring the alarm if the project gets
+out of hand. Its flexible "as many details as necessary"-approach
+allows you to still plan your project as you go, making it also ideal
+for new management strategies such as Extreme Programming and Agile
+Project Management.</para>
+
+<para>If you are about to build a skyscraper or just want to put together
+your colleague's shift plan for the next month, TaskJuggler is the
+right tool for you. If you just want to draw nice looking Gantt charts
+to impress your boss or your investors, TaskJuggler might not be right
+for you. It takes some effort to master its power, but it will become
+a companion you don't want to miss anymore.</para>
+
+</sect1>
+<sect1 id="features_and_highlights"><title>Features and Highlights</title>
+
+<para>
+<itemizedlist mark='opencircle'>
+
+<listitem><para>Manages tasks, resources and costs in one package</para></listitem>
+
+<listitem><para>Automatic resource leveling, tasks conflict resolutions, and task filtering</para></listitem>
+
+<listitem><para>Comprehensive and flexible views and reports so you can find the
+information you need when you need it</para></listitem>
+
+<listitem><para>Built-in templates to get you started (you can also save your own schedules as templates for future use)</para></listitem>
+
+<listitem><para>Project tracking and status reporting</para></listitem>
+
+<listitem><para>Graphical User Interface to conveniently edit your projects, view and generate Gamtt charts and reports</para></listitem>
+
+<listitem><para>Unlimited number of scenarios (baselines) of same project for what-if analysis</para></listitem>
+
+<listitem><para>CSV data export for exchange with Office Suites</para></listitem>
+<listitem><para>Risk analysis</para></listitem>
+
+<listitem><para>Project breakdown and management team support</para></listitem>
+
+<listitem><para>Flexible working hours and vacation handling</para></listitem>
+
+<listitem><para>Support for shift working</para></listitem>
+
+<listitem><para>Multiple timezone support</para></listitem>
+
+<listitem><para>Tasks may have initial costs, finishing costs</para></listitem>
+
+<listitem><para>Resources may have running costs</para></listitem>
+
+<listitem><para>Support for profit/loss analysis</para></listitem>
+
+<listitem><para>HTML and XML report generation</para></listitem>
+
+<listitem><para>Powerful project description syntax with macro support</para></listitem>
+
+<listitem><para>Support for central resource allocation database</para></listitem>
+
+</itemizedlist>
+</para>
+
+</sect1>
+<sect1 id="taskjuggler_on_the_web"><title>TaskJuggler on the Web</title>
+
+<para>The official TaskJuggler web site can be found at <ulink
+url="http://www.taskjuggler.org">
+http://www.taskjuggler.org</ulink>.</para>
+
+<para>Since the developers are mostly busy project managers
+themselves, we have created a <ulink
+url="http://www.taskjuggler.org/FUDforum2">forum</ulink> for users to
+help each other.</para>
+
+</sect1>
+&ChangeLog;
+<sect1 id="how_to_contribute"><title>How to Contribute</title>
+
+<sect2 id="why_contribute"><title>Why contribute?</title>
+
+<para>TaskJuggler is an Open Source Project. It was developed by
+volunteers mostly in their spare time. Made available under the GNU
+General Public license and similar licenses, TaskJuggler can be shared
+and used free of charge by anybody who respects the license
+conditions. Does that mean you can use it without worrying about
+anything? Clearly not! Though users have no legal obligation to
+contribute, you should feel a moral obligation to support Open Source
+in whatever way you can. This can range from helping out other
+users with their first Linux installation to actively contributing to
+the TaskJuggler Project, not just as a programmer. The following section
+describes, how you can
+contribute to any of the components that are part of the TaskJuggler
+software releases.</para>
+
+</sect2>
+<sect2 id="preparing_a_contribution"><title>Preparing a
+contribution</title>
+
+<para>All TaskJuggler development is coordinated using the <ulink
+url="http://git.or.cz/">git</ulink> revision control system. All
+changes must be submitted using git so that we can track the
+authorship of each submission. To contribute you need to have at
+least git version 1.5.0 installed. As a first step, you need to
+checkout the latest version of the TaskJuggler. This will create a
+directory called <varname>taskjuggler</varname> in your current
+directory. It not only contains the latest sources, but also the full
+revision history of the code. It is your local copy of the TaskJuggler
+source repository.</para>
+
+<screen>git clone http://www.taskjuggler.org/git-repos/taskjuggler.git
+</screen>
+
+<para>If you have never used git before, you need to configure it
+first. You need to set your name and email address. This information
+will be present in all patches that you submit.</para>
+
+<screen>git config --global user.name "Your Name"
+git config --global user.email "firstname.lastname@domain.org"
+</screen>
+
+<para>You then need to configure and install the TaskJuggler version.
+Make sure, you have removed all other instances of TaskJuggler removed
+from you system before doing so. It is a common mistake to have an old
+version of the TaskJuggler library used by a newer version of the
+executables.</para>
+
+<screen>cd taskjuggler
+make -f Makefile.cvs
+./configure # Put your options here (see ./configure --help
+for details)
+make
+# Run as root
+make install
+</screen>
+
+<para>Do not use the development snapshots and send your patches as
+plain diff files. After having switched to git, we no longer accept
+such patches.</para>
+
+<para>Next you need to find the files where you want to make your
+modifications. Sometimes files will be generated from
+other files. Do not change those generated files. Your changes will be
+overwritten the next time you call the make utility. To identify those
+files, some familiarity with make and other Linux tools are
+helpful. Whenever there is a file with the same base name and the extension
+<varname>.in</varname> in the same directory, then the file is
+generated from the <varname>.in</varname>-file. You need to modify the
+<varname>.in</varname>-file, not the one with just the base name. Another
+indicator is the fact that the file is not part of the repository. With few
+exceptions the repository does not contain any generated files.</para>
+
+</sect2>
+<sect2 id="creating_a_patch"><title>Creating a Patch</title>
+
+<para>When you are done with your changes, it's a good idea to test
+them. In the <varname>taskjuggler</varname> directory run the
+following commands. </para>
+
+<screen>make
+# Run as root
+make install
+</screen>
+
+<para>If there are no errors, you can check or test the result. If
+everything works fine, you can lock at your changes again.</para>
+
+<screen>git diff</screen>
+
+<para>The git-diff utility performs a line-by-line comparison of the
+files against the latest version in you local repository. Try to only
+make changes that have an impact on the generated files. Do not change
+indentation or line wrapping of paragraphs unless absolutely
+necessary. These kinds of changes increase the size of diff files and
+make it much harder to evaluate the patches.  When making changes to
+the program code, please use exactly the same coding style. If your
+contribution is large enough to justify a copyright claim, please
+indicate what copyright you claim in the patch. For modifications to
+existing files, we will assume that your contribution falls under the
+same license as the modified file. All new files will need to contain
+a license declaration, preferably GPL version 2. In any case, the
+license must be an <ulink url="http://www.opensource.org/licenses">OSI
+accepted license</ulink> and be compatible with the rest of the
+project.</para>
+
+<para>Review all changes carefully. In case you have created new
+source files, you need to register them with your repository.</para>
+
+<screen>git add FILENAME</screen>
+
+<para>If you think you are done, you can commit your changes to your local
+repository.</para>
+
+<screen>git commit -a</screen>
+
+<para>Whenever you have made a certain change or added a certain
+feature, you should commit your changes to your local repository. This
+keeps patches small and makes reviewing them easier. The easier your
+patches can be reviewed, the more likely they will get in.</para>
+
+<para>The final step to submit your changes is to package them up and
+sign them. It is always a good idea to check for upstream changes
+again.</para>
+
+<screen>git pull</screen>
+
+<para>This makes sure you are really committing your patches against
+the latest version of the source code. In case there were upstream
+changes, you need to merge them first. Usually git does this
+automatically. Refer to the <ulink
+url="http://www.kernel.org/pub/software/scm/git/docs/user-manual.html">git
+manual</ulink> for details on resolving conflicts during merges. Now
+you can create the patch or patch-set.</para>
+
+<screen>git format-patch -s origin</screen>
+
+<para>This will generate a number of files starting with 5-digit file
+names. You then need to attach these files to a posting in the
+<ulink
+url="http://www.taskjuggler.org/FUDforum2/index.php?t=thread&amp;frm_id=5">TaskJuggler
+Developer Forum</ulink>.</para>
+
+</sect2>
+<sect2 id="contributing_translations"><title>Contributing Translations</title>
+
+<para>Another possible area of contribution are translations of
+TaskJuggler into languages other than US-English. Our development
+process is in principle prepared for translations, but the first
+translation will definitely be a bit difficult to do. TaskJuggler has
+several hundred messages and more than two hundred pages of documentation.
+Any translation is a significant effort and an ongoing commitment.
+TaskJuggler is still actively developed and this will require the
+translations to be updated as well. Please understand that we do not
+want to ship partial or outdated translations to our users,
+so please ensure you or a group of people are willing to maintain the
+translations.</para>
+
+</sect2>
+<sect2 id="some_final_words_to_contributors"><title>Some final words
+to Contributors</title>
+
+<para>We do welcome all contributions, but please understand that we
+reserve the right to reject any contribution that does not follow the
+above guidelines or otherwise conflicts with the goals of the
+TaskJuggler team. It is a good idea to contact the team prior to
+making any larger efforts.</para>
+
+</sect2>
+</sect1>
+</chapter>
+<chapter id="installation"><title>Installation</title>
+<sect1 id="obtaining_taskjuggler"><title>Obtaining TaskJuggler </title>
+
+<para>TaskJuggler may be obtained from the following web site:</para>
+
+<para><ulink url="http://www.taskjuggler.org">
+http://www.taskjuggler.org</ulink></para>
+</sect1>
+<sect1 id="the_taskjuggler_components"><title>The TaskJuggler
+Components</title>
+
+<para>TaskJuggler consists of several modular components that you
+may or may not need. TaskJuggler also uses some additional tools. We
+have avoided to re-invent the wheel wherever possible.
+We tried to keep the dependency list reasonably small, but it
+nevertheless can be challenging for an inexperienced user to build
+and install TaskJuggler from source code. Most users are probably
+better served by using binary packages from their distributor. Almost
+every mainstream 
+distribution has TaskJuggler included in recent versions of their
+product. If not, you might like to contact them to inform them that
+they are missing an essential package.</para>
+
+<para>This version of TaskJuggler was built and tested on SuSE Linux
+10.0 and 10.1 on various hardware platforms.</para>
+
+<sect2 id="the_graphical_use_interface"><title>The Graphical User
+Interfaces</title>
+
+<para>With version 2.2 came a new graphical front-end. It's an integrated
+project management environment.</para>
+
+<para>The front-end is called
+<computeroutput>TaskJugglerUI</computeroutput>.
+Don't confuse this with <computeroutput>taskjuggler</computeroutput>,
+which is the commandline version. When you want to start TaskJugglerUI
+from a shell, you need to type it with the capital letters.</para>
+
+<para>The graphical front-end makes use of the libraries of the <ulink
+url="http://www.kde.org">K Desktop Environment</ulink>. We recommend to use
+at least version 3.4. Earlier versions will probably work as well, but
+we have not tested them.</para>
+
+</sect2>
+<sect2 id="the_command_line_tool_taskjuggler"><title>The command line
+tool taskjuggler</title>
+
+<para>To build and run TaskJuggler, you need:</para>
+
+<para><itemizedlist mark='opencircle'>
+
+<listitem><para>Qt &mdash; The <ulink
+url="ftp://ftp.trolltech.com/qt/source"> Qt C++ class library</ulink>
+version 3.3 or higher</para></listitem>
+
+<listitem><para> GNU Compiler Collection &mdash; We are currently
+using GCC 4.0 to develop TaskJuggler. Since we try to write the code
+platform independent and ANSI standard compliant it should work with
+most other compilers as well.</para></listitem>
+
+</itemizedlist></para>
+
+<para>The requirements listed are enough to build and use the command line
+program that translates project descriptions into HTML or XML reports.
+If you want to build this documentation or use the tools to process
+the XML files you need to install the additional dependencies. If any
+of the following dependencies are not matched, the configure script
+will issue a warning but will not fail.</para>
+
+</sect2>
+<sect2 id="the_taskjuggler_documentation"><title>The TaskJuggler
+Documentation</title>
+
+<para><itemizedlist mark='opencircle'>
+
+<listitem><para>DocBook4 &mdash; The <ulink
+url="http://www.oasis-open.org/docbook/">DocBook</ulink> system with
+additional stylesheets and utilities.</para></listitem>
+
+<listitem><para>docbook-utils&mdash; The <ulink
+url="ftp://sources.redhat.com/pub/docbook-tools">jade wrapper
+scripts</ulink> from Eric Bischoff.</para></listitem>
+
+<listitem><para>OpenJade &mdash; The <ulink
+url="http://openjade.sourceforge.net/">OpenJade</ulink>
+system.</para></listitem>
+
+<listitem><para>JadeTeX &mdash; If you want to build the Postscript
+version of the documentation you need the <ulink
+url="ftp://ftp.dante.de/tex-archive/macros/jadetex">JadeTeX</ulink>
+macro package for <ulink
+url="http://www.tug.org/teTeX">teTeX</ulink>.</para></listitem>
+
+<listitem><para>XSLT Processor &mdash; like xsltproc from the <ulink
+url="http://xmlsoft.org/XSLT/">libxslt</ulink>
+package.</para></listitem>
+
+<listitem><para>Meinproc &mdash; the XSLT processor for the <ulink
+url="http://www.kde.org">KDE</ulink> Helpcenter. You only need
+meinproc in case you want to build the GUI. meinproc is part of any
+KDE distribution.</para></listitem>
+
+<listitem><para>dvips &mdash; This is usually part of your TeX system
+like <ulink
+url="http://www.tug.org/teTeX">te_latex</ulink>.</para></listitem>
+
+</itemizedlist></para>
+
+</sect2>
+<sect2 id="contributed_stuff"><title>Contributed Stuff</title>
+
+<para>Several people have contributed useful tools for TaskJuggler
+users. These tools can be found in the Contrib directory of the source
+code package. Please refer to the included README files for
+installation information.</para>
+
+</sect2>
+
+</sect1>
+<sect1 id="compilation_and_installation"><title>Compilation and
+Installation</title> <para>
+Before compiling TaskJuggler you need to set the
+<computeroutput>QTDIR</computeroutput> environment variable to the
+base directory of your Qt version. This is normally
+<computeroutput>/usr/lib64/qt3</computeroutput> or
+<computeroutput>/usr/lib/qt3</computeroutput>.</para>
+
+<para>To compile and install TaskJuggler on your system, type the following 
+in the base directory of the TaskJuggler distribution:</para>
+
+<para><screen>
+% ./configure
+% make
+% make install
+</screen></para>
+
+<para>Since TaskJuggler uses <computeroutput>autoconf</computeroutput>, you
+should have no trouble compiling it. TaskJuggler has some weak or
+non-mandatory dependencies. If any of these are not satisfied, a
+warning is issued. In case a mandatory dependency is not found, an
+error is displayed and the configuration program stops. If you have
+problems, please report them to the TaskJuggler user forum at
+<ulink url="http://www.taskjuggler.org/FUDforum2">
+http://www.taskjuggler.org/FUDforum2</ulink> in English. Someone
+there can help you out.</para>
+
+<para>In case you want to build TaskJuggler without the graphical
+front-end, you can disable it during the configuration process:</para>
+
+<para><screen>
+% ./configure --with-kde-support=no --prefix=/usr/local
+% make
+% make install
+</screen></para>
+
+</sect1>
+</chapter> 
+<chapter id="usage"><title>Usage</title> 
+<sect1 id="basics"><title>Basics</title>
+
+<para>TaskJuggler uses one or more text files to describe a project.
+The main project should be placed in a file with the
+<computeroutput>.tjp</computeroutput> extension. This main project may
+contain several sub-projects. Such sub-projects should be placed in
+files with the <computeroutput>.tji</computeroutput> extension. These
+sub-projects are included in the main project during compile
+time.</para>
+
+<para>When TaskJuggler is used with other tools, the project
+description or the reports may also be in XML format. The recommended
+extension for such files is
+<computeroutput>.tjx</computeroutput>.</para>
+
+</sect1> 
+<sect1 id="general_usage"><title>General Usage</title>
+
+<para>To use the graphical front-end simply start it from the menu.
+Depending on your Linux Distribution you will usually find it under
+Office/Project Management or a similar entry. To start it from a shell
+type</para>
+
+<para><screen>
+% TaskJugglerUI
+</screen> </para>
+
+<para>The commandline version of TaskJuggler works like a compiler.
+You provide the source files, it computes the contents and creates the
+output files.</para>
+
+<para>Let's say you have a project file called
+<filename>AcSo.tjp</filename>. It contains the tasks of your project
+and their dependencies. To schedule the project and create report
+files you have to ask TaskJuggler to process it.</para>
+
+<para><screen>
+% taskjuggler AcSo.tjp
+</screen> </para>
+
+<para>TaskJuggler will try to schedule all tasks with the specified
+conditions and generate the reports that were requested with the <link
+linkend="PROPERTY_htmltaskreport">htmltaskreport</link>, <link
+linkend="PROPERTY_htmlresourcereport">htmlresourcereport</link> or other report
+properties in the input file.</para>
+
+<para>In contrast to the commandline version the GUI does not generate
+all reports directly after scheduling. Only the report that was
+visible previously will be generated. All other reports including export
+reports will be generated when viewed or requested by the right mouse
+button menu.</para>
+
+</sect1> 
+<sect1 id="the_command_line_options"><title> The Command Line
+Options</title>
+
+<para><simplelist type="horiz" columns="2">
+
+<member>--help</member>
+<member>Print all command line options with a short
+description.</member>
+
+<member>--version</member>
+<member>Print the version and copyright info.</member>
+
+<member>-v</member><member>Same as '--version'.</member>
+
+<member>-s</member><member>Stop TaskJuggler's run after syntax check.
+This option is for testing and debugging purposes only.</member>
+
+<member>-M</member><member>Output fragment of a Makefile that lists
+the dependencies of the passed TaskJuggler files.</member>
+
+<member>--makefile &lt;file&gt;</member><member>Similar to '-M' but write
+the dependency information into the specified file.</member>
+
+<member>--maxerrors N</member><member>Specifies the number of errors
+after which TaskJuggler stops checking the input files. If N is 0
+all errors are displayed.</member>
+
+<member>--nodepcheck</member>
+<member>Do not check for dependency loops. The loop detector uses an
+algorithm that needs exponentially more time the bigger the dependency
+network gets. So for large projects it can be desirable to skip the
+dependency loop detection. This does not affect the task scheduling
+but can lead to error messages that are difficult to associate with the
+dependency specification that is wrong.</member>
+
+<member>--debug N</member>
+<member>Print debug output; N must be between 0 and 4, the higher N
+the more output is printed. This option is for testing and debugging
+purposes only.</member>
+
+<member>--dbmode N</member>
+<member>Limit debug output to certain modules of the code; N is a bit
+mask. Each set bit activates output of a certain module. Currently the
+following modules are supported: Project File Reader (1), Project
+Scheduler (2), Task Scheduler (4), Resource Scheduler (8), Expression
+Tree Evaluator (16). This option is for testing and debugging purposes
+only.</member>
+
+<member>--warnerror</member>
+<member>Warnings are treated as errors.</member>
+
+</simplelist></para>
+
+<para>Calling TaskJuggler with . as input filename will cause reading
+from stdin. To redirect output to stdout you can specify -- as
+filename for reports. This feature can for example be used to generate
+dynamic HTML pages from CGI scripts.</para>
+
+</sect1> 
+<sect1 id="reporting_bugs_and_sending_feedback"><title>Reporting Bugs
+and Sending Feedback</title>
+
+<para>All official releases of TaskJuggler are meant to be stable
+releases unless explicitly noted differently. But our test suite is
+still very small and some features are not tested automatically very
+well. So it's very likely that your current version of TaskJuggler
+contains some bugs. If you find a bug, please follow this
+procedure:</para>
+
+<para><itemizedlist mark='opencircle'>
+
+<listitem><para>Read this manual to make sure that it is actually a
+bug and not a feature.</para></listitem>
+
+<listitem><para>Check the TaskJuggler <ulink
+url="http://www.taskjuggler.org">web page</ulink>.
+Possibly the bug was already found and a patch or workaround
+exists.</para></listitem>
+
+<listitem><para>Try to create a test project that is as small as
+possible but still reproduces the bug.</para></listitem>
+
+<listitem><para>Send the test project and a detailed description of
+the problem to the developer forum at <ulink
+url="http://www.taskjuggler.org/FUDforum2">http://www.taskjuggler.org/FUDforum2</ulink>.</para></listitem>
+
+</itemizedlist></para>
+
+</sect1> 
+</chapter>
+&FirstProject;
+&UsageGuide;
+&SyntaxReference;
+&PropertyReference;
+
+<chapter id="example"><title>The Example: Accounting Software</title>
+&Example;
+</chapter>
+
+<chapter id="migrating_from_taskjuggler_1_x_to_2_x"><title>Migrating
+from TaskJuggler 1.x to 2.x</title>
+
+<sect1 id="achieving_compatibility"><title>Achieving compatibility</title>
+
+<para>Are you also frustrated by tools that can't read the data of
+their earlier incarnations? After all, those files contain your
+valuable data and the first impression of the wonderful new version
+is its failure to read your old files. With TaskJuggler we
+like to spare you such situations as much as possible. But TaskJuggler
+1.x was written to solve the problems that we encountered. By
+releasing it to the general public we learned that TaskJuggler is also
+very useful to many other people. Some contacted us to tell us that
+it would be even more useful to them, if TaskJuggler could have this
+or that new feature. In many cases we added these new features but we
+learned more and more that some parts of the original TaskJuggler
+design were not flexible enough to support some new features. For
+TaskJuggler 2.x we decided to change TaskJuggler to a more flexible
+design even if this meant that some syntax constructs would no longer
+be supported.</para>
+
+<para>As TaskJuggler uses plain text file as its main data format,
+you will always be able to read in your old files. But in some
+cases, you need to change certain syntax constructs to the new syntax.
+When TaskJuggler processes a file with deprecated syntax it will
+generate an error message. This usually contains a hint, how the
+statement should look like in the new syntax. The following sections
+discuss the conceptual changes and what statements need to be
+changed.</para>
+
+<sect2 id="syntax_changes"><title>Syntax changes</title>
+
+<para>TaskJugger 1.x could only handle two scenarios with the fixed
+name <computeroutput>plan</computeroutput> and
+<computeroutput>actual</computeroutput>. TaskJuggler 2.0 can now
+handle any number of scenarios. Scenario specific task attributes have
+to be prefixed with the scenario ID followed by a colon. The
+attributes starting with 'plan' or 'actual' have been
+deprecated.</para>
+
+<para>HTML reports are now a lot more flexible. New CSS
+elements are used and the table elements are customizable now.
+Old stylesheets will no longer work, since the attribute names have
+changed. An HTML report contains CSS attribute class specifications if
+you provide a custom stylesheet definition with <link
+linkend="PROPERTY_rawstylesheet">rawstylesheet</link>.</para>
+
+<para>The scenario name is no longer displayed by default if
+more than one scenario is included in a report. A column
+<computeroutput>scenario</computeroutput> must be explicitly added if
+the scenario name should be reported for each line. The attributes
+'showactual' and 'hideplan' have been deprecated. The <link
+linkend="PROPERTY_scenarios">scenarios</link> attribute now
+controls which scenarios should be shown.</para>
+
+<para>The format of numbers and currency values can now be
+specified with <link
+linkend="PROPERTY_numberformat">numberformat</link> and <link
+linkend="PROPERTY_currencyformat">currencyformat</link>. The old
+keyword currencydigits has been deprecated.</para>
+
+<para><link
+linkend="PROPERTY_workinghours">workinghours</link> and <link
+linkend="PROPERTY_currency">currency</link> are no longer global
+properties. They are now optional attributes of the project
+property.</para>
+
+<para>Container tasks in export reports no longer have fixed
+start and end dates, if they have their subtasks exported as
+well.</para>
+
+<para>The functions for <link
+linkend="TYPE_LOGICALEXPRESSION">Logical Expressions</link> are now using
+capital letters to improve their readability. The all lowercase
+versions are still supported, but the recommended versions are now the
+ones with intermixed uppercase letters.
+<computeroutput>isTaskOfProject</computeroutput> was added as new
+query function.</para>
+
+<para>Support for a new XML format has been added. The old format is still
+supported. TaskJuggler can read both old and new format XML files but will
+use the new XML format for output.</para>
+
+</sect2>
+<sect2 id="scheduler_changes"><title>Scheduler changes</title>
+
+<para>Length and duration tasks with resource
+allocations are no longer trimmed to the first and last resource
+allocation. This can lead to different schedules.</para>
+
+<para>'length' based tasks now use the global working hours
+and global vacation settings as a criteria of what is a working day.
+The tasks now always end during working hours and not at
+midnight.</para>
+
+<para>The maximum allocation of a resource for a task is no
+longer limited by default. <link
+linkend="PROPERTY_maxeffort">maxeffort</link> now defaults to 0
+(unlimited) instead of 1.0 (8 hours per day). To have the same
+behaviour as in TaskJuggler 1.x, you need to specify
+<computeroutput>maxeffort 1.0</computeroutput> before any resource
+definition. This change was made since many users were confused when
+after increasing the daily working hours resources were still only
+allocated 8 hours per day.</para>
+
+</sect2>
+</sect1>
+</chapter>
+<chapter id="FAQ"><title>Questions and Answers</title>
+<sect1 id="general_questions"><title>General Questions</title>
+
+<para>Q: Why does taskjuggler use Qt when it's not an X11
+application?</para>
+<para>A: Qt is a very powerful library that is much more than just a
+widget library. TaskJuggler uses Qt for all kinds of internal data
+types like lists and arrays. It also uses the Unicode functions, the
+SQL database interface and the XML support of Qt.</para>
+
+</sect1>
+<sect1 id="compiling_and_installation"><title>Compiling and
+installation</title>
+
+<para>Q: Can TaskJuggler be compiled and used on Windows?</para>
+<para>A: Probably yes, but we have never tried it. It should compile
+but may require some minor tweaks of the source. You should have
+good knowledge of C++ and Qt when you try this. Please let us know if you
+were successful.</para>
+</sect1>
+<sect1 id="FAQ_usage"><title>Usage</title>
+<para>Nothing here yet.</para>
+</sect1>
+</chapter>
+<chapter id="copyright"><title>Copyright</title>
+
+<para>TaskJuggler Copyright 2001, 2002, 2003, 2004, 2005 Chris
+Schl&auml;ger &lt;cs@suse.de&gt;</para>
+
+<para>This program is free software. You can redistribute it and modify it
+under the terms of the GNU General Public License version 2 as
+published by the Free Software Foundation.</para> 
+
+<para>This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.</para>
+
+<para>You should have received a copy of the GNU General Public License
+along with this program. If not, write to the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.</para>
+
+</chapter>
+<chapter><title>Trademarks</title>
+
+<para>Linux is a registered trademark of Linus Torvalds.</para>
+
+<para>KDE and the K Desktop environment are registered trademarks of
+KDE e. V.</para>
+
+<para>TaskJuggler is a trademark of Chris Schl&auml;er.</para>
+
+<para>UNIX is a registered trademark and The Open Group are trademarks of
+The Open Group in the US and other countries.</para>
+
+</chapter>
+</book>

@@ -1,0 +1,14 @@
+This example shows how to split big projects into smaller sub projects
+but still have cross dependencies. This idea is to export certain
+tasks as fixed tasks from one project (project1) and include them in
+the other project (project2). So project2 can reference tasks from
+project1 without knowing all the details and without the need to
+combine both project into one mega project.
+
+Project1 and Project2 share a common resource pool. The resource
+allocations can be included in the exported files, but the project
+part that is scheduled first, always gets it's resources first. The
+including project then has to live with the remaining free slots. With
+good project and resource partitioning this should be no problem. If
+you can't take that route, you have to take the mega project approach.
+

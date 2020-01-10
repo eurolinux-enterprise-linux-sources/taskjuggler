@@ -1,0 +1,29 @@
+#! /bin/bash
+
+# Run the test suite in a different time zone than the reference files
+# were generated. This catches all test cases without timezone
+# specification.
+TZ="UTC-3"
+export TZ
+
+errors=0
+
+dirs=`find * -prune -type d`
+
+for d in $dirs ; do
+  if [ $d != "CVS" ] ; then
+    echo "Testing in $d"
+    cd $d
+    if [ -x ./testdir ] ; then
+      ./testdir
+    else
+      ../testdir
+    fi
+    errors=`expr $errors + $?`
+    cd ..
+  fi
+done
+
+echo $errors errors detected!
+exit $errors
+

@@ -1,0 +1,43 @@
+project test "Test" "$Id" 2000-01-01-00:00:00-MST - 2000-03-10-00:00:00-MST {
+	timezone "America/Denver"
+	extend task {
+		text UserText "User Text"
+		reference UserRef "User Reference"
+	}
+}
+
+include "workforce.tji"
+
+include "project_b1_export.tji"
+
+
+task t2 "Task2" {
+	depends t1
+	effort 10d
+	allocate r2
+}
+
+task t4 "Task4" {
+}
+
+include "project_a_sub.tji" { taskprefix t4 }
+
+htmltaskreport "project_b.html" {
+	columns name, id, projectid, start, end, daily
+	sorttasks nameup
+	hideresource 0
+	notimestamp
+}
+
+htmlresourcereport "project_b_res.html" {
+	columns name, daily
+	hidetask 0
+	sorttasks nameup
+	notimestamp
+}
+
+export "project_b2_export.tji" {
+  hideresource 0
+	taskattributes flags, note, minstart, maxstart, minend, maxend,
+	complete, responsible, depends
+}
